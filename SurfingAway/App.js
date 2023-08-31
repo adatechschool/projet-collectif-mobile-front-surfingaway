@@ -39,10 +39,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: StatusBar.currentHeight || 0
   },
-  top: {
-    marginTop: StatusBar.currentHeight || 0
 
-  }
 });
 
 export default App
