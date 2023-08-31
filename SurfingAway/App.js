@@ -6,6 +6,7 @@ import Weather from './src/screens/Weather';
 import Spots from './src/screens/Spots';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import SpotPage from './src/screens/SpotPage';
 
 const heightStatus = Platform.OS === 'android' ? StatusBar.currentHeight : 24;
 
@@ -15,7 +16,7 @@ const App = () => {
 
     <NavigationContainer>
       <Tab.Navigator
-        style={{ marginTop: heightStatus }} //add this
+        style={{ marginTop: heightStatus }}
         screenOptions={{
           tabBarLabelStyle: { fontSize: 12 },
           tabBarItemStyle: { width: 100 },
@@ -25,7 +26,8 @@ const App = () => {
         <Tab.Screen name={'Home'} component={Home} />
         <Tab.Screen name={'Spots'} component={Spots} />
         <Tab.Screen name={'Weather'} component={Weather} />
-        <Tab.Screen name={'Add'} component={AddSpot} />
+        {/* <Tab.Screen name={'Add'} component={AddSpot} /> */}
+        <Tab.Screen name={'Lima'} component={SpotPage} />
       </Tab.Navigator>
     </NavigationContainer>
   );
