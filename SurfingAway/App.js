@@ -5,18 +5,20 @@ import Home from './src/screens/Home';
 import SpotPage from './src/screens/SpotPage';
 import Weather from './src/screens/Weather';
 import Spots from './src/screens/Spots';
+import { NavigationContainer } from '@react-navigation/native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
+const Tab = createMaterialTopTabNavigator();
 
-export default function App() {
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Surfez safe entre meufs</Text>
-      {/* <Home /> */}
-      {/* <SpotPage /> */}
-      {/* <Weather /> */}
-      {/* <Spots /> */}
-
-    </View>
+    <NavigationContainer style={styles.top} >
+      <Tab.Navigator>
+        <Tab.Screen name={'Spots'} component={Spots} />
+        <Tab.Screen name={'Weather'} component={Weather} />
+        <Tab.Screen name={'Add'} component={AddSpot} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -27,4 +29,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  top: {
+    marginTop: StatusBar.currentHeight || 0
+
+  }
 });
+
+export default App
