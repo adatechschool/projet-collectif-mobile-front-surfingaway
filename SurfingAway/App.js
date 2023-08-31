@@ -11,7 +11,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>Surfez safe entre meufs</Text>
-      <StatusBar style="auto" />
+      {/* <Home /> */}
+      {/* <SpotPage /> */}
+      {/* <Weather /> */}
+      {/* <Spots /> */}
+
     </View>
   );
 }
