@@ -30,9 +30,26 @@ const SpotPage = () => {
                         <Text style={styles.textEmphase} >La note des pros</Text>
                     </View>
                     <View>
-                        <UserSimpleCard />
-                        <UserSimpleCard />
-                        <UserSimpleCard />
+                        <UserSimpleCard
+                            name={"Elsa la bellegosse du 33"}
+                            message={"C'est d'la bombe"}
+                        />
+                        <UserSimpleCard
+                            name={"MaMaMaMarion"}
+                            message={"Mouais"}
+                        />
+                        <UserSimpleCard
+                            name={"Alisha"}
+                            message={"L'eau est trop froide"}
+                        />
+                        <UserSimpleCard
+                            name={"Agathe"}
+                            message={"Le sable est trop sableux"}
+                        />
+                        <UserSimpleCard
+                            name={"Charlène"}
+                            message={"Ouiiiiiiiiii"}
+                        />
                     </View>
                 </View>
             </ScrollView>

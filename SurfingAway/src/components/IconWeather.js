@@ -7,7 +7,7 @@ const IconWeather = (/* props */) => {
         const { textTheme, container } = styles */
     return (
         <View style={styles.container}>
-            <Feather name={'sun'} size={150} color={'yellow'} />
+            <Feather name={'sun'} size={100} color={'yellow'} />
         </ View>
     )
 }
