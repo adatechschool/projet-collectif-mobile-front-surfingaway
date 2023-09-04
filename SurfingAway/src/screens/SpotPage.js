@@ -22,7 +22,10 @@ const SpotPage = () => {
                         titleText={"Surf infos"}
                     />
                     <View style={styles.weatherInfos}>
-                        <IconWeather />
+                        <IconWeather
+                            iconName={'sun'}
+                            iconColor={'purple'}
+                        />
                         <CardWeather />
                     </View>
                     <MainTitle

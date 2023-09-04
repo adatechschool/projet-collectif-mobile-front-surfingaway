@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import { Avatar, Card, IconButton } from 'react-native-paper';
 
 const UserSimpleCard = (props) => {
@@ -14,8 +13,5 @@ const UserSimpleCard = (props) => {
     )
 }
 
-const styles = StyleSheet.create({
-
-})
 
 export default UserSimpleCard

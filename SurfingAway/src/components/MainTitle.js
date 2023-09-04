@@ -12,7 +12,6 @@ const MainTitle = (props) => {
     )
 }
 
-
 const styles = StyleSheet.create({
     titleWrapper: {
         backgroundColor: 'teal',

@@ -2,12 +2,11 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { Feather } from '@expo/vector-icons';
 
-const IconWeather = (/* props */) => {
-    /*     const { iconName, iconColor, bodyText, bodyTextStyles } = props
-        const { textTheme, container } = styles */
+const IconWeather = (props) => {
+    const { iconName, iconColor } = props
     return (
         <View style={styles.container}>
-            <Feather name={'sun'} size={100} color={'yellow'} />
+            <Feather name={iconName} size={100} color={iconColor} />
         </ View>
     )
 }
