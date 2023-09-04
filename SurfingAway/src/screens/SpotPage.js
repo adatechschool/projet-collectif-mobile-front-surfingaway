@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Image } from "react-native";
 import IconWeather from "../components/IconWeather";
+import UserSimpleCard from "../components/UserSimpleCard";
 import { Text, Avatar, Card, IconButton } from 'react-native-paper';
 
 const wind = '6km/h'
@@ -41,29 +42,11 @@ const SpotPage = () => {
                     <Text style={styles.textEmphase} >Rating influencer</Text>
                 </View>
                 <View>
-                    <Card.Title
-                        title="Elsa la bellegosse du 33"
-                        subtitle="Influencer score"
-                        left={(props) => <Avatar.Icon {...props} icon="account" />}
-                        right={(props) => <IconButton {...props} icon="dots-vertical" onPress={() => { }} />}
-                    />
-                    <Card.Title
-                        title="Elsa la bellegosse du 33"
-                        subtitle="Influencer score"
-                        left={(props) => <Avatar.Icon {...props} icon="account" />}
-                        right={(props) => <IconButton {...props} icon="dots-vertical" onPress={() => { }} />}
-                    />
-                    <Card.Title
-                        title="Elsa la bellegosse du 33"
-                        subtitle="Influencer score"
-                        left={(props) => <Avatar.Icon {...props} icon="account" />}
-                        right={(props) => <IconButton {...props} icon="dots-vertical" onPress={() => { }} />}
-                    />
+                    <UserSimpleCard />
+                    <UserSimpleCard />
+                    <UserSimpleCard />
                 </View>
-
             </View>
-
-
         </View>
     )
 }
