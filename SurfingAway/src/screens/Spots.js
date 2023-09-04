@@ -1,10 +1,12 @@
 import React from "react";
 import { View, Text, StyleSheet, StatusBar } from "react-native";
+import SpotPage from "./SpotPage";
+import { Link } from "@react-navigation/native";
 
 const Spots = () => {
     return (
         <View style={styles.container} >
-            <Text>Spot List :</Text>
+
         </View>
     )
 }
