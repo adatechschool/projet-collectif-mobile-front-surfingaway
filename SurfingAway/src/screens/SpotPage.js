@@ -14,6 +14,9 @@ const SpotPage = () => {
                 </View>
                 <View style={styles.weatherWrapper} >
                     <Text style={styles.textEmphase} >Sunny</Text>
+                    <View>
+
+                    </View>
                 </View>
                 <View style={styles.ratingWrapper} >
                     <Text style={styles.textEmphase} >Rating influencer</Text>
