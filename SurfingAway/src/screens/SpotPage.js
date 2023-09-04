@@ -4,7 +4,7 @@ import IconWeather from "../components/IconWeather";
 import CardWeather from "../components/CardWeather";
 import UserSimpleCard from "../components/UserSimpleCard";
 import SpotMainInfos from "../components/SpotMainInfos";
-import { Text } from 'react-native-paper';
+import MainTitle from "../components/MainTitle";
 
 const SpotPage = () => {
     return (
@@ -18,16 +18,16 @@ const SpotPage = () => {
                         technicity={"Difficulty level"}
                         wave={"Surf Break"}
                     />
-                    <View style={styles.titleWrapper} >
-                        <Text style={styles.textEmphase} >Infos surf</Text>
-                    </View>
+                    <MainTitle
+                        titleText={"Surf infos"}
+                    />
                     <View style={styles.weatherInfos}>
                         <IconWeather />
                         <CardWeather />
                     </View>
-                    <View style={styles.titleWrapper} >
-                        <Text style={styles.textEmphase} >La note des pros</Text>
-                    </View>
+                    <MainTitle
+                        titleText={"La note des pros"}
+                    />
                     <View>
                         <UserSimpleCard
                             name={"Elsa la bellegosse du 33"}
@@ -66,16 +66,6 @@ const styles = StyleSheet.create({
     },
     contentWrapper: {
 
-    },
-    titleWrapper: {
-        backgroundColor: 'teal',
-        alignItems: 'center',
-    },
-    textEmphase: {
-        fontWeight: 'bold',
-        fontSize: 30,
-        color: 'white',
-        paddingVertical: 5,
     },
     weatherInfos: {
         flexDirection: 'row',
