@@ -24,7 +24,7 @@ const SpotPage = () => {
                     <View style={styles.weatherInfos}>
                         <IconWeather
                             iconName={'sun'}
-                            iconColor={'purple'}
+                            iconColor={'deeppink'}
                         />
                         <CardWeather />
                     </View>
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around',
-        backgroundColor: 'lightblue',
+        backgroundColor: 'darkblue',
         paddingVertical: 5,
     },
     temp: {

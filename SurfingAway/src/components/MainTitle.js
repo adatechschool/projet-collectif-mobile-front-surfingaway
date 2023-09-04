@@ -14,13 +14,13 @@ const MainTitle = (props) => {
 
 const styles = StyleSheet.create({
     titleWrapper: {
-        backgroundColor: 'teal',
+        backgroundColor: 'deeppink',
         alignItems: 'center',
     },
     textEmphase: {
         fontWeight: 'bold',
         fontSize: 30,
-        color: 'white',
+        color: 'darkblue',
         paddingVertical: 5,
     },
 })

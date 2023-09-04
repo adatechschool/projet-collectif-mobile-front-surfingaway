@@ -5,6 +5,7 @@ import Home from "../screens/Home";
 import Weather from "../screens/Weather";
 import Spots from "../screens/Spots";
 import SpotPage from "../screens/SpotPage";
+import IconNav from "../components/MainTitle";
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 const heightStatus = Platform.OS === 'android' ? StatusBar.currentHeight : 24;
@@ -16,25 +17,21 @@ const HomeTopTabs = () => {
         <Tab.Navigator
             style={{ marginTop: heightStatus }}
             screenOptions={{
-                tabBarActiveTintColor: 'black',
-                tabBarInactiveTintColor: 'grey',
+                tabBarActiveTintColor: 'deeppink',
+                tabBarInactiveTintColor: 'aliceblue',
                 tabBarStyle: {
-                    backgroundColor: 'lightblue',
+                    backgroundColor: 'darkblue',
                 },
                 headerStyle: {
-                    backgroundColor: 'lightblue'
+                    backgroundColor: 'darkblue '
                 },
-                headerTitleStyle: {
-                    fontWeight: 'bold',
-                    fontSize: 25,
-                    color: 'white'
-                }
+
             }}
         >
-            <Tab.Screen name={'Home'} component={Home} />
+            <Tab.Screen name={'Actu'} component={Home} />
             <Tab.Screen name={'Spots'} component={Spots} />
             <Tab.Screen name={'Météo'} component={Weather} />
-            <Tab.Screen name={'Add'} component={AddSpot} />
+            <Tab.Screen name={"+"} component={AddSpot} />
             <Tab.Screen name={'Lima'} component={SpotPage} />
         </Tab.Navigator>
 
