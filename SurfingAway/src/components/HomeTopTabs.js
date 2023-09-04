@@ -5,7 +5,6 @@ import Home from "../screens/Home";
 import Weather from "../screens/Weather";
 import Spots from "../screens/Spots";
 import SpotPage from "../screens/SpotPage";
-import IconNav from "../components/MainTitle";
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 const heightStatus = Platform.OS === 'android' ? StatusBar.currentHeight : 24;
