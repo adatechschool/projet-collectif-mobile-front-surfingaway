@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet, StatusBar, Image } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import IconWeather from "../components/IconWeather";
+import { Text, Avatar, Card, IconButton } from 'react-native-paper';
 
 const SpotPage = () => {
     return (
@@ -15,18 +16,48 @@ const SpotPage = () => {
                 </View>
                 <View style={styles.titleWrapper} >
                     <Text style={styles.textEmphase} >Sunny</Text>
-                    <View>
-
-                    </View>
                 </View>
                 <View style={styles.weatherInfos}>
-                    <IconWeather />
+                    <View>
+                        <IconWeather />
+                    </View>
+                    <View>
+                        <Card>
+                            <Card.Content>
+                                <Text variant="titleLarge">Card title</Text>
+                                <Text variant="bodyMedium">Card content</Text>
+                            </Card.Content>
+                        </Card>
+                    </View>
+
                 </View>
                 <View style={styles.titleWrapper} >
                     <Text style={styles.textEmphase} >Rating influencer</Text>
                 </View>
+                <View>
+                    <Card.Title
+                        title="Elsa la bellegosse du 33"
+                        subtitle="Influencer score"
+                        left={(props) => <Avatar.Icon {...props} icon="account" />}
+                        right={(props) => <IconButton {...props} icon="dots-vertical" onPress={() => { }} />}
+                    />
+                    <Card.Title
+                        title="Elsa la bellegosse du 33"
+                        subtitle="Influencer score"
+                        left={(props) => <Avatar.Icon {...props} icon="account" />}
+                        right={(props) => <IconButton {...props} icon="dots-vertical" onPress={() => { }} />}
+                    />
+                    <Card.Title
+                        title="Elsa la bellegosse du 33"
+                        subtitle="Influencer score"
+                        left={(props) => <Avatar.Icon {...props} icon="account" />}
+                        right={(props) => <IconButton {...props} icon="dots-vertical" onPress={() => { }} />}
+                    />
+                </View>
 
             </View>
+
+
         </View>
     )
 }
@@ -43,7 +74,7 @@ const styles = StyleSheet.create({
 
     },
     textWrapper: {
-        paddingVertical: 30,
+        paddingVertical: 20,
         paddingHorizontal: 10,
     },
     localisation: {
@@ -65,13 +96,17 @@ const styles = StyleSheet.create({
     },
     textEmphase: {
         fontWeight: 'bold',
-        fontSize: 30
+        fontSize: 30,
+        color: 'white',
+        paddingVertical: 5,
     },
     weatherInfos: {
+        flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'space-between',
         backgroundColor: 'lightblue',
         paddingVertical: 50,
-        paddingHorizontal: 10,
+        paddingHorizontal: '10%',
     }
 })
 
