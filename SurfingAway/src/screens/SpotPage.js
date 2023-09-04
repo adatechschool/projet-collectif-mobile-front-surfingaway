@@ -3,6 +3,8 @@ import { View, StyleSheet, Image } from "react-native";
 import IconWeather from "../components/IconWeather";
 import { Text, Avatar, Card, IconButton } from 'react-native-paper';
 
+const wind = '6km/h'
+
 const SpotPage = () => {
     return (
         <View style={styles.container} >
@@ -24,8 +26,12 @@ const SpotPage = () => {
                     <View>
                         <Card>
                             <Card.Content>
-                                <Text variant="titleLarge">Card title</Text>
-                                <Text variant="bodyMedium">Card content</Text>
+                                <View style={styles.temp}>
+                                    <Text style={styles.tempText}>18°C</Text>
+                                    <Text style={styles.tempText}>6°C</Text>
+                                    <Text style={styles.tempText}>19°C</Text>
+                                </View>
+                                <Text variant="bodyMedium">Vent {wind}</Text>
                             </Card.Content>
                         </Card>
                     </View>
@@ -103,10 +109,19 @@ const styles = StyleSheet.create({
     weatherInfos: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         backgroundColor: 'lightblue',
         paddingVertical: 50,
         paddingHorizontal: '10%',
+    },
+    temp: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: "50%",
+    },
+    tempText: {
+        color: 'red'
     }
 })
 
