@@ -1,19 +1,19 @@
-import React from "react";
-import { View, Text, StyleSheet, StatusBar } from "react-native";
+import React from 'react'
+import { View, StyleSheet } from 'react-native'
+import CurrentWeather from './src/components/CurrentWeather'
 
 const Weather = () => {
     return (
-        <View style={styles.container} >
-            <Text>Coming from Agathe : weather is a too hot</Text>
-            <Text>Coming from Alisssia : it's fu****g freezing out there !</Text>
+        <View style={styles.container}>
+            <CurrentWeather />
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: StatusBar.currentHeight || 0
-    },
+        flex: 1
+    }
 })
 
 export default Weather
