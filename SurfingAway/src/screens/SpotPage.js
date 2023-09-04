@@ -3,9 +3,8 @@ import { View, StyleSheet, Image, ScrollView } from "react-native";
 import IconWeather from "../components/IconWeather";
 import CardWeather from "../components/CardWeather";
 import UserSimpleCard from "../components/UserSimpleCard";
-import { Text, Card, Button, Avatar, Title, Paragraph } from 'react-native-paper';
-
-const wind = '6km/h'
+import SpotMainInfos from "../components/SpotMainInfos";
+import { Text } from 'react-native-paper';
 
 const SpotPage = () => {
     return (
@@ -13,12 +12,12 @@ const SpotPage = () => {
             <ScrollView>
                 <Image source={require('../../assets/sri-lanka-spot.jpg')} style={styles.ImageStyle} />
                 <View style={styles.contentWrapper} >
-                    <View style={styles.textWrapper} >
-                        <Text style={styles.localisation}>Pottuvil, Sri Lanka</Text>
-                        <Text style={styles.name}>Pipeline Pottuvil </Text>
-                        <Text style={styles.difficulty}>Difficulty level </Text>
-                        <Text style={styles.category}>Surf Break</Text>
-                    </View>
+                    <SpotMainInfos
+                        where={"Pottuvil, Sri Lanka"}
+                        what={"Pipeline Pottuvil"}
+                        technicity={"Difficulty level"}
+                        wave={"Surf Break"}
+                    />
                     <View style={styles.titleWrapper} >
                         <Text style={styles.textEmphase} >Infos surf</Text>
                     </View>
@@ -67,23 +66,6 @@ const styles = StyleSheet.create({
     },
     contentWrapper: {
 
-    },
-    textWrapper: {
-        paddingVertical: 20,
-        paddingHorizontal: 10,
-    },
-    localisation: {
-        color: 'grey',
-        fontSize: 20
-    },
-    name: {
-        fontSize: 20
-    },
-    difficulty: {
-        fontSize: 20
-    },
-    category: {
-        fontSize: 20
     },
     titleWrapper: {
         backgroundColor: 'teal',
