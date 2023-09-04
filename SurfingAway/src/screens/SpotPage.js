@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, StatusBar, Image } from "react-native";
+import IconWeather from "../components/IconWeather";
 
 const SpotPage = () => {
     return (
@@ -12,13 +13,16 @@ const SpotPage = () => {
                     <Text style={styles.difficulty}>Difficulty level </Text>
                     <Text style={styles.category}>Surf Break</Text>
                 </View>
-                <View style={styles.weatherWrapper} >
+                <View style={styles.titleWrapper} >
                     <Text style={styles.textEmphase} >Sunny</Text>
                     <View>
 
                     </View>
                 </View>
-                <View style={styles.ratingWrapper} >
+                <View style={styles.weatherInfos}>
+                    <IconWeather />
+                </View>
+                <View style={styles.titleWrapper} >
                     <Text style={styles.textEmphase} >Rating influencer</Text>
                 </View>
 
@@ -36,10 +40,11 @@ const styles = StyleSheet.create({
         height: 250
     },
     contentWrapper: {
-        marginHorizontal: 10,
-        marginVertical: 20
+
     },
     textWrapper: {
+        paddingVertical: 30,
+        paddingHorizontal: 10,
     },
     localisation: {
         color: 'grey',
@@ -54,21 +59,19 @@ const styles = StyleSheet.create({
     category: {
         fontSize: 20
     },
-    weatherWrapper: {
-        marginVertical: 7,
-        backgroundColor: 'mediumpurple',
+    titleWrapper: {
+        backgroundColor: 'teal',
         alignItems: 'center',
-        paddingVertical: 7
-    },
-    ratingWrapper: {
-        marginVertical: 7,
-        backgroundColor: 'mediumpurple',
-        alignItems: 'center',
-        paddingVertical: 7
     },
     textEmphase: {
         fontWeight: 'bold',
         fontSize: 30
+    },
+    weatherInfos: {
+        alignItems: 'center',
+        backgroundColor: 'lightblue',
+        paddingVertical: 50,
+        paddingHorizontal: 10,
     }
 })
 
