@@ -1,59 +1,48 @@
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, ScrollView } from "react-native";
 import IconWeather from "../components/IconWeather";
+import CardWeather from "../components/CardWeather";
 import UserSimpleCard from "../components/UserSimpleCard";
-import { Text, Avatar, Card, IconButton } from 'react-native-paper';
+import { Text, Card, Button, Avatar, Title, Paragraph } from 'react-native-paper';
 
 const wind = '6km/h'
 
 const SpotPage = () => {
     return (
         <View style={styles.container} >
-            <Image source={require('../../assets/sri-lanka-spot.jpg')} style={styles.ImageStyle} />
-            <View style={styles.contentWrapper} >
-                <View style={styles.textWrapper} >
-                    <Text style={styles.localisation}>Pottuvil, Sri Lanka</Text>
-                    <Text style={styles.name}>Pipeline Pottuvil </Text>
-                    <Text style={styles.difficulty}>Difficulty level </Text>
-                    <Text style={styles.category}>Surf Break</Text>
-                </View>
-                <View style={styles.titleWrapper} >
-                    <Text style={styles.textEmphase} >Sunny</Text>
-                </View>
-                <View style={styles.weatherInfos}>
-                    <View>
+            <ScrollView>
+                <Image source={require('../../assets/sri-lanka-spot.jpg')} style={styles.ImageStyle} />
+                <View style={styles.contentWrapper} >
+                    <View style={styles.textWrapper} >
+                        <Text style={styles.localisation}>Pottuvil, Sri Lanka</Text>
+                        <Text style={styles.name}>Pipeline Pottuvil </Text>
+                        <Text style={styles.difficulty}>Difficulty level </Text>
+                        <Text style={styles.category}>Surf Break</Text>
+                    </View>
+                    <View style={styles.titleWrapper} >
+                        <Text style={styles.textEmphase} >Infos surf</Text>
+                    </View>
+                    <View style={styles.weatherInfos}>
                         <IconWeather />
+                        <CardWeather />
+                    </View>
+                    <View style={styles.titleWrapper} >
+                        <Text style={styles.textEmphase} >La note des pros</Text>
                     </View>
                     <View>
-                        <Card>
-                            <Card.Content>
-                                <View style={styles.temp}>
-                                    <Text style={styles.tempText}>18°C</Text>
-                                    <Text style={styles.tempText}>6°C</Text>
-                                    <Text style={styles.tempText}>19°C</Text>
-                                </View>
-                                <Text variant="bodyMedium">Vent {wind}</Text>
-                            </Card.Content>
-                        </Card>
+                        <UserSimpleCard />
+                        <UserSimpleCard />
+                        <UserSimpleCard />
                     </View>
-
                 </View>
-                <View style={styles.titleWrapper} >
-                    <Text style={styles.textEmphase} >Rating influencer</Text>
-                </View>
-                <View>
-                    <UserSimpleCard />
-                    <UserSimpleCard />
-                    <UserSimpleCard />
-                </View>
-            </View>
+            </ScrollView>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+
     },
     ImageStyle: {
         width: '100%',
@@ -94,8 +83,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around',
         backgroundColor: 'lightblue',
-        paddingVertical: 50,
-        paddingHorizontal: '10%',
+        paddingVertical: 5,
     },
     temp: {
         flexDirection: 'row',
@@ -105,7 +93,7 @@ const styles = StyleSheet.create({
     },
     tempText: {
         color: 'red'
-    }
+    },
 })
 
 export default SpotPage
