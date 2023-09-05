@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, StatusBar } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { Feather } from '@expo/vector-icons';
 
 const CurrentWeather = () => {
@@ -50,8 +50,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     bodywrapper: {
-        // justifyContent: 'flex-end',
-        // alignItems: 'flex-start',
         paddingLeft: 25,
         marginBottom: 40
     },

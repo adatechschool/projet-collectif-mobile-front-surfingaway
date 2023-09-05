@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, StatusBar, FlatList } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 import { Feather } from '@expo/vector-icons'
 
 const DATA = [
@@ -57,7 +57,7 @@ const DATA = [
 const Item = (props) => {
     const { min, max } = props
     return (
-        <View>
+        <View style={styles.container}>
             <View style={styles.location}>
                 <Text>Nantes</Text>
             </View>
@@ -125,10 +125,12 @@ const UpcommingWeather = () => {
 }
 
 const styles = StyleSheet.create({
-    location: {
-        flex: 1,
-        flexDirection: 'row',
+    container: {
+        flexDirection: 'column',
         backgroundColor: 'lightblue'
+    },
+    location: {
+        flex: 1
     },
     details: {
         flex: 1,
