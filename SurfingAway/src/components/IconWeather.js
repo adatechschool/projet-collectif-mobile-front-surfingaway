@@ -6,7 +6,7 @@ const IconWeather = (props) => {
     const { iconName, iconColor } = props
     return (
         <View style={styles.container}>
-            <Feather name={iconName} size={100} color={iconColor} />
+            <Feather name={iconName} size={70} color={iconColor} />
         </ View>
     )
 }
