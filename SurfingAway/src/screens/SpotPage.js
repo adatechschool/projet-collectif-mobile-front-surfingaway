@@ -2,11 +2,17 @@ import React from "react";
 import { View, StyleSheet, Image, ScrollView } from "react-native";
 import IconWeather from "../components/IconWeather";
 import CardWeather from "../components/CardWeather";
+import getAllSpots from "../services/getAllSpots";
 import UserSimpleCard from "../components/UserSimpleCard";
 import SpotMainInfos from "../components/SpotMainInfos";
 import MainTitle from "../components/MainTitle";
 
+
 const SpotPage = () => {
+    console.log('bonjour');
+
+    getAllSpots()
+
     return (
         <View style={styles.container} >
             <ScrollView>
@@ -66,6 +72,7 @@ const SpotPage = () => {
         </View>
     )
 }
+
 
 const styles = StyleSheet.create({
     container: {
