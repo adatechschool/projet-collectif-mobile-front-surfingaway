@@ -1,28 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Image, ScrollView } from "react-native";
 import IconWeather from "../components/IconWeather";
 import CardWeather from "../components/CardWeather";
-import getAllSpots from "../services/getAllSpots";
+import getSpotInfos from "../services/getSpotInfos";
 import UserSimpleCard from "../components/UserSimpleCard";
 import SpotMainInfos from "../components/SpotMainInfos";
 import MainTitle from "../components/MainTitle";
 
-
 const SpotPage = () => {
-    console.log('bonjour');
+    const [surfBreakData, setSurfBreakData] = useState(null); // État pour stocker les données du surf break
+    const [difficultyData, setdifficultyData] = useState(null)
+    const [destinationData, setDestinationData] = useState(null)
+    const [whereData, setwhereData] = useState(null)
+    const [error, setError] = useState(null)
 
-    getAllSpots()
+
+    useEffect(() => {
+        const fetchDataSurfBreak = async () => {
+            try {
+                const fields = await getSpotInfos();
+                console.log(fields);
+                // Mettre à jour l'état avec les données
+                setSurfBreakData(fields["Surf Break"][0]);
+                setdifficultyData(fields["Difficulty Level"])
+                setDestinationData(fields["Destination"])
+                setwhereData(fields["Destination State/Country"])
+            } catch (error) {
+                setError('could not fetch weather');
+            }
+        };
+
+        fetchDataSurfBreak(); // Appel de la fonction fetchDataSurfBreak lors du montage du composant
+    }, []); // Le tableau vide [] garantit que cela ne s'exécute qu'une seule fois lors du montage initial
 
     return (
-        <View style={styles.container} >
+        <View style={styles.container}>
             <ScrollView>
                 <Image source={require('../../assets/sri-lanka-spot.jpg')} style={styles.ImageStyle} />
-                <View style={styles.contentWrapper} >
+                <View style={styles.contentWrapper}>
                     <SpotMainInfos
-                        where={"Pottuvil, Sri Lanka"}
-                        what={"Pipeline Pottuvil"}
-                        technicity={"Difficulty level"}
-                        wave={"Surf Break"}
+                        where={whereData ? whereData : "Loading..."}
+                        what={destinationData ? destinationData : "Loading..."}
+                        technicity={difficultyData ? difficultyData : "Loading..."}
+                        wave={surfBreakData ? surfBreakData : "Loading..."} // Affiche les données ou un message de chargement
                     />
                     <MainTitle
                         titleText={"Surf infos"}
