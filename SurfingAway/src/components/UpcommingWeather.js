@@ -55,13 +55,54 @@ const DATA = [
 ]
 
 const Item = (props) => {
-    const { dt_txt, min, max, condition } = props
+    const { min, max } = props
     return (
         <View>
-            <Feather name="sun" size={50} color="yellow" />
-            <Text>{dt_txt}</Text>
-            <Text>{min}</Text>
-            <Text>{max}</Text>
+            <View style={styles.location}>
+                <Text>Nantes</Text>
+            </View>
+            <View style={styles.details}>
+                <Text>Today</Text>
+                <Text>Date d'aujourd'hui</Text>
+                <Feather name="sun" size={40} color="gold" />
+                <Text>Précip. : 5%</Text>
+                <Text>Humidité : 80%</Text>
+                <Text>Vent : 21 km/h</Text>
+            </View>
+            <View style={styles.feels}>
+                <Text>{min}°/{max}°</Text>
+                <Text>Feels : 22°</Text>
+            </View>
+            <View style={styles.days}>
+                <View style={styles.daysPartieUn}>
+                    <Text>Date du jour</Text>
+                    <Feather name="sun" size={20} color="gold" />
+                </View>
+                <View style={styles.daysPartieDeux}>
+                    <Text>11°/23°</Text>
+                    <Text>Feels : 24°</Text>
+                </View>
+            </View>
+            <View style={styles.days}>
+                <View style={styles.daysPartieUn}>
+                    <Text>Date du jour</Text>
+                    <Feather name="sun" size={20} color="gold" />
+                </View>
+                <View style={styles.daysPartieDeux}>
+                    <Text>9°/18°</Text>
+                    <Text>Feels : 20°</Text>
+                </View>
+            </View>
+            <View style={styles.days}>
+                <View style={styles.daysPartieUn}>
+                    <Text>Date du jour</Text>
+                    <Feather name="sun" size={20} color="gold" />
+                </View>
+                <View style={styles.daysPartieDeux}>
+                    <Text>7°/16°</Text>
+                    <Text>Feels : 17°</Text>
+                </View>
+            </View>
         </View>
     )
 }
@@ -69,15 +110,12 @@ const Item = (props) => {
 const UpcommingWeather = () => {
     const renderItem = ({ item }) => (
         <Item
-            condition={item.weather[0].main}
-            dt_txt={item.dt_txt}
             min={item.main.temp_min}
             max={item.main.temp_max}
         />
     )
     return (
-        <View style={styles.container} >
-            <Text>Upcomming weather</Text>
+        <View>
             <FlatList
                 data={DATA}
                 renderItem={renderItem}
@@ -87,10 +125,34 @@ const UpcommingWeather = () => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        marginTop: StatusBar.currentHeight || 0,
-        flex: 1
+    location: {
+        flex: 1,
+        flexDirection: 'row',
+        backgroundColor: 'lightblue'
     },
+    details: {
+        flex: 1,
+        backgroundColor: 'white',
+        alignItems: 'center'
+    },
+    feels: {
+        flex: 1,
+        backgroundColor: 'lightblue',
+        alignItems: 'center'
+    },
+    days: {
+        flex: 1,
+        flexDirection: 'row',
+        backgroundColor: 'white',
+    },
+    daysPartieUn: {
+        flex: 1,
+        alignItems: 'center'
+    },
+    daysPartieDeux: {
+        flex: 1,
+        alignItems: 'center'
+    }
 })
 
 export default UpcommingWeather
