@@ -11,7 +11,7 @@ const CardNews = (props) => {
     };
 
     return (
-        <View >
+        <View style={styles.boxContainer}>
             <View style={styles.container}>
                 <View style={styles.TitleContent}>
                     <Title>{title}</Title>
@@ -22,7 +22,7 @@ const CardNews = (props) => {
             </View>
 
                 <View style={styles.boxImage}>
-                    <Image source={{ uri: imageUrl}} style={styles.image} />
+                    <Image source={require('../images/palmier.jpg')} style={styles.image} />
                 </View>
             </View>
         </View>
@@ -30,10 +30,18 @@ const CardNews = (props) => {
 }
 
 const styles = StyleSheet.create({
+    boxContainer :{
+        backgroundColor: 'white',
+        shadowColor: '#171717',
+        shadowOffset: {width: -2, height: 4},
+        shadowOpacity: 0.2,
+        shadowRadius: 1,
+        elevation: 20
+    },
     container: {
         display: "flex",
         flexDirection: 'row',
-        height: 200
+        height: 160,
     },
     TitleContent: {
         margin: 8,

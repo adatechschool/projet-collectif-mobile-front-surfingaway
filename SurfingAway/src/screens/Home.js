@@ -28,6 +28,17 @@ const Home = () => {
                         imageUrl={apiImageUrl}
                     />
                 </View>
+                <View>
+                <CardNews
+                        title={"LES 10 REGLES D'OR D'UNE PRATIQUE SEREINE DU SURF"}
+                        undertitle={"Amoindrir le nombre d'accidents en tout genre"}
+                        link={apiLink} 
+                        imageUrl={apiImageUrl}
+                    />
+                </View>
+                <View>
+                    <MainTitle titleText={"Recently consulted"} />
+                </View>
             </ScrollView>
         </View>
     )
