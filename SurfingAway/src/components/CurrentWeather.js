@@ -26,14 +26,15 @@ const CurrentWeather = () => {
 
 const styles = StyleSheet.create({
     wrapper: {
-        flex: 1,
-        backgroundColor: 'lavender'
-    },
-    container: {
         marginTop: StatusBar.currentHeight || 0,
-        flex: 1,
+        backgroundColor: 'lavender',
+
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    container: {
+
+
     },
     temp: {
         color: 'black',

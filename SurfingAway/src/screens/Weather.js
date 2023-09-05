@@ -1,11 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet, StatusBar } from "react-native";
+import CurrentWeather from "../components/CurrentWeather";
 
 const Weather = () => {
     return (
         <View style={styles.container} >
-            <Text>Coming from Agathe : weather is a too hot</Text>
-            <Text>Coming from Alisssia : it's fu****g freezing out there !</Text>
+            <CurrentWeather />
         </View>
     )
 }
