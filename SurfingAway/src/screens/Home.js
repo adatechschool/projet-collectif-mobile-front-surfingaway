@@ -9,12 +9,11 @@ const Home = () => {
     const [apiImageUrl, setApiImageUrl] = useState(""); 
 
     useEffect(() => {
-        // API ici
-      
+       
         
         // Exemples statiques
         setApiLink("https://www.surf-report.com/news/surf/securite-surf-mns-cross-706229583.html");
-        setApiImageUrl(palmierImage);
+        setApiImageUrl(require('../../assets/sri-lanka-spot.jpg'));
     }, []);
 
     return (

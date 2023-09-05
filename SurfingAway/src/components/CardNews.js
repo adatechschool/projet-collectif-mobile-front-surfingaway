@@ -11,18 +11,19 @@ const CardNews = (props) => {
     };
 
     return (
-        <View style={styles.container}>
-            <View style={styles.TitleContent}>
-                <Title>{title}</Title>
-                <Text>{undertitle}</Text>
-                <TouchableOpacity onPress={openLinkInBrowser}>
-                    <Text style={styles.link}>{link}</Text>
-                </TouchableOpacity>
+        <View >
+            <View style={styles.container}>
+                <View style={styles.TitleContent}>
+                    <Title>{title}</Title>
+                    <Text>{undertitle}</Text>
+                    <TouchableOpacity onPress={openLinkInBrowser}>
+                        <Text style={styles.link}>{link}</Text>
+                    </TouchableOpacity>
             </View>
 
-            <View>
-                <Image source={{ uri: imageUrl }} style={styles.image} />
-
+                <View style={styles.boxImage}>
+                    <Image source={{ uri: imageUrl}} style={styles.image} />
+                </View>
             </View>
         </View>
     )
@@ -32,17 +33,25 @@ const styles = StyleSheet.create({
     container: {
         display: "flex",
         flexDirection: 'row',
+        height: 200
     },
     TitleContent: {
-        margin: 8
+        margin: 8,
+        width: "70%"
     },
     link: {
         color: 'blue',
         textDecorationLine: 'underline',
     },
-    image: {
+    boxImage: {
         
     },
+    image:{
+        marginTop: 25,
+        width: '100%',
+        height: '50%',
+        aspectRatio: 1,
+    }
 });
 
 export default CardNews;
