@@ -27,14 +27,13 @@ const CurrentWeather = () => {
 const styles = StyleSheet.create({
     wrapper: {
         marginTop: StatusBar.currentHeight || 0,
-        backgroundColor: 'lavender',
-
-        alignItems: 'center',
-        justifyContent: 'center'
+        flex: 1,
+        backgroundColor: 'lavender'
     },
     container: {
-
-
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     temp: {
         color: 'black',
@@ -52,8 +51,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     bodywrapper: {
-        justifyContent: 'flex-end',
-        alignItems: 'flex-start',
+        // justifyContent: 'flex-end',
+        // alignItems: 'flex-start',
         paddingLeft: 25,
         marginBottom: 40
     },
