@@ -1,12 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet, StatusBar } from "react-native";
+import UserSimpleCard from "../components/UserSimpleCard";
 
 const Home = () => {
     return (
         <View style={styles.container} >
-            <Text>Actus</Text>
-            <Text>Récents</Text>
-            <Text>Favoris</Text>
+            <Text>Coucou</Text>
         </View>
     )
 }
