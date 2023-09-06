@@ -40,10 +40,26 @@ const Home = () => {
                 </View>
                 <View style={styles.recently} >
                     <MainTitle titleText={"Recently consulted"} />
-                    <CardRecents />
-                    <CardRecents />
-                    <CardRecents />
-                    <CardRecents />
+                    <CardRecents
+                        name={"Pipeline"}
+                        place={"Oahu Hawaii"}
+                        rating={"⭐⭐⭐"}
+                     />
+                    <CardRecents
+                        name={"Pipeline"}
+                        place={"Oahu Hawaii"}
+                        rating={"⭐⭐⭐⭐⭐"}
+                     />
+                    <CardRecents
+                        name={"Pipeline"}
+                        place={"Oahu Hawaii"}
+                        rating={"⭐⭐"}
+                     />
+                    <CardRecents
+                        name={"Pipeline"}
+                        place={"Oahu Hawaii"}
+                        rating={"⭐⭐⭐⭐"}
+                     />
                 </View>
                 <View>
                     <MainTitle titleText={"News"} />

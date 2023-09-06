@@ -5,16 +5,16 @@ import { View, Linking, StyleSheet, Text, TouchableOpacity, Image, ImageBackgrou
 const image = {uri: 'https://www.guide-des-landes.com/_bibli/articlesPage/108/images/spots-de-surf-dans-les-landes.jpg?v=ficheArticle&width=772&height=540&pixelRatio=1.0000'};
 
 const CardRecents = (props) => {
-    const { title, undertitle, link, imageUrl } = props;
+    const { name, place, rating, imageUrl } = props;
     return (
         <View style={styles.boxContainer}>
             <ImageBackground source={image} resizeMode="cover" style={styles.image}>
                 <View style={styles.infoCard}>
-                    <Text style={styles.textEmphase}>Pipeline</Text>
-                    <Text style={styles.textUnder}>Oahu Hawaii</Text>
+                    <Text style={styles.textEmphase}>{name}</Text>
+                    <Text style={styles.textUnder}>{place}</Text>
                 </View>
                 <View style={styles.scoreCard}>
-                    <Text style={styles.textRating}>⭐⭐⭐</Text>
+                    <Text style={styles.textRating}>{rating}</Text>
                     <Button buttonColor="darkblue" mode="contained"  onPress={() => console.log('Pressed')} style={styles.buttonDetail}>
                     Détails Spot
                     </Button>
