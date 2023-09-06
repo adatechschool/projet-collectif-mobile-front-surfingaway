@@ -1,14 +1,11 @@
-
-import { StyleSheet, StatusBar } from 'react-native';
 import HomeTopTabs from './src/components/HomeTopTabs';
 import { NavigationContainer } from '@react-navigation/native';
-import { PaperProvider } from 'react-native-paper';
+import { Provider as PaperProvider } from 'react-native-paper';
 import { registerTranslation, fr } from 'react-native-paper-dates';
 
 registerTranslation('fr', fr);
 
 const App = () => {
-
   return (
     <PaperProvider>
       <NavigationContainer>
@@ -18,7 +15,8 @@ const App = () => {
   );
 }
 
-const styles = StyleSheet.create({
+//je le garde au cas où pour la barre de status
+/* const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -26,7 +24,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: StatusBar.currentHeight || 0
   },
-
 });
-
+ */
 export default App

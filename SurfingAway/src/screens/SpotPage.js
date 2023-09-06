@@ -1,72 +1,126 @@
-import React from "react";
-import { View, Text, StyleSheet, StatusBar, Image } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, StyleSheet, Image, ScrollView } from "react-native";
+import IconWeather from "../components/IconWeather";
+import CardWeather from "../components/CardWeather";
+import getSpotInfos from "../services/getSpotInfos";
+import UserSimpleCard from "../components/UserSimpleCard";
+import SpotMainInfos from "../components/SpotMainInfos";
+import MainTitle from "../components/MainTitle";
 
 const SpotPage = () => {
-    return (
-        <View style={styles.container} >
-            <Image source={require('../../assets/sri-lanka-spot.jpg')} style={styles.ImageStyle} />
-            <View style={styles.contentWrapper} >
-                <View style={styles.textWrapper} >
-                    <Text style={styles.localisation}>Pottuvil, Sri Lanka</Text>
-                    <Text style={styles.name}>Pipeline Pottuvil </Text>
-                    <Text style={styles.difficulty}>Difficulty level </Text>
-                    <Text style={styles.category}>Surf Break</Text>
-                </View>
-                <View style={styles.weatherWrapper} >
-                    <Text style={styles.textEmphase} >Sunny</Text>
-                </View>
-                <View style={styles.ratingWrapper} >
-                    <Text style={styles.textEmphase} >Rating influencer</Text>
-                </View>
+    const [surfBreakData, setSurfBreakData] = useState(null); // État pour stocker les données du surf break
+    const [difficultyData, setdifficultyData] = useState(null)
+    const [destinationData, setDestinationData] = useState(null)
+    const [whereData, setwhereData] = useState(null)
+    const [error, setError] = useState(null)
 
-            </View>
+
+    useEffect(() => {
+        const fetchDataSurfBreak = async () => {
+            try {
+                const fields = await getSpotInfos();
+                console.log(fields);
+                // Mettre à jour l'état avec les données
+                setSurfBreakData(fields["Surf Break"][0]);
+                setdifficultyData(fields["Difficulty Level"])
+                setDestinationData(fields["Destination"])
+                setwhereData(fields["Destination State/Country"])
+            } catch (error) {
+                setError('could not fetch weather');
+            }
+        };
+
+        fetchDataSurfBreak(); // Appel de la fonction fetchDataSurfBreak lors du montage du composant
+    }, []); // Le tableau vide [] garantit que cela ne s'exécute qu'une seule fois lors du montage initial
+
+    return (
+        <View style={styles.container}>
+            <ScrollView>
+                <Image source={require('../../assets/sri-lanka-spot.jpg')} style={styles.ImageStyle} />
+                <View style={styles.contentWrapper}>
+                    <SpotMainInfos
+                        where={whereData ? whereData : "Loading..."}
+                        what={destinationData ? destinationData : "Loading..."}
+                        technicity={difficultyData ? difficultyData : "Loading..."}
+                        wave={surfBreakData ? surfBreakData : "Loading..."} // Affiche les données ou un message de chargement
+                    />
+                    <MainTitle
+                        titleText={"Surf infos"}
+                    />
+                    <View style={styles.weatherInfos}>
+                        <View style={{
+                            width: '25%',
+                        }}>
+                            <IconWeather
+                                iconName={'sun'}
+                                iconColor={'deeppink'}
+                            />
+                        </View>
+                        <View style={{
+                            width: '60%',
+                        }}>
+                            <CardWeather />
+                        </View>
+                    </View>
+                    <MainTitle
+                        titleText={"La note des pros"}
+                    />
+                    <View>
+                        <UserSimpleCard
+                            name={"Elsa la bellegosse du 33"}
+                            message={"C'est d'la bombe"}
+                        />
+                        <UserSimpleCard
+                            name={"MaMaMaMarion"}
+                            message={"Mouais"}
+                        />
+                        <UserSimpleCard
+                            name={"Alisha"}
+                            message={"L'eau est trop froide"}
+                        />
+                        <UserSimpleCard
+                            name={"Agathe"}
+                            message={"Le sable est trop sableux"}
+                        />
+                        <UserSimpleCard
+                            name={"Charlène"}
+                            message={"Ouiiiiiiiiii"}
+                        />
+                    </View>
+                </View>
+            </ScrollView>
         </View>
     )
 }
 
+
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+
     },
     ImageStyle: {
         width: '100%',
         height: 250
     },
     contentWrapper: {
-        marginHorizontal: 10,
-        marginVertical: 20
+
     },
-    textWrapper: {
-    },
-    localisation: {
-        color: 'grey',
-        fontSize: 20
-    },
-    name: {
-        fontSize: 20
-    },
-    difficulty: {
-        fontSize: 20
-    },
-    category: {
-        fontSize: 20
-    },
-    weatherWrapper: {
-        marginVertical: 7,
-        backgroundColor: 'mediumpurple',
+    weatherInfos: {
+        flexDirection: 'row',
         alignItems: 'center',
-        paddingVertical: 7
+        justifyContent: 'space-around',
+        backgroundColor: 'darkblue',
+        paddingVertical: 5,
     },
-    ratingWrapper: {
-        marginVertical: 7,
-        backgroundColor: 'mediumpurple',
+    temp: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        paddingVertical: 7
+        width: "50%",
     },
-    textEmphase: {
-        fontWeight: 'bold',
-        fontSize: 30
-    }
+    tempText: {
+        color: 'red'
+    },
 })
 
 export default SpotPage

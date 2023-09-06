@@ -1,20 +1,19 @@
 import React from "react";
 import { View, Text, StyleSheet, StatusBar } from "react-native";
-import SpotPage from "./SpotPage";
-import { Link } from "@react-navigation/native";
+import SpotCard from "../components/SpotCard";
 
 const Spots = () => {
-    return (
-        <View style={styles.container} >
-
-        </View>
-    )
-}
+  return (
+    <View style={styles.container}>
+      <SpotCard />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-    container: {
-        marginTop: StatusBar.currentHeight || 0
-    },
-})
+  container: {
+    marginTop: StatusBar.currentHeight || 0,
+  },
+});
 
-export default Spots
+export default Spots;
