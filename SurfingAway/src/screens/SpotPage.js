@@ -7,6 +7,7 @@ import UserSimpleCard from "../components/UserSimpleCard";
 import SpotMainInfos from "../components/SpotMainInfos";
 import MainTitle from "../components/MainTitle";
 
+
 const SpotPage = () => {
     const [surfBreakData, setSurfBreakData] = useState(null); // État pour stocker les données du surf break
     const [difficultyData, setdifficultyData] = useState(null)
