@@ -2,14 +2,19 @@
 import { StyleSheet, StatusBar } from 'react-native';
 import HomeTopTabs from './src/components/HomeTopTabs';
 import { NavigationContainer } from '@react-navigation/native';
+import { PaperProvider } from 'react-native-paper';
+import { registerTranslation, fr } from 'react-native-paper-dates';
+
+registerTranslation('fr', fr);
 
 const App = () => {
 
   return (
-
-    <NavigationContainer>
-      <HomeTopTabs />
-    </NavigationContainer>
+    <PaperProvider>
+      <NavigationContainer>
+        <HomeTopTabs />
+      </NavigationContainer>
+    </PaperProvider>
   );
 }
 

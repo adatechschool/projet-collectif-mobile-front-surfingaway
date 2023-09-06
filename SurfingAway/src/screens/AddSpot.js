@@ -1,8 +1,11 @@
-import { React } from "react";
+import { React, useState } from "react";
 import { View, Text, StyleSheet, StatusBar, Button } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import CustomTextInput from "../components/CustomTextInput";
 import { Picker } from '@react-native-picker/picker';
+import { DatePickerInput } from 'react-native-paper-dates';
+import SectionedMultiSelect from 'react-native-sectioned-multi-select';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const AddSpot = () => {
     const { control, handleSubmit, setValue } = useForm();
@@ -11,12 +14,26 @@ const AddSpot = () => {
         localisation: '',
         difficulty: 1,
         surfBreak: [''],
-        magicSeaweedLink: ''
+        magicSeaweedLink: '',
+        photo: '',
+        seasonStart: '',
+        seasonEnd: ''
     }
+
+    const items = [
+        { name: "Beach Break", id: "Beach Break" },
+        { name: "Reef Break", id: "Reef Break" },
+        { name: "Point Break", id: "Point Break" },
+        { name: "River Bar", id: "River Bar" },
+        { name: "Rivermouth Break", id: "Rivermouth Break" },
+        { name: "Jetty Break", id: "Jetty Break" },
+        { name: "Outer Banks", id: "Outer Banks" }
+    ]
 
     const onSubmit = data => console.log(data);
 
     return (
+
         <View style={styles.container} >
             <Text>Ajoute ton super spot de surf magique</Text>
             <Text>Histoire de premettre à tout le monde de détruire les océans avec leur peau dégueulasse et leur creme solaire</Text>
@@ -33,7 +50,7 @@ const AddSpot = () => {
                         <Text>Niveau de difficulté</Text>
                         <Picker
                             selectedValue={value}
-                            onValueChange={itemValue => setValue("difficulty", itemValue)}
+                            onValueChange={itemValue => setValue("Difficulty Level", itemValue)}
                         >
                             <Picker.Item label="★" value={1} />
                             <Picker.Item label="★★" value={2} />
@@ -52,44 +69,52 @@ const AddSpot = () => {
                 render={({ field: { value } }) => (
                     <View>
                         <Text>Surf Break</Text>
-                        <Picker
-                            selectedValue={value}
-                            onValueChange={itemValue => setValue("surfBreak", itemValue)}
-                        >
-                            <Picker.Item label="Beach Break" value="Beach Break" />
-                            <Picker.Item label="Reef Break" value="Reef Break" />
-                            <Picker.Item label="Point Break" value="Point Break" />
-                            <Picker.Item label="River Bar" value="River Bar" />
-                            <Picker.Item label="Rivermouth Break" value="Rivermouth Break" />
-                            <Picker.Item label="Jetty Break" value="Jetty Break" />
-                            <Picker.Item label="Outer Banks" value="Outer Banks" />
-                        </Picker>
+                        <SectionedMultiSelect
+                            items={items}
+                            IconRenderer={Icon}
+                            uniqueKey="id"
+                            selectText="Choisir au moins un surf break"
+                            showDropDowns={true}
+                            onSelectedItemsChange={itemValue => setValue("Surf Break", itemValue)}
+                            selectedItems={value}
+                        />
                     </View>
                 )}
                 name="Surf Break"
                 defaultValue={defaultValues.surfBreak}
             />
 
-            <CustomTextInput label={"Lien Magic Seaweed"} control={control} name={"Magic Seaweed Link"} placeholder={"Lien"} defaultValue={defaultValues.magicSeaweedLink} />
+            <CustomTextInput label={"Photos"} control={control} name={"Photos"} placeholder={"Ajouter le lien de la photo"} defaultValue={defaultValues.photo} />
 
             <Controller
                 control={control}
-                name={"picture"}
-                rules={{ required: "Recipe picture is required" }}
-                render={({ field: { value, onChange, ...field } }) => {
-                    return (
-                        <Input
-                            {...field}
-                            value={value?.fileName}
-                            onChange={(event) => {
-                                onChange(event.target.files[0]);
-                            }}
-                            type="file"
-                            id="picture"
-                        />
-                    );
-                }}
+                name="Peak Surf Season Begins"
+                defaultValue={defaultValues.seasonStart}
+                render={({ field: { value } }) => (
+                    <DatePickerInput
+                        locale="fr"
+                        label="Début de la saison de surf"
+                        value={value}
+                        onChange={itemValue => setValue("Peak Surf Season Begins", itemValue)}
+                        inputMode="start"
+                    />)}
             />
+
+            <Controller
+                control={control}
+                name="Peak Surf Season Ends"
+                defaultValue={defaultValues.seasonEnd}
+                render={({ field: { value } }) => (
+                    <DatePickerInput
+                        locale="fr"
+                        label="Fin de la saison de surf"
+                        value={value}
+                        onChange={itemValue => setValue("Peak Surf Season Ends", itemValue)}
+                        inputMode="start"
+                    />)}
+            />
+
+            <CustomTextInput label={"Lien Magic Seaweed"} control={control} name={"Magic Seaweed Link"} placeholder={"Copier le lien ici"} defaultValue={defaultValues.magicSeaweedLink} />
 
             <Button
                 color={'lightblue'}
