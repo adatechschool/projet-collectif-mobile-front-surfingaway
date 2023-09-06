@@ -3,7 +3,6 @@ import { View, StyleSheet } from "react-native";
 import { Text } from 'react-native-paper';
 import DrawBlueStar from "../components/DrawBlueStar";
 
-
 const SpotMainInfos = (props) => {
     const { where, what, technicity, wave } = props
 

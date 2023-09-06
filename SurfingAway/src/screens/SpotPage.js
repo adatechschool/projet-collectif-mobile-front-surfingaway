@@ -7,14 +7,12 @@ import UserSimpleCard from "../components/UserSimpleCard";
 import SpotMainInfos from "../components/SpotMainInfos";
 import MainTitle from "../components/MainTitle";
 
-
 const SpotPage = () => {
     const [surfBreakData, setSurfBreakData] = useState(null); // État pour stocker les données du surf break
     const [difficultyData, setdifficultyData] = useState(null)
     const [destinationData, setDestinationData] = useState(null)
     const [whereData, setwhereData] = useState(null)
     const [error, setError] = useState(null)
-
 
     useEffect(() => {
         const fetchDataSurfBreak = async () => {

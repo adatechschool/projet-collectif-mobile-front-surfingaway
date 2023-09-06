@@ -2,12 +2,10 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { FontAwesome } from '@expo/vector-icons';
 
-const DrawBlueStar = (/* props */) => {
-    /* const { iconName, iconColor, inconSize } = props */
+const DrawBlueStar = () => {
     return (
         <View style={styles.ratingSquare}>
             <FontAwesome name="star" size={24} color="darkturquoise" />
-            {/* <FontAwesome name="star-o" size={24} color="white" /> */}
         </ View>
     )
 }
