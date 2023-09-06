@@ -2,28 +2,30 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Avatar, Button, Card } from "react-native-paper";
 
-const SpotCard = () => {
+const SpotCard = (props) => {
+  const { destination, country, difficultyLevel } = props;
   return (
-    <Card>
+    <Card style={styles.card}>
       <Card.Cover
         source={{
           uri: "https://cdn.pixabay.com/photo/2020/10/02/21/42/beach-5622187_1280.jpg",
         }}
       />
-      <Card.Title
-        title="[Nom du spot] Pipeline"
-        subtitle="[Pays] Oahu, Hawaii"
-        // left={LeftContent}
-      />
+      <Card.Title title={destination} subtitle={country} />
       <Card.Content>
-        <Text variant="bodyMedium">Difficulté : Medium</Text>
+        <Text variant="bodyMedium">{difficultyLevel}</Text>
       </Card.Content>
       <Card.Actions>
-        <Button>Cancel</Button>
         <Button>Ok</Button>
       </Card.Actions>
     </Card>
   );
 };
+
+const styles = StyleSheet.create({
+  card: {
+    margin: 10,
+  },
+});
 
 export default SpotCard;
