@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet, FlatList, SafeAreaView } from "react-native";
 import { Feather } from '@expo/vector-icons'
 
 const DATA = [
@@ -57,7 +57,7 @@ const DATA = [
 const Item = (props) => {
     const { min, max } = props
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <View style={styles.location}>
                 <Text>Nantes</Text>
             </View>
@@ -103,7 +103,7 @@ const Item = (props) => {
                     <Text>Feels : 17°</Text>
                 </View>
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 
