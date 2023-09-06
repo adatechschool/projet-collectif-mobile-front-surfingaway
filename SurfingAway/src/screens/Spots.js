@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, StatusBar } from "react-native";
 import SpotCard from "../components/SpotCard";
-// const LeftContent = (props) => <Avatar.Icon {...props} icon="folder" />;
 
 const Spots = () => {
   return (
