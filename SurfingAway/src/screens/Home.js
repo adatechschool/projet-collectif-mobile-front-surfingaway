@@ -13,7 +13,7 @@ const Home = () => {
         
         // Exemples statiques
         setApiLink("https://www.surf-report.com/news/surf/securite-surf-mns-cross-706229583.html");
-        setApiImageUrl(require('../../assets/sri-lanka-spot.jpg'));
+        setApiImageUrl(require("../images/palmier.jpg"));
     }, []);
 
     return (

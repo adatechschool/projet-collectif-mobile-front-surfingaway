@@ -20,7 +20,6 @@ const CardNews = (props) => {
                         <Text style={styles.link}>{link}</Text>
                     </TouchableOpacity>
             </View>
-
                 <View style={styles.boxImage}>
                     <Image source={require('../images/palmier.jpg')} style={styles.image} />
                 </View>
