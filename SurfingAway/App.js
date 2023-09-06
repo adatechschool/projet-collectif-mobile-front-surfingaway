@@ -1,6 +1,9 @@
 import HomeTopTabs from './src/components/HomeTopTabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { Provider as PaperProvider } from 'react-native-paper';
+import { registerTranslation, fr } from 'react-native-paper-dates';
+
+registerTranslation('fr', fr);
 
 const App = () => {
   return (
