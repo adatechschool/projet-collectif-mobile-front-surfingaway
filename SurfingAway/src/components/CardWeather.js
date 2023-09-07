@@ -3,8 +3,6 @@ import { StyleSheet } from "react-native";
 import { Card, Button, Title, Paragraph } from 'react-native-paper';
 import getWeatherSpot from "../services/getWeatherSpot";
 
-const wind = '6km/h'
-
 const CardWeather = () => {
     const [tempMinData, setTempMinData] = useState([])
     const [tempMaxData, setTempMaxData] = useState([])
@@ -27,12 +25,12 @@ const CardWeather = () => {
         <Card>
             <Card.Content>
                 <Title>Météo du jour</Title>
-                <Paragraph>Vent : {wind}</Paragraph>
+                <Paragraph>Vitesse du vent : {windSpeedData}</Paragraph>
             </Card.Content>
             <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
             <Card.Actions>
-                <Button style={styles.buttonCard}>6°C</Button>
-                <Button style={styles.buttonCard}>19°C</Button>
+                <Button style={styles.buttonCard}>{tempMinData}</Button>
+                <Button style={styles.buttonCard}>{tempMaxData}</Button>
             </Card.Actions>
         </Card>
     )
@@ -41,7 +39,6 @@ const CardWeather = () => {
 const styles = StyleSheet.create({
     buttonCard: {
         paddingHorizontal: 1,
-        backgroundColor: "darkblue",
     },
 })
 
