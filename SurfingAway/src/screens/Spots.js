@@ -11,19 +11,18 @@ const Spots = () => {
     const fetchDataSurfSpots = async () => {
       try {
         const fields = await getAllSpots();
-        console.log("fields", fields);
 
         const generatedSpotCards = []; // Initialiser un tableau pour stocker les composants "cards"
 
         for (let i = 0; i < fields.length; i++) {
           const element = fields[i];
-          console.log("element", element);
 
           // Créer un composant "card" pour chaque élément et l'ajouter au tableau
           generatedSpotCards.push(
             <SpotCard
               key={i}
-              destination={element["fields"]["Destination"]}
+              imageUrl={element.fields.Photos[0].thumbnails.large.url}
+              destination={element.fields.Destination}
               country={element["fields"]["Destination State/Country"]}
               difficultyLevel={element["fields"]["Difficulty Level"]}
             />
