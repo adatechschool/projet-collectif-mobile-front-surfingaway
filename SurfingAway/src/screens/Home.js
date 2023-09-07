@@ -3,20 +3,34 @@ import { View, Text, StyleSheet, ScrollView, Linking, Image } from "react-native
 import MainTitle from "../components/MainTitle";
 import CardNews from "../components/CardNews";
 import CardRecents from "../components/CardRecents";
-import palmierImage from "../images/palmier.jpg"
+import CardFavorites from "../components/CardFavorites";
+import getAllSpots from "../services/getAllSpots";
 
 
 const Home = () => {
-    const [apiLink, setApiLink] = useState(""); 
-    const [apiImageUrl, setApiImageUrl] = useState(""); 
+        const [error, setError] = useState([]);
+        const [apiLink, setApiLink] = useState("");
+        const [spotIndex, setSpotIndex] = useState(0);
+        const [apiImageUrl, setApiImageUrl] = useState("");
+        const [spots, setSpots] = useState([]); // État pour stocker les données des spots
+      
+        useEffect(() => {
+          const fetchDataSurfSpots = async () => {
+            try {
+              const spotsData = await getAllSpots(); // Récupérez tous les spots
+              setSpots(spotsData); // Mettez à jour l'état avec les données des spots
+            } catch (error) {
+              setError("could not fetch data");
+            }
+          };
+      
+          setApiLink("https://www.surf-report.com/news/surf/securite-surf-mns-cross-706229583.html");
+          fetchDataSurfSpots(); // Appel de la fonction lors du montage du composant
+        }, [spotIndex]);
 
-    useEffect(() => {
-       
-        
-        // Exemples statiques
-        setApiLink("https://www.surf-report.com/news/surf/securite-surf-mns-cross-706229583.html");
-        setApiImageUrl(require("../images/palmier.jpg"));
-    }, );
+        const getSpotByIndex = (spotsData, index) => {
+            return spotsData[index]?.fields || {};
+        };
 
     return (
         <View style={styles.container}>
@@ -41,28 +55,40 @@ const Home = () => {
                 <View style={styles.recently} >
                     <MainTitle titleText={"Recently consulted"} />
                     <CardRecents
-                        name={"Pipeline"}
-                        place={"Oahu Hawaii"}
-                        rating={"⭐⭐⭐"}
+                        name={getSpotByIndex(spots, 2).Destination || "Loading..."}
+                        place={getSpotByIndex(spots, 2)["Destination State/Country"] || "Loading..."}
+                        technicity={getSpotByIndex(spots, 2)["Difficulty Level"] || "Loading..."}
                      />
                     <CardRecents
-                        name={"Pipeline"}
-                        place={"Oahu Hawaii"}
-                        rating={"⭐⭐⭐⭐⭐"}
+                        name={getSpotByIndex(spots, 1).Destination || "Loading..."}
+                        place={getSpotByIndex(spots, 1)["Destination State/Country"] || "Loading..."}
+                        technicity={getSpotByIndex(spots, 1)["Difficulty Level"] || "Loading..."}
                      />
                     <CardRecents
-                        name={"Pipeline"}
-                        place={"Oahu Hawaii"}
-                        rating={"⭐⭐"}
+                        name={getSpotByIndex(spots, 4).Destination || "Loading..."}
+                        place={getSpotByIndex(spots, 4)["Destination State/Country"] || "Loading..."}
+                        technicity={getSpotByIndex(spots, 4)["Difficulty Level"] || "Loading..."}
                      />
                     <CardRecents
-                        name={"Pipeline"}
-                        place={"Oahu Hawaii"}
-                        rating={"⭐⭐⭐⭐"}
+                        name={getSpotByIndex(spots, 8).Destination || "Loading..."}
+                        place={getSpotByIndex(spots, 8)["Destination State/Country"] || "Loading..."}
+                        technicity={getSpotByIndex(spots, 8)["Difficulty Level"] || "Loading..."}
                      />
                 </View>
-                <View>
-                    <MainTitle titleText={"News"} />
+                <View style={styles.favorites}>
+                    <MainTitle titleText={"My Favorites ! 💙"} />
+                    <CardFavorites
+                        name={getSpotByIndex(spots, 9).Destination || "Loading..."}
+                        place={getSpotByIndex(spots, 9)["Destination State/Country"] || "Loading..."}
+                     />
+                     <CardFavorites
+                        name={getSpotByIndex(spots, 0).Destination || "Loading..."}
+                        place={getSpotByIndex(spots, 0)["Destination State/Country"] || "Loading..."}
+                     />
+                     <CardFavorites
+                        name={getSpotByIndex(spots, 7).Destination || "Loading..."}
+                        place={getSpotByIndex(spots, 7)["Destination State/Country"] || "Loading..."}
+                     />
                 </View>
             </ScrollView>
         </View>

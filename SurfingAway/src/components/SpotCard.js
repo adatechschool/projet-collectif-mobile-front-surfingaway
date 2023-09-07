@@ -1,14 +1,19 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Avatar, Button, Card } from "react-native-paper";
+import SpotMainInfos from "./SpotMainInfos";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useNavigation } from "@react-navigation/native";
 
 const SpotCard = (props) => {
-  const { destination, country, difficultyLevel } = props;
+  const { imageUrl, destination, country, difficultyLevel } = props;
+  const navigation = useNavigation();
+
   return (
     <Card style={styles.card}>
       <Card.Cover
         source={{
-          uri: "https://cdn.pixabay.com/photo/2020/10/02/21/42/beach-5622187_1280.jpg",
+          uri: imageUrl,
         }}
       />
       <Card.Title title={destination} subtitle={country} />
@@ -16,7 +21,10 @@ const SpotCard = (props) => {
         <Text variant="bodyMedium">{difficultyLevel}</Text>
       </Card.Content>
       <Card.Actions>
-        <Button>Ok</Button>
+        <Button
+          title="Go to Details"
+          onPress={() => navigation.navigate("Details")}
+        />
       </Card.Actions>
     </Card>
   );
