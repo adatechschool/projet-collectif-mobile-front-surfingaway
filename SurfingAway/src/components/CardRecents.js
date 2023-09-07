@@ -1,11 +1,17 @@
 import React from "react";
-import { Card, Title, Button } from 'react-native-paper';
-import { View, Linking, StyleSheet, Text, TouchableOpacity, Image, ImageBackground } from "react-native";
+import { Button } from 'react-native-paper';
+import { View, StyleSheet, Text, Image, ImageBackground } from "react-native";
+import DrawLittleStar from "../components/DrawLittleStar";
 
-const image = {uri: 'https://www.guide-des-landes.com/_bibli/articlesPage/108/images/spots-de-surf-dans-les-landes.jpg?v=ficheArticle&width=772&height=540&pixelRatio=1.0000'};
+const image = {uri:  'https://www.guide-des-landes.com/_bibli/articlesPage/108/images/spots-de-surf-dans-les-landes.jpg?v=ficheArticle&width=772&height=540&pixelRatio=1.0000' };
 
 const CardRecents = (props) => {
-    const { name, place, rating, imageUrl } = props;
+    const { name, place, technicity } = props;
+
+    const stars = [];
+    for (let i = 0; i < technicity; i++) {
+        stars.push(<DrawLittleStar key={i} />);
+    }
     return (
         <View style={styles.boxContainer}>
             <ImageBackground source={image} resizeMode="cover" style={styles.image}>
@@ -14,7 +20,9 @@ const CardRecents = (props) => {
                     <Text style={styles.textUnder}>{place}</Text>
                 </View>
                 <View style={styles.scoreCard}>
-                    <Text style={styles.textRating}>{rating}</Text>
+                    <View style={styles.starWrapper}>
+                        {stars}
+                    </View>
                     <Button buttonColor="darkblue" mode="contained"  onPress={() => console.log('Pressed')} style={styles.buttonDetail}>
                     Spot Details
                     </Button>
@@ -54,7 +62,7 @@ const styles = StyleSheet.create({
     },
     scoreCard:{
         margin: 8,
-        width: '40%',
+        width: '37%',
     },
     textRating: {
         color: '#ffffff',
@@ -63,7 +71,17 @@ const styles = StyleSheet.create({
     },
     buttonDetail :{
         fontSize: 20,
+    },
+
+   
+    starWrapper: {
+        marginRight: 5,
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        marginBottom: 6,
     }
+    
 })
 
 
