@@ -1,4 +1,4 @@
-// import HomeTopTabs from "./src/components/HomeTopTabs";
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { Provider as PaperProvider } from "react-native-paper";
 import { registerTranslation, fr } from "react-native-paper-dates";
@@ -10,7 +10,6 @@ const App = () => {
   return (
     <PaperProvider>
       <NavigationContainer>
-        <HomeTopTabs />
         <Routes />
       </NavigationContainer>
     </PaperProvider>
