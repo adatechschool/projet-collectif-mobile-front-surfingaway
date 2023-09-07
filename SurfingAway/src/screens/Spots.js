@@ -11,13 +11,13 @@ const Spots = () => {
     const fetchDataSurfSpots = async () => {
       try {
         const fields = await getAllSpots();
-        console.log("fields", fields);
+        /* console.log("fields", fields); */
 
         const generatedSpotCards = []; // Initialiser un tableau pour stocker les composants "cards"
 
         for (let i = 0; i < fields.length; i++) {
           const element = fields[i];
-          console.log("element", element);
+          /* console.log("element", element); */
 
           // Créer un composant "card" pour chaque élément et l'ajouter au tableau
           generatedSpotCards.push(

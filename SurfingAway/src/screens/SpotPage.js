@@ -19,19 +19,19 @@ const SpotPage = () => {
         const fetchDataSurfBreak = async () => {
             try {
                 const fields = await getSpotInfos();
-                console.log(fields);
+                /* console.log(fields); */
                 // Mettre à jour l'état avec les données
                 setSurfBreakData(fields["Surf Break"][0]);
                 setdifficultyData(fields["Difficulty Level"])
                 setDestinationData(fields["Destination"])
                 setwhereData(fields["Destination State/Country"])
             } catch (error) {
-                setError('could not fetch weather');
+                setError('could not fetch spot data');
             }
         };
-
         fetchDataSurfBreak(); // Appel de la fonction fetchDataSurfBreak lors du montage du composant
     }, []); // Le tableau vide [] garantit que cela ne s'exécute qu'une seule fois lors du montage initial
+
 
     return (
         <View style={styles.container}>
