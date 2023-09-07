@@ -12,9 +12,9 @@ const CardWeather = () => {
         const fetchDataWeather = async () => {
             try {
                 const weather = await getWeatherSpot();
-                setTempMinData(weather[0])
-                setTempMaxData(weather[1])
-                setWindSpeedData(weather[2])
+                setTempMinData(Math.round(weather[0]) + "°C")
+                setTempMaxData(Math.round(weather[1]) + "°C")
+                setWindSpeedData(weather[2] + "km/h")
             } catch (error) {
                 setError('could not fetch weather');
             }

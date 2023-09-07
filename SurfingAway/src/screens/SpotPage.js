@@ -12,14 +12,12 @@ const SpotPage = () => {
     const [difficultyData, setdifficultyData] = useState(null)
     const [destinationData, setDestinationData] = useState(null)
     const [whereData, setwhereData] = useState(null)
-    /* const [imageData, setImageData] = useState(null) */
     const [error, setError] = useState(null)
 
     useEffect(() => {
         const fetchDataSurfBreak = async () => {
             try {
                 const fields = await getSpotInfos();
-                /* console.log(fields); */
                 // Mettre à jour l'état avec les données
                 setSurfBreakData(fields["Surf Break"][0]);
                 setdifficultyData(fields["Difficulty Level"])

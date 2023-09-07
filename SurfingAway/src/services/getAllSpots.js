@@ -11,7 +11,6 @@ const getAllSpots = async () => {
       }
     );
     const json = await response.json();
-    console.log(json.records);
     return json.records;
   } catch (error) {
     console.error(error);
