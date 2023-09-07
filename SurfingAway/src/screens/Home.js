@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, ScrollView, Linking, Image } from "react-native";
 import MainTitle from "../components/MainTitle";
 import CardNews from "../components/CardNews";
+import CardRecents from "../components/CardRecents";
 import palmierImage from "../images/palmier.jpg"
+
 
 const Home = () => {
     const [apiLink, setApiLink] = useState(""); 
@@ -14,7 +16,7 @@ const Home = () => {
         // Exemples statiques
         setApiLink("https://www.surf-report.com/news/surf/securite-surf-mns-cross-706229583.html");
         setApiImageUrl(require("../images/palmier.jpg"));
-    }, []);
+    }, );
 
     return (
         <View style={styles.container}>
@@ -36,8 +38,31 @@ const Home = () => {
                         imageUrl={apiImageUrl}
                     />
                 </View>
-                <View>
+                <View style={styles.recently} >
                     <MainTitle titleText={"Recently consulted"} />
+                    <CardRecents
+                        name={"Pipeline"}
+                        place={"Oahu Hawaii"}
+                        rating={"⭐⭐⭐"}
+                     />
+                    <CardRecents
+                        name={"Pipeline"}
+                        place={"Oahu Hawaii"}
+                        rating={"⭐⭐⭐⭐⭐"}
+                     />
+                    <CardRecents
+                        name={"Pipeline"}
+                        place={"Oahu Hawaii"}
+                        rating={"⭐⭐"}
+                     />
+                    <CardRecents
+                        name={"Pipeline"}
+                        place={"Oahu Hawaii"}
+                        rating={"⭐⭐⭐⭐"}
+                     />
+                </View>
+                <View>
+                    <MainTitle titleText={"News"} />
                 </View>
             </ScrollView>
         </View>
