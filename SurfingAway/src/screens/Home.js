@@ -3,20 +3,37 @@ import { View, Text, StyleSheet, ScrollView, Linking, Image } from "react-native
 import MainTitle from "../components/MainTitle";
 import CardNews from "../components/CardNews";
 import CardRecents from "../components/CardRecents";
-import palmierImage from "../images/palmier.jpg"
+import CardFavorites from "../components/CardFavorites";
+import getSpotInfos from "../services/getSpotInfos";
+import getAllSpots from "../services/getAllSpots";
 
 
 const Home = () => {
     const [apiLink, setApiLink] = useState(""); 
     const [apiImageUrl, setApiImageUrl] = useState(""); 
-
+    const [surfBreakData, setSurfBreakData] = useState(null); // État pour stocker les données du surf break
+    const [difficultyData, setdifficultyData] = useState(null)
+    const [destinationData, setDestinationData] = useState(null)
+    const [whereData, setwhereData] = useState(null)
+    const [error, setError] = useState(null)
+    
     useEffect(() => {
-       
-        
-        // Exemples statiques
+        const fetchDataSurfBreak = async () => {
+            try {
+                const fields = await getSpotInfos();
+                console.log(fields);
+                // Mettre à jour l'état avec les données
+                setSurfBreakData(fields["Surf Break"][0]);
+                setdifficultyData(fields["Difficulty Level"])
+                setDestinationData(fields["Destination"])
+                setwhereData(fields["Destination State/Country"])
+            } catch (error) {
+                setError('could not fetch weather');
+            }
+        };
         setApiLink("https://www.surf-report.com/news/surf/securite-surf-mns-cross-706229583.html");
-        setApiImageUrl(require("../images/palmier.jpg"));
-    }, );
+        fetchDataSurfBreak(); // Appel de la fonction fetchDataSurfBreak lors du montage du composant
+    }, []);
 
     return (
         <View style={styles.container}>
@@ -41,28 +58,40 @@ const Home = () => {
                 <View style={styles.recently} >
                     <MainTitle titleText={"Recently consulted"} />
                     <CardRecents
-                        name={"Pipeline"}
-                        place={"Oahu Hawaii"}
-                        rating={"⭐⭐⭐"}
-                     />
-                    <CardRecents
-                        name={"Pipeline"}
-                        place={"Oahu Hawaii"}
+                        name={destinationData ? destinationData : "Loading..."}
+                        place={whereData ? whereData : "Loading..."}
                         rating={"⭐⭐⭐⭐⭐"}
                      />
                     <CardRecents
-                        name={"Pipeline"}
-                        place={"Oahu Hawaii"}
+                        name={destinationData ? destinationData : "Loading..."}
+                        place={whereData ? whereData : "Loading..."}
+                        rating={"⭐⭐⭐⭐⭐"}
+                     />
+                    <CardRecents
+                        name={destinationData ? destinationData : "Loading..."}
+                        place={whereData ? whereData : "Loading..."}
                         rating={"⭐⭐"}
                      />
                     <CardRecents
-                        name={"Pipeline"}
-                        place={"Oahu Hawaii"}
+                        name={destinationData ? destinationData : "Loading..."}
+                        place={whereData ? whereData : "Loading..."}
                         rating={"⭐⭐⭐⭐"}
                      />
                 </View>
-                <View>
-                    <MainTitle titleText={"News"} />
+                <View style={styles.favorites}>
+                    <MainTitle titleText={"My Favorites ! 💙"} />
+                    <CardFavorites
+                        name={destinationData ? destinationData : "Loading..."}
+                        place={whereData ? whereData : "Loading..."}
+                     />
+                     <CardFavorites
+                        name={destinationData ? destinationData : "Loading..."}
+                        place={whereData ? whereData : "Loading..."}
+                     />
+                     <CardFavorites
+                        name={destinationData ? destinationData : "Loading..."}
+                        place={whereData ? whereData : "Loading..."}
+                     />
                 </View>
             </ScrollView>
         </View>

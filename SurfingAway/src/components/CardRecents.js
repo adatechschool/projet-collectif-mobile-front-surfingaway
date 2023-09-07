@@ -16,7 +16,7 @@ const CardRecents = (props) => {
                 <View style={styles.scoreCard}>
                     <Text style={styles.textRating}>{rating}</Text>
                     <Button buttonColor="darkblue" mode="contained"  onPress={() => console.log('Pressed')} style={styles.buttonDetail}>
-                    Détails Spot
+                    Spot Details
                     </Button>
                 </View>
             </ImageBackground>
@@ -44,11 +44,10 @@ const styles = StyleSheet.create({
         textShadowColor: 'deeppink',
         textShadowOffset: {width: 2, height: 1},
         textShadowRadius: 1,
-        marginBottom: 20
     },
     textUnder: {
         color: '#ededed',
-        fontSize: 24,
+        fontSize: 20,
         textShadowColor: 'deeppink',
         textShadowOffset: {width: 2, height: 1},
         textShadowRadius: 1
