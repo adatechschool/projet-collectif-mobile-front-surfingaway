@@ -12,6 +12,7 @@ const SpotPage = () => {
     const [difficultyData, setdifficultyData] = useState(null)
     const [destinationData, setDestinationData] = useState(null)
     const [whereData, setwhereData] = useState(null)
+    /* const [imageData, setImageData] = useState(null) */
     const [error, setError] = useState(null)
 
     useEffect(() => {
