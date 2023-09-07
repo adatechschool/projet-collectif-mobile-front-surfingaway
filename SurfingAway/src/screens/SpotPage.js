@@ -14,7 +14,6 @@ const SpotPage = () => {
     const [whereData, setwhereData] = useState(null)
     const [error, setError] = useState(null)
 
-
     useEffect(() => {
         const fetchDataSurfBreak = async () => {
             try {
