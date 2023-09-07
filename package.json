@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "@expo/vector-icons": "^13.0.0",
-    "feather-icons": "^4.29.1",
-    "react-native-paper": "^5.10.3",
-    "react-native-vector-icons": "^10.0.0"
-  }
-}
