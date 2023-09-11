@@ -31,7 +31,7 @@ const HomeTopTabs = () => {
             <Tab.Screen name={'Spots'} component={Spots} />
             <Tab.Screen name={'Météo'} component={Weather} />
             <Tab.Screen name={"+"} component={AddSpot} />
-            <Tab.Screen name={'Lima'} component={SpotPage} />
+            {/* <Tab.Screen name={'Lima'} component={SpotPage} /> */}
         </Tab.Navigator>
 
     );
