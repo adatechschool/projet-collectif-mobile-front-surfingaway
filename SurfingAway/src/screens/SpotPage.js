@@ -46,19 +46,7 @@ const SpotPage = () => {
                         titleText={"Surf infos"}
                     />
                     <View style={styles.weatherInfos}>
-                        <View style={{
-                            width: '25%',
-                        }}>
-                            <IconWeather
-                                iconName={'sun'}
-                                iconColor={'deeppink'}
-                            />
-                        </View>
-                        <View style={{
-                            width: '60%',
-                        }}>
-                            <CardWeather />
-                        </View>
+                        <CardWeather />
                     </View>
                     <MainTitle
                         titleText={"La note des pros"}
@@ -104,21 +92,11 @@ const styles = StyleSheet.create({
 
     },
     weatherInfos: {
-        flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-around',
         backgroundColor: 'darkblue',
         paddingVertical: 5,
     },
-    temp: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: "50%",
-    },
-    tempText: {
-        color: 'red'
-    },
+
 })
 
 export default SpotPage

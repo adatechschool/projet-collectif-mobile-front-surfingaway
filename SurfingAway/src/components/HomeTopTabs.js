@@ -14,7 +14,7 @@ const HomeTopTabs = () => {
     return (
 
         <Tab.Navigator
-            style={{ marginTop: heightStatus }}
+            /* style={{ marginTop: heightStatus }} */
             screenOptions={{
                 tabBarActiveTintColor: 'deeppink',
                 tabBarInactiveTintColor: 'aliceblue',
