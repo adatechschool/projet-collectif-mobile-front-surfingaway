@@ -1,4 +1,5 @@
 
+
 const getSpotInfos = async () => {
     try {
         const response = await fetch(

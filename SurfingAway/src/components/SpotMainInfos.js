@@ -8,7 +8,7 @@ const SpotMainInfos = (props) => {
 
     const stars = [];
     for (let i = 0; i < technicity; i++) {
-        stars.push(<DrawBlueStar key={i} style={styles.difficultyStars} />);
+        stars.push(<DrawBlueStar key={i} />);
     }
 
 
@@ -57,10 +57,13 @@ const styles = StyleSheet.create({
     },
     starWrapper: {
         marginRight: 5,
-        borderRadius: 10,
+        padding: 5,
+        borderRadius: 5,
         display: "flex",
         flexDirection: "row",
         justifyContent: "center",
+        backgroundColor: "darkblue"
+
     }
 })
 
