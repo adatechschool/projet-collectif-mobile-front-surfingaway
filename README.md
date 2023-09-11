@@ -1,7 +1,7 @@
 # 🏄‍♀️ Projet FRONT SurfingAway 🏄‍♀️
 
 Bienvenue dans le projet SurfingAway, une application mobile développée en React Native pour les amateures de surf ! 
-Notre équipe de développement est composée de Agathe, Alyssia, Charlène, Elsa et Marion.
+Notre équipe de développement est composée de Agathe, Alissia, Charlène, Elsa et Marion.
 
 ## Description
 
@@ -51,7 +51,7 @@ AIRTABLE_BASE_ID=ID_DE_VOTRE_BASE
 
 ## Contributeurs
 Agathe : https://github.com/AgatheSz
-Alyssia : https://github.com/AlissiaLR
+Alissia : https://github.com/AlissiaLR
 Charlène : https://github.com/CharleneBo
 Elsa : https://github.com/elsacatoire
 Marion : https://github.com/MarionLpz
