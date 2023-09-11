@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import { Card, Button, Title, Paragraph } from 'react-native-paper';
 import getWeatherSpot from "../services/getWeatherSpot";
+import IconWeather from "./IconWeather";
 
 const CardWeather = () => {
     const [tempMinData, setTempMinData] = useState([])
@@ -25,6 +26,10 @@ const CardWeather = () => {
         <Card>
             <Card.Content>
                 <Title>Météo du jour</Title>
+                <IconWeather
+                    iconName={'sun'}
+                    iconColor={'deeppink'}
+                />
                 <Paragraph>Vitesse du vent : {windSpeedData}</Paragraph>
             </Card.Content>
             <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
