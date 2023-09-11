@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React } from "react";
 import {
   View,
   Text,
@@ -9,8 +9,8 @@ import {
 } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import CustomTextInput from "../components/CustomTextInput";
+import CustomDateInput from "../components/CustomDateInput";
 import { Picker } from "@react-native-picker/picker";
-import { DatePickerInput } from "react-native-paper-dates";
 import SectionedMultiSelect from "react-native-sectioned-multi-select";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
@@ -21,7 +21,7 @@ const AddSpot = () => {
     localisation: "",
     difficulty: 1,
     surfBreak: [""],
-    magicSeaweedLink: "",
+    surflineLink: "",
     photo: "",
     seasonStart: "",
     seasonEnd: "",
@@ -74,6 +74,8 @@ const AddSpot = () => {
 
         <Controller
           control={control}
+          name="Difficulty Level"
+          defaultValue={defaultValues.difficulty}
           render={({ field: { value } }) => (
             <View>
               <Text style={styles.title}>Niveau de difficulté</Text>
@@ -91,12 +93,12 @@ const AddSpot = () => {
               </Picker>
             </View>
           )}
-          name="Difficulty Level"
-          defaultValue={defaultValues.difficulty}
         />
 
         <Controller
           control={control}
+          name="Surf Break"
+          defaultValue={defaultValues.surfBreak}
           render={({ field: { value } }) => (
             <View>
               <Text style={styles.title}>Surf Break</Text>
@@ -113,8 +115,6 @@ const AddSpot = () => {
               />
             </View>
           )}
-          name="Surf Break"
-          defaultValue={defaultValues.surfBreak}
         />
 
         <CustomTextInput
@@ -125,48 +125,24 @@ const AddSpot = () => {
           defaultValue={defaultValues.photo}
         />
 
-        <Controller
+        <CustomDateInput
           control={control}
-          name="Peak Surf Season Begins"
+          name={"Peak Surf Season Begins"}
           defaultValue={defaultValues.seasonStart}
-          render={({ field: { value } }) => (
-            <DatePickerInput
-              style={styles.date}
-              locale="fr"
-              label="Début de la saison de surf"
-              value={value}
-              onChange={(itemValue) =>
-                setValue("Peak Surf Season Begins", itemValue)
-              }
-              inputMode="start"
-            />
-          )}
-        />
+          label={"Début de la saison de surf"} />
 
-        <Controller
+        <CustomDateInput
           control={control}
-          name="Peak Surf Season Ends"
-          defaultValue={defaultValues.seasonEnd}
-          render={({ field: { value } }) => (
-            <DatePickerInput
-              style={styles.date}
-              locale="fr"
-              label="Fin de la saison de surf"
-              value={value}
-              onChange={(itemValue) =>
-                setValue("Peak Surf Season Ends", itemValue)
-              }
-              inputMode="start"
-            />
-          )}
-        />
+          name={"Peak Surf Season Ends"}
+          defaultValue={defaultValues.seasonStart}
+          label={"Fin de la saison de surf"} />
 
         <CustomTextInput
-          label={"Lien Magic Seaweed"}
+          label={"Lien Surfline"}
           control={control}
-          name={"Magic Seaweed Link"}
+          name={"Surfline Link"}
           placeholder={"Copier le lien ici"}
-          defaultValue={defaultValues.magicSeaweedLink}
+          defaultValue={defaultValues.surflineLink}
         />
 
         <CustomTextInput
@@ -209,13 +185,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 15,
     padding: 5,
-  },
-  date: {
-    fontSize: 15,
-    padding: 2,
-    marginTop: 10,
-    backgroundColor: "lightgrey",
-  },
+  }
 });
 
 export default AddSpot;
