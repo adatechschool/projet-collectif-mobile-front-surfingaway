@@ -1,12 +1,14 @@
-import { API_KEY } from '@env';
+import { API_KEY } from "@env";
 
 const getSpotInfos = async () => {
+    const cle = API_KEY
+
     try {
         const response = await fetch(
             'https://api.airtable.com/v0/appqndsWaTAmFBUIM/Surf%20Destinations/recAwiuWLgQGw1Sge', {
             method: "GET",
             headers: {
-                "Authorization": `Bearer ${API_KEY}`,
+                "Authorization": `Bearer ${cle}`,
             },
         }
         );
@@ -16,9 +18,6 @@ const getSpotInfos = async () => {
 
     }
 };
-
-
-
 
 
 export default getSpotInfos
