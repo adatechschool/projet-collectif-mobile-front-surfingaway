@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator();
 const Routes = () => {
   return (
     <Stack.Navigator initialRouteName={Home}>
-      <Stack.Screen name="HomeNav" component={HomeTopTabs} />
+      <Stack.Screen name="Home" component={HomeTopTabs} />
       <Stack.Screen name="Spots" component={Spots} />
       <Stack.Screen name="Details" component={SpotPage} />
     </Stack.Navigator>

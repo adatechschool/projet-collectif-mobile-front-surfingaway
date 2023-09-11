@@ -21,10 +21,7 @@ const SpotCard = (props) => {
         <Text variant="bodyMedium">{difficultyLevel}</Text>
       </Card.Content>
       <Card.Actions>
-        <Button
-          title="Go to Details"
-          onPress={() => navigation.navigate("Details")}
-        />
+        <Button onPress={() => navigation.navigate("Details")}>Go</Button>
       </Card.Actions>
     </Card>
   );
