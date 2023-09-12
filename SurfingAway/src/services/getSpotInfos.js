@@ -5,13 +5,14 @@ const getSpotInfos = async () => {
 
     try {
         const response = await fetch(
-            'https://api.airtable.com/v0/appqndsWaTAmFBUIM/Surf%20Destinations/recAwiuWLgQGw1Sge', {
+            `https://api.airtable.com/v0/appqndsWaTAmFBUIM/Surf%20Destinations/${id}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${cle}`,
             },
         }
         );
+        console.log('surf spot data fetch successfully');
         const json = await response.json();
         return json.fields;
     } catch (e) {

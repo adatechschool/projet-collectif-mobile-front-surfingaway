@@ -7,7 +7,8 @@ import UserSimpleCard from "../components/UserSimpleCard";
 import SpotMainInfos from "../components/SpotMainInfos";
 import MainTitle from "../components/MainTitle";
 
-const SpotPage = () => {
+const SpotPage = (props) => {
+    const { id } = props;
     const [surfBreakData, setSurfBreakData] = useState(null); // État pour stocker les données du surf break
     const [difficultyData, setdifficultyData] = useState(null)
     const [destinationData, setDestinationData] = useState(null)
@@ -15,9 +16,10 @@ const SpotPage = () => {
     const [error, setError] = useState(null)
 
     useEffect(() => {
+        console.log('test id 2 : ' + id);
         const fetchDataSurfBreak = async () => {
             try {
-                const fields = await getSpotInfos();
+                const fields = await getSpotInfos(id);
                 // Mettre à jour l'état avec les données
                 setSurfBreakData(fields["Surf Break"][0]);
                 setdifficultyData(fields["Difficulty Level"])
