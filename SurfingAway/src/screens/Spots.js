@@ -10,12 +10,14 @@ const Spots = () => {
   useEffect(() => {
     const fetchDataSurfSpots = async () => {
       try {
-        const fields = await getAllSpots();
+        const allSpots = await getAllSpots();
+        console.log(allSpots);
+        console.log(allSpots[0].id);
 
         const generatedSpotCards = []; // Initialiser un tableau pour stocker les composants "cards"
 
-        for (let i = 0; i < fields.length; i++) {
-          const element = fields[i];
+        for (let i = 0; i < allSpots.length; i++) {
+          const element = allSpots[i];
 
           // Créer un composant "card" pour chaque élément et l'ajouter au tableau
           generatedSpotCards.push(
