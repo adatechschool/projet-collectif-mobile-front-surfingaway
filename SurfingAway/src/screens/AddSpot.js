@@ -39,7 +39,7 @@ const AddSpot = () => {
     { name: "Outer Banks", id: "Outer Banks" },
   ];
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => console.log("ADDSPOT data" + data);
 
   return (
     <View style={styles.container}>
@@ -129,13 +129,15 @@ const AddSpot = () => {
           control={control}
           name={"Peak Surf Season Begins"}
           defaultValue={defaultValues.seasonStart}
-          label={"Début de la saison de surf"} />
+          label={"Début de la saison de surf"}
+        />
 
         <CustomDateInput
           control={control}
           name={"Peak Surf Season Ends"}
           defaultValue={defaultValues.seasonStart}
-          label={"Fin de la saison de surf"} />
+          label={"Fin de la saison de surf"}
+        />
 
         <CustomTextInput
           label={"Lien Surfline"}
@@ -185,7 +187,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 15,
     padding: 5,
-  }
+  },
 });
 
 export default AddSpot;

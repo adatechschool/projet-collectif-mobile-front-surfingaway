@@ -9,8 +9,6 @@ const SpotCard = (props) => {
   const { imageUrl, destination, country, difficultyLevel, id } = props;
   const navigation = useNavigation();
 
-  console.log('un seul id : ' + id);
-
   return (
     <Card style={styles.card}>
       <Card.Cover
@@ -23,7 +21,9 @@ const SpotCard = (props) => {
         <Text variant="bodyMedium">{difficultyLevel}</Text>
       </Card.Content>
       <Card.Actions>
-        <Button onPress={() => navigation.navigate("Details", { id })}>Go</Button>
+        <Button onPress={() => navigation.navigate("Details", { id })}>
+          Go
+        </Button>
       </Card.Actions>
     </Card>
   );

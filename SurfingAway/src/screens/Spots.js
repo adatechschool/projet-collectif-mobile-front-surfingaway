@@ -7,7 +7,6 @@ const Spots = () => {
   const [spotCards, setSpotCards] = useState([]); // État pour stocker les composants "cards"
   const [error, setError] = useState([]); // État pour stocker les composants "cards"
 
-
   useEffect(() => {
     const fetchDataSurfSpots = async () => {
       try {
@@ -17,8 +16,7 @@ const Spots = () => {
 
         for (let i = 0; i < allSpots.length; i++) {
           const element = allSpots[i];
-          console.log(i + " : " + element.id);
-
+          console.log("SPOTS i:element.id" + i + " : " + element.id);
 
           // Créer un composant "card" pour chaque élément et l'ajouter au tableau
           generatedSpotCards.push(
