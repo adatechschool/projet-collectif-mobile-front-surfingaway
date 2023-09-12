@@ -1,4 +1,5 @@
 import React from "react";
+import { WEATHER_API_KEY } from "@env"
 
 const getWeatherSpot = async () => {
     const API_KEY = "5ea9a15607cc5c592c37be3c04e6ea06"
@@ -6,7 +7,7 @@ const getWeatherSpot = async () => {
     let lon = '-1.5334'
     try {
         const res = await fetch(
-            `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+            `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`
         )
         const data = await res.json()
         let arrayTemp = []
