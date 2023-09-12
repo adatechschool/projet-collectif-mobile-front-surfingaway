@@ -40,8 +40,6 @@ const fetchDataSurfSpots = async () => {
     await apiDataPromise;
   }
 
-  console.log("GETALLSPOT return" + apiData);
-
   return apiData;
 };
 

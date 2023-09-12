@@ -9,8 +9,6 @@ const SpotCard = (props) => {
   const { imageUrl, destination, country, difficultyLevel, id } = props;
   const navigation = useNavigation();
 
-  console.log("SPOTCARD un seul id : " + id);
-
   return (
     <Card style={styles.card}>
       <Card.Cover

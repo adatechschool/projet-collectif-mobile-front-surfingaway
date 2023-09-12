@@ -19,7 +19,6 @@ const SpotPage = ({ route }) => {
     const fetchDataSurfBreak = async () => {
       try {
         const fields = await getSpotInfos(id);
-        console.log("SPOTPAGE TEST ULTIMEEEEEE id : " + id);
 
         // Mettre à jour l'état avec les données
         setSurfBreakData(fields["Surf Break"][0]);
