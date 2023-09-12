@@ -1,10 +1,7 @@
 import React from "react";
 import { WEATHER_API_KEY } from "@env"
 
-const getWeatherSpot = async () => {
-    const API_KEY = "5ea9a15607cc5c592c37be3c04e6ea06"
-    let lat = '47.2198'
-    let lon = '-1.5334'
+const getWeatherSpot = async (lat, lon) => {
     try {
         const res = await fetch(
             `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`
@@ -20,7 +17,7 @@ const getWeatherSpot = async () => {
         arrayTemp.push(windSpeed)
         return arrayTemp
     } catch (e) {
-        console.log('errorAPI weather');
+        console.log('errorAPI weather, did not fetch the infos !');
     }
 }
 
