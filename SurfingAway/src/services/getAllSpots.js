@@ -1,5 +1,4 @@
 import { API_KEY } from "@env";
-
 let apiData = null;
 let apiDataPromise = null;
 
