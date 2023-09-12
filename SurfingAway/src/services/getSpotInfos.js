@@ -12,6 +12,7 @@ const getSpotInfos = async () => {
             },
         }
         );
+        console.log('surf spot data fetch successfully');
         const json = await response.json();
         return json.fields;
     } catch (e) {
