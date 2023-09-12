@@ -6,8 +6,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
 
 const SpotCard = (props) => {
-  const { imageUrl, destination, country, difficultyLevel } = props;
+  const { imageUrl, destination, country, difficultyLevel, id } = props;
   const navigation = useNavigation();
+
+  console.log('un seul id : ' + id);
 
   return (
     <Card style={styles.card}>
@@ -21,7 +23,7 @@ const SpotCard = (props) => {
         <Text variant="bodyMedium">{difficultyLevel}</Text>
       </Card.Content>
       <Card.Actions>
-        <Button onPress={() => navigation.navigate("Details")}>Go</Button>
+        <Button onPress={() => navigation.navigate("Details", { id })}>Go</Button>
       </Card.Actions>
     </Card>
   );

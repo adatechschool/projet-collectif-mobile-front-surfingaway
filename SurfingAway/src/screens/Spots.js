@@ -7,22 +7,24 @@ const Spots = () => {
   const [spotCards, setSpotCards] = useState([]); // État pour stocker les composants "cards"
   const [error, setError] = useState([]); // État pour stocker les composants "cards"
 
+
   useEffect(() => {
     const fetchDataSurfSpots = async () => {
       try {
         const allSpots = await getAllSpots();
-        console.log(allSpots);
-        console.log(allSpots[0].id);
 
         const generatedSpotCards = []; // Initialiser un tableau pour stocker les composants "cards"
 
         for (let i = 0; i < allSpots.length; i++) {
           const element = allSpots[i];
+          console.log(i + " : " + element.id);
+
 
           // Créer un composant "card" pour chaque élément et l'ajouter au tableau
           generatedSpotCards.push(
             <SpotCard
               key={i}
+              id={element.id}
               imageUrl={element.fields.Photos[0].thumbnails.large.url}
               destination={element.fields.Destination}
               country={element["fields"]["Destination State/Country"]}

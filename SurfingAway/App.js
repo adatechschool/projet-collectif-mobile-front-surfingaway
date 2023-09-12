@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { Provider as PaperProvider } from "react-native-paper";
 import { registerTranslation, fr } from "react-native-paper-dates";
 import Routes from "./src/components/Routes";
 
 registerTranslation("fr", fr);
-
 const App = () => {
   return (
     <PaperProvider>
@@ -27,4 +26,7 @@ const App = () => {
   },
 });
  */
+
+
+
 export default App;
