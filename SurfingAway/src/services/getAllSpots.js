@@ -16,7 +16,7 @@ const getAllSpots = async () => {
       }
     );
     const json = await response.json();
-    console.log('all surf spots datas fetch successfully');
+    console.log("all surf spots datas fetch successfully");
     return json.records;
   } catch (error) {
     console.error(error);
@@ -40,11 +40,9 @@ const fetchDataSurfSpots = async () => {
     await apiDataPromise;
   }
 
-  console.log(apiData);
+  console.log("GETALLSPOT return" + apiData);
 
   return apiData;
 };
 
-
 export default fetchDataSurfSpots;
-
