@@ -7,6 +7,7 @@ import UserSimpleCard from "../components/UserSimpleCard";
 import SpotMainInfos from "../components/SpotMainInfos";
 import MainTitle from "../components/MainTitle";
 
+
 const SpotPage = ({ route }) => {
     const { id } = route.params;
     const [surfBreakData, setSurfBreakData] = useState(null); // État pour stocker les données du surf break
@@ -14,12 +15,18 @@ const SpotPage = ({ route }) => {
     const [destinationData, setDestinationData] = useState(null);
     const [whereData, setwhereData] = useState(null);
     const [cardWeather, setCardWeather] = useState(null); // État pour stocker les composants "cards"
+    const [imageApi, setImageApi] = useState(null)
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchDataSurfBreak = async () => {
             try {
                 const fields = await getSpotInfos(id);
+                const image = fields.Photos[0].thumbnails.large.url
+                console.log(fields.Photos[0].thumbnails.large.url);
+                console.log(typeof (fields.Photos[0].thumbnails.large.url));
+                console.log("variale : " + image);
+                console.log('type image : ' + typeof image);
 
                 // Mettre à jour l'état avec les données
                 setSurfBreakData(fields["Surf Break"][0]);
@@ -32,6 +39,12 @@ const SpotPage = ({ route }) => {
                         lon={fields.Longitude}
                     />
                 )
+                setImageApi(<Image
+                    source={{
+                        uri: fields.Photos[0].thumbnails.large.url,
+                    }}
+                    style={styles.ImageStyle}
+                />);
             } catch (error) {
                 setError("could not fetch spot data");
             }
@@ -42,10 +55,9 @@ const SpotPage = ({ route }) => {
     return (
         <View style={styles.container}>
             <ScrollView>
-                <Image
-                    source={require("../../assets/sri-lanka-spot.jpg")}
-                    style={styles.ImageStyle}
-                />
+                {imageApi ? imageApi :
+                    <Text>Loading ...</Text>
+                }
                 <View style={styles.contentWrapper}>
                     <SpotMainInfos
                         where={whereData ? whereData : "Loading..."}
