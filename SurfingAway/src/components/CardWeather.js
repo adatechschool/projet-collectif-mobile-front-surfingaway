@@ -4,15 +4,18 @@ import { Card, Button, Title, Paragraph } from 'react-native-paper';
 import getWeatherSpot from "../services/getWeatherSpot";
 import IconWeather from "./IconWeather";
 
-const CardWeather = () => {
+const CardWeather = (props) => {
+    const { lat, lon } = props
+
     const [tempMinData, setTempMinData] = useState([])
     const [tempMaxData, setTempMaxData] = useState([])
     const [windSpeedData, setWindSpeedData] = useState([])
+    const [error, setError] = useState([])
 
     useEffect(() => {
         const fetchDataWeather = async () => {
             try {
-                const weather = await getWeatherSpot();
+                const weather = await getWeatherSpot(lat, lon);
                 setTempMinData(Math.round(weather[0]) + "°C")
                 setTempMaxData(Math.round(weather[1]) + "°C")
                 setWindSpeedData(weather[2] + "km/h")
