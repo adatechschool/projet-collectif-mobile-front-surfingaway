@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet } from "react-native";
-import { Card, Button, Title, Paragraph } from 'react-native-paper';
+import { StyleSheet, Text } from "react-native";
+import { Card, Button, Title, Paragraph, Avatar } from 'react-native-paper';
 import getWeatherSpot from "../services/getWeatherSpot";
 import IconWeather from "./IconWeather";
 
 const CardWeather = (props) => {
     const { lat, lon } = props
-
     const [tempMinData, setTempMinData] = useState([])
     const [tempMaxData, setTempMaxData] = useState([])
     const [windSpeedData, setWindSpeedData] = useState([])
+    const [weatherDescription, setweatherDescription] = useState([])
     const [error, setError] = useState([])
 
     useEffect(() => {
@@ -19,6 +19,7 @@ const CardWeather = (props) => {
                 setTempMinData(Math.round(weather[0]) + "°C")
                 setTempMaxData(Math.round(weather[1]) + "°C")
                 setWindSpeedData(weather[2] + "km/h")
+                setweatherDescription(weather[3])
             } catch (error) {
                 setError('could not fetch weather');
             }
@@ -29,10 +30,11 @@ const CardWeather = (props) => {
         <Card>
             <Card.Content>
                 <Title>Météo du jour</Title>
-                <IconWeather
+                <Text>{weatherDescription}</Text>
+                {/*      <IconWeather
                     iconName={'sun'}
                     iconColor={'deeppink'}
-                />
+                /> */}
                 <Paragraph>Vitesse du vent : {windSpeedData}</Paragraph>
             </Card.Content>
             <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
@@ -43,7 +45,6 @@ const CardWeather = (props) => {
         </Card>
     )
 }
-
 const styles = StyleSheet.create({
     buttonCard: {
         paddingHorizontal: 1,
