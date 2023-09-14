@@ -60,7 +60,7 @@ const SpotPage = ({ route }) => {
                         technicity={difficultyData ? difficultyData : "Loading..."}
                         wave={surfBreakData ? surfBreakData : "Loading..."} // Affiche les données ou un message de chargement
                     />
-                    <MainTitle titleText={"Surf infos"} />
+                    <MainTitle titleText={"Surf infos en temps réel"} />
                     <View style={styles.weatherInfos}>
                         {cardWeather ? cardWeather : <Card>
                             <Card.Content>
