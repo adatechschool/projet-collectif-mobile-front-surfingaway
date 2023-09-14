@@ -17,22 +17,21 @@ const CustomTextInput = ({ control, name, defaultValue, label, dbName }) => {
             locale="fr"
             label={label}
             value={value}
-            onChange={(itemValue) =>
-              setValue({ name }, itemValue)
-            }
+            onChange={(itemValue) => setValue({ name }, itemValue)}
             inputMode="start"
           />
         </View>
       )}
     />
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   title: {
     fontSize: 17,
+    color: "darkblue",
     fontWeight: "bold",
-    paddingTop: 5
+    paddingTop: 5,
   },
   date: {
     fontSize: 15,
