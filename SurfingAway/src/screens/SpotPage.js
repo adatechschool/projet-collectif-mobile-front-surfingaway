@@ -23,10 +23,6 @@ const SpotPage = ({ route }) => {
             try {
                 const fields = await getSpotInfos(id);
                 const image = fields.Photos[0].thumbnails.large.url
-                console.log(fields.Photos[0].thumbnails.large.url);
-                console.log(typeof (fields.Photos[0].thumbnails.large.url));
-                console.log("variale : " + image);
-                console.log('type image : ' + typeof image);
 
                 // Mettre à jour l'état avec les données
                 setSurfBreakData(fields["Surf Break"][0]);
@@ -102,9 +98,8 @@ const styles = StyleSheet.create({
     },
     contentWrapper: {},
     weatherInfos: {
-        alignItems: "center",
-        backgroundColor: "darkblue",
-        paddingVertical: 5,
+        paddingVertical: 10,
+        paddingHorizontal: 5
     },
 });
 
