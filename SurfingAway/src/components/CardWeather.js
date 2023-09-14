@@ -2,13 +2,10 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Text } from "react-native";
 import { Card, Button, Title, Paragraph, Avatar } from 'react-native-paper';
 import getWeatherSpot from "../services/getWeatherSpot";
-import IconWeather from "./IconWeather";
 
 const CardWeather = (props) => {
     const { lat, lon } = props
-    const [tempMinData, setTempMinData] = useState([])
-    const [tempMaxData, setTempMaxData] = useState([])
-    const [windSpeedData, setWindSpeedData] = useState([])
+    const [weatherData, setWeatherData] = useState([])
     const [weatherDescription, setweatherDescription] = useState([])
     const [error, setError] = useState([])
 
@@ -16,10 +13,10 @@ const CardWeather = (props) => {
         const fetchDataWeather = async () => {
             try {
                 const weather = await getWeatherSpot(lat, lon);
-                setTempMinData(Math.round(weather[0]) + "°C")
-                setTempMaxData(Math.round(weather[1]) + "°C")
-                setWindSpeedData(weather[2] + "km/h")
-                setweatherDescription(weather[3])
+                setWeatherData(weather)
+                let weatherStr = weather[3]
+                weatherStr = weatherStr.charAt(0).toUpperCase() + weatherStr.slice(1)
+                setweatherDescription(weatherStr)
             } catch (error) {
                 setError('could not fetch weather');
             }
@@ -29,18 +26,15 @@ const CardWeather = (props) => {
     return (
         <Card>
             <Card.Content>
-                <Title>Météo du jour</Title>
-                <Text>{weatherDescription}</Text>
-                {/*      <IconWeather
-                    iconName={'sun'}
-                    iconColor={'deeppink'}
-                /> */}
-                <Paragraph>Vitesse du vent : {windSpeedData}</Paragraph>
+                <Title style={styles.title} >Météo du jour</Title>
+                <Text style={styles.weatherInfos} >{weatherDescription}</Text>
+                <Paragraph style={styles.weatherInfos} >Vitesse du vent : {weatherData[2] + "km/h"}</Paragraph>
+                <Paragraph style={styles.weatherInfos} >Pression : { }</Paragraph>
             </Card.Content>
             <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
             <Card.Actions>
-                <Button style={styles.buttonCard}>{tempMinData}</Button>
-                <Button style={styles.buttonCard}>{tempMaxData}</Button>
+                <Button style={styles.buttonCard}>{Math.round(weatherData[0]) + "°C"}</Button>
+                <Button style={styles.buttonCard}>{Math.round(weatherData[1]) + "°C"}</Button>
             </Card.Actions>
         </Card>
     )
@@ -48,6 +42,13 @@ const CardWeather = (props) => {
 const styles = StyleSheet.create({
     buttonCard: {
         paddingHorizontal: 1,
+    },
+    title: {
+        fontSize: 30
+    },
+    weatherInfos: {
+        fontSize: 20,
+        paddingVertical: 3
     },
 })
 
