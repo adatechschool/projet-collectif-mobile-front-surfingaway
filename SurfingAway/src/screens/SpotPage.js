@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Image, ScrollView, Text } from "react-native";
-import { Card, Title } from 'react-native-paper';
+import { Card, Title, ActivityIndicator } from 'react-native-paper';
 import CardWeather from "../components/CardWeather";
 import getSpotInfos from "../services/getSpotInfos";
 import UserSimpleCard from "../components/UserSimpleCard";
@@ -51,21 +51,45 @@ const SpotPage = ({ route }) => {
         <View>
             <ScrollView>
                 {imageApi ? imageApi :
-                    <Text>Loading ...</Text>
+                    <ActivityIndicator
+                        animating={true}
+                        size={"large"}
+                        color='#C5EFF7'
+                    />
                 }
                 <View>
                     <SpotMainInfos
-                        where={whereData ? whereData : "Loading..."}
-                        what={destinationData ? destinationData : "Loading..."}
-                        technicity={difficultyData ? difficultyData : "Loading..."}
-                        wave={surfBreakData ? surfBreakData : "Loading..."} // Affiche les données ou un message de chargement
+                        where={whereData ? whereData : <ActivityIndicator
+                            animating={true}
+                            size={"small"}
+                            color='#C5EFF7'
+                        />}
+                        what={destinationData ? destinationData : <ActivityIndicator
+                            animating={true}
+                            size={"small"}
+                            color='#C5EFF7'
+                        />}
+                        technicity={difficultyData ? difficultyData : <ActivityIndicator
+                            animating={true}
+                            size={"small"}
+                            color='#C5EFF7'
+                        />}
+                        wave={surfBreakData ? surfBreakData : <ActivityIndicator
+                            animating={true}
+                            size={"small"}
+                            color='#C5EFF7'
+                        />} // Affiche les données ou un message de chargement
                     />
                     <MainTitle titleText={"Surf infos en temps réel"} />
                     <View style={styles.weatherInfos}>
                         {cardWeather ? cardWeather : <Card>
                             <Card.Content>
                                 <Title>Météo du jour</Title>
-                                <Text>Loading ...</Text>
+                                <ActivityIndicator
+                                    animating={true}
+                                    size={"large"}
+                                    color='#C5EFF7'
+                                />
                             </Card.Content>
                         </Card>}
                     </View>
