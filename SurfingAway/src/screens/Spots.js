@@ -54,7 +54,7 @@ const Spots = () => {
           <ActivityIndicator
             animating={true}
             size={"large"}
-            color={MD2Colors.red800}
+            color={"#C5EFF7"}
           />
         )}
       </ScrollView>
