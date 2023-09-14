@@ -33,9 +33,9 @@ const CustomTextInput = ({
 const styles = StyleSheet.create({
   title: {
     fontSize: 17,
+    color: "darkblue",
     fontWeight: "bold",
-    color: "black",
-    marginTop: 7,
+    paddingTop: 5,
   },
   text: {
     fontSize: 15,
