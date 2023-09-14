@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, StatusBar, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import SpotCard from "../components/SpotCard";
 import getAllSpots from "../services/getAllSpots";
 import { ActivityIndicator, MD2Colors } from "react-native-paper";
