@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, StatusBar, ScrollView } from "react-native";
 import SpotCard from "../components/SpotCard";
 import getAllSpots from "../services/getAllSpots";
+import { ActivityIndicator, MD2Colors } from "react-native-paper";
 
 const Spots = () => {
   const [spotCards, setSpotCards] = useState([]); // État pour stocker les composants "cards"
@@ -16,7 +17,6 @@ const Spots = () => {
 
         for (let i = 0; i < allSpots.length; i++) {
           const element = allSpots[i];
-          //console.log("SPOTS i:element.id" + i + " : " + element.id);
 
           // Créer un composant "card" pour chaque élément et l'ajouter au tableau
           generatedSpotCards.push(
@@ -41,18 +41,39 @@ const Spots = () => {
     fetchDataSurfSpots(); // Appel de la fonction lors du montage du composant
   }, []);
 
-  // Aafficher le tableau "cards" stocké dans spotCards
+  // Afficher le tableau "cards" stocké dans spotCards
   return (
     <View style={styles.container}>
       <ScrollView>
-        {spotCards.length > 0 ? spotCards : <Text>Loading...</Text>}
+        <View style={styles.titleWrapper}>
+          <Text style={styles.mainTitle}>La liste des meilleurs spots</Text>
+        </View>
+        {spotCards.length > 0 ? (
+          spotCards
+        ) : (
+          <ActivityIndicator
+            animating={true}
+            size={"large"}
+            color={MD2Colors.red800}
+          />
+        )}
       </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  container: {},
+  titleWrapper: {
+    backgroundColor: "deeppink",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  mainTitle: {
+    fontWeight: "bold",
+    fontSize: 25,
+    color: "white",
+    paddingVertical: 10,
   },
 });
 

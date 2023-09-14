@@ -30,12 +30,14 @@ const SpotCard = (props) => {
         style={styles.titleBox}
       />
       <Card.Content style={styles.difficultyWrapper}>
-        <Text variant="bodyLarge">Difficulté du spot :</Text>
+        <Text style={styles.text} variant="bodyLarge">
+          Difficulté du spot :
+        </Text>
         <View style={styles.starWrapper}>{stars}</View>
       </Card.Content>
       <Card.Actions>
         <Button onPress={() => navigation.navigate("Details", { id })}>
-          Go
+          En savoir plus
         </Button>
       </Card.Actions>
     </Card>
@@ -48,14 +50,18 @@ const styles = StyleSheet.create({
   },
   titleBox: {
     paddingTop: 10,
+    paddingBottom: 5,
   },
   difficultyWrapper: {
     display: "flex",
-    alignItems: "flex-end",
+    alignItems: "baseline",
+    paddingTop: 10,
   },
   starWrapper: {
     flexDirection: "row",
-    paddingTop: 15,
+  },
+  text: {
+    fontSize: 15,
     paddingBottom: 10,
   },
 });
