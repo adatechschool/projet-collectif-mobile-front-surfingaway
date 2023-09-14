@@ -45,6 +45,9 @@ const Spots = () => {
   return (
     <View style={styles.container}>
       <ScrollView>
+        <View style={styles.titleWrapper}>
+          <Text style={styles.mainTitle}>La liste des meilleurs spots</Text>
+        </View>
         {spotCards.length > 0 ? (
           spotCards
         ) : (
@@ -61,6 +64,17 @@ const Spots = () => {
 
 const styles = StyleSheet.create({
   container: {},
+  titleWrapper: {
+    backgroundColor: "deeppink",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  mainTitle: {
+    fontWeight: "bold",
+    fontSize: 25,
+    color: "white",
+    paddingVertical: 10,
+  },
 });
 
 export default Spots;
