@@ -171,7 +171,6 @@ const AddSpot = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: StatusBar.currentHeight || 0,
     margin: 5,
     paddingTop: 10,
   },

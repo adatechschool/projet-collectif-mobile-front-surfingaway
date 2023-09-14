@@ -22,7 +22,6 @@ const SpotPage = ({ route }) => {
         const fetchDataSurfBreak = async () => {
             try {
                 const fields = await getSpotInfos(id);
-                const image = fields.Photos[0].thumbnails.large.url
 
                 // Mettre à jour l'état avec les données
                 setSurfBreakData(fields["Surf Break"][0]);
@@ -49,12 +48,12 @@ const SpotPage = ({ route }) => {
     }, []); // Le tableau vide [] garantit que cela ne s'exécute qu'une seule fois lors du montage initial
 
     return (
-        <View style={styles.container}>
+        <View>
             <ScrollView>
                 {imageApi ? imageApi :
                     <Text>Loading ...</Text>
                 }
-                <View style={styles.contentWrapper}>
+                <View>
                     <SpotMainInfos
                         where={whereData ? whereData : "Loading..."}
                         what={destinationData ? destinationData : "Loading..."}
@@ -91,12 +90,10 @@ const SpotPage = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
-    container: {},
     ImageStyle: {
         width: "100%",
         height: 250,
     },
-    contentWrapper: {},
     weatherInfos: {
         paddingVertical: 10,
         paddingHorizontal: 5

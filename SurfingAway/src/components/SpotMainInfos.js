@@ -5,12 +5,10 @@ import DrawBlueStar from "../components/DrawBlueStar";
 
 const SpotMainInfos = (props) => {
     const { where, what, technicity, wave } = props
-
     const stars = [];
     for (let i = 0; i < technicity; i++) {
         stars.push(<DrawBlueStar key={i} />);
     }
-
 
     return (
         <View style={styles.textWrapper} >
@@ -34,7 +32,7 @@ const styles = StyleSheet.create({
     },
     localisation: {
         color: 'grey',
-        fontSize: 20
+        fontSize: 30
     },
     name: {
         fontSize: 20
@@ -62,8 +60,6 @@ const styles = StyleSheet.create({
         display: "flex",
         flexDirection: "row",
         justifyContent: "center",
-        backgroundColor: "darkblue"
-
     }
 })
 

@@ -53,7 +53,6 @@ const Spots = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: StatusBar.currentHeight || 0,
   },
 });
 
