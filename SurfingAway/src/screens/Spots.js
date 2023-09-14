@@ -16,7 +16,6 @@ const Spots = () => {
 
         for (let i = 0; i < allSpots.length; i++) {
           const element = allSpots[i];
-          //console.log("SPOTS i:element.id" + i + " : " + element.id);
 
           // Créer un composant "card" pour chaque élément et l'ajouter au tableau
           generatedSpotCards.push(
@@ -41,7 +40,7 @@ const Spots = () => {
     fetchDataSurfSpots(); // Appel de la fonction lors du montage du composant
   }, []);
 
-  // Aafficher le tableau "cards" stocké dans spotCards
+  // Afficher le tableau "cards" stocké dans spotCards
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -52,8 +51,7 @@ const Spots = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-  },
+  container: {},
 });
 
 export default Spots;
