@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import SpotCard from "../components/SpotCard";
 import getAllSpots from "../services/getAllSpots";
-import { ActivityIndicator, MD2Colors } from "react-native-paper";
+import { ActivityIndicator } from "react-native-paper";
 
 const Spots = () => {
   const [spotCards, setSpotCards] = useState([]); // État pour stocker les composants "cards"
@@ -54,7 +54,7 @@ const Spots = () => {
           <ActivityIndicator
             animating={true}
             size={"large"}
-            color={MD2Colors.red800}
+            color={"#C5EFF7"}
           />
         )}
       </ScrollView>
