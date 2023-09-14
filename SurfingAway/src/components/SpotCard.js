@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
   },
   titleBox: {
     paddingTop: 10,
+    paddingBottom: 5,
   },
   difficultyWrapper: {
     display: "flex",
