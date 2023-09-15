@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, Image, ScrollView, Text } from "react-native";
+import { View, StyleSheet, Image, ScrollView } from "react-native";
 import { Card, Title, ActivityIndicator } from 'react-native-paper';
 import CardWeather from "../components/CardWeather";
 import getSpotInfos from "../services/getSpotInfos";
@@ -10,8 +10,6 @@ import MainTitle from "../components/MainTitle";
 
 const SpotPage = ({ route }) => {
   const { id } = route.params;
-  console.log("SpotPage id : " + id);
-  console.log(route);
   const [surfBreakData, setSurfBreakData] = useState(null); // État pour stocker les données du surf break
   const [difficultyData, setdifficultyData] = useState(null);
   const [destinationData, setDestinationData] = useState(null);
