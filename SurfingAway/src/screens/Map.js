@@ -3,12 +3,15 @@ import { View, StyleSheet } from "react-native";
 import MapView, { Marker } from 'react-native-maps';
 import getAllSpots from "../services/getAllSpots";
 import * as Location from "expo-location";
+import { useNavigation } from "@react-navigation/native";
 
 const Map = () => {
   const [mapLat, setMapLat] = useState(0);
   const [mapLong, setMapLong] = useState(0);
   const [spotsCoords, setSpotsCoords] = useState([]);
   const [error, setError] = useState(null);
+
+  const navigation = useNavigation();
 
   const getAllCoords = async () => {
     try {
@@ -19,9 +22,11 @@ const Map = () => {
         coordsArray.push({
           latitude: spot.fields.Latitude,
           longitude: spot.fields.Longitude,
-          name: spot.fields.Address
+          name: spot.fields.Address,
+          id: spot.id
         })
       });
+      console.log(coordsArray);
       setSpotsCoords(coordsArray);
 
     } catch (error) {
@@ -56,6 +61,8 @@ const Map = () => {
       >
         {spotsCoords.map((data, index) => (
           <Marker
+            tappable={true}
+            onPress={() => navigation.navigate("Details", { id: data.id })}
             key={index}
             coordinate={{
               latitude: parseFloat(data.latitude),
