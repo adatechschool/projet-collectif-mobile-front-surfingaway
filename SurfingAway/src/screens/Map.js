@@ -62,6 +62,7 @@ const Map = () => {
         {spotsCoords.map((data, index) => (
           <Marker
             key={index}
+            pinColor={"deeppink"}
             coordinate={{
               latitude: parseFloat(data.latitude),
               longitude: parseFloat(data.longitude),
