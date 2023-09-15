@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, Callout } from 'react-native-maps';
 import getAllSpots from "../services/getAllSpots";
 import * as Location from "expo-location";
 import { useNavigation } from "@react-navigation/native";
@@ -61,15 +61,16 @@ const Map = () => {
       >
         {spotsCoords.map((data, index) => (
           <Marker
-            tappable={true}
-            onPress={() => navigation.navigate("Details", { id: data.id })}
             key={index}
+            pinColor={"deeppink"}
             coordinate={{
               latitude: parseFloat(data.latitude),
               longitude: parseFloat(data.longitude),
             }}
             title={data.name}
-          />
+          >
+            <Callout onPress={() => navigation.navigate("Details", { id: data.id })} />
+          </Marker>
         ))}
       </MapView>
     </View>
