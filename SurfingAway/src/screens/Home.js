@@ -10,6 +10,7 @@ import CardRecents from "../components/CardRecents";
 import CardFavorites from "../components/CardFavorites";
 import getAllSpots from "../services/getAllSpots";
 import { ActivityIndicator } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 
 const Home = () => {
   const [error, setError] = useState([]);
@@ -65,17 +66,17 @@ const Home = () => {
     };
     fetchDataSurfSpots(); // Appel de la fonction lors du montage du composant
   }, []);
-
+  const navigation = useNavigation();
   const articles = [
     {
       title: "Titre de l'article 1",
       undertitle: "Sous-titre de l'article 1",
-      // Autres métadonnées de l'article 1
+      url: '../../assets/posts/article2.html'
     },
     {
       title: "Titre de l'article 2",
       undertitle: "Sous-titre de l'article 2",
-      // Autres métadonnées de l'article 2
+      url: '../../assets/posts/article1.html'
     },
     // ... Ajoutez autant d'articles que nécessaire
   ];
@@ -89,12 +90,7 @@ const Home = () => {
             key={index} // Utilisez une clé unique pour chaque carte
             title={article.title}
             undertitle={article.undertitle}
-            onPress={() => {
-              // Gérez le clic sur l'article ici
-              // Vous pouvez utiliser l'index ou un identifiant unique pour identifier l'article
-              // et afficher son contenu complet
-              // Par exemple, vous pouvez stocker l'article sélectionné dans l'état et afficher son contenu dans une modale
-            }}
+            onPress={() => navigation.navigate("Post")}
           />
         ))}
         <View style={styles.recently}>

@@ -23,7 +23,7 @@ const HomeTopTabs = () => {
       }}
     >
       <Tab.Screen name={"Actu"} component={Home} />
-      <Tab.Screen name={"P"} component={Articles} />
+      <Tab.Screen name={"P"} component={Article} />
       <Tab.Screen name={"Spots"} component={Spots} />
       <Tab.Screen name={"+"} component={AddSpot} />
       <Tab.Screen name={"Carte"} component={Map} />
