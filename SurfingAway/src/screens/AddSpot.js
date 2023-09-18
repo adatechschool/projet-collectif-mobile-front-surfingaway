@@ -1,5 +1,5 @@
 import { React } from "react";
-import { View, Text, StyleSheet, StatusBar, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import CustomTextInput from "../components/CustomTextInput";
 import CustomDateInput from "../components/CustomDateInput";
@@ -33,7 +33,7 @@ const AddSpot = () => {
     { name: "Outer Banks", id: "Outer Banks" },
   ];
 
-  const onSubmit = (data) => console.log("ADDSPOT data" + data);
+  const onSubmit = (data) => console.log(data);
 
   return (
     <View style={styles.container}>
@@ -159,7 +159,7 @@ const AddSpot = () => {
               label={"Longitude"}
               control={control}
               name={"Longitude"}
-              placeholder={"Longitude"}
+              placeholder={"Entrer la longitude"}
               defaultValue={defaultValues.longitude}
             />
           </Card.Content>
