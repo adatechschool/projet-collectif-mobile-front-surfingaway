@@ -5,7 +5,6 @@ import Spots from "../screens/Spots";
 import Map from "../screens/Map";
 import Articles from "../screens/Articles";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import Article from "../screens/Articles";
 
 const HomeTopTabs = () => {
   const Tab = createMaterialTopTabNavigator();
