@@ -8,7 +8,7 @@ const image = {
 };
 
 const CardRecents = (props) => {
-  const { name, place, technicity } = props;
+  const { name, place, technicity, image, id } = props;
 
   const stars = [];
   for (let i = 0; i < technicity; i++) {

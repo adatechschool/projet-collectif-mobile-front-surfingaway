@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from "react";
-import SpotCard from "../components/SpotCard";
 import {
   View,
-  Text,
   StyleSheet,
   ScrollView,
-  Linking,
-  Image,
 } from "react-native";
 import MainTitle from "../components/MainTitle";
 import CardArticle from "../components/CardArticle";
-import CardNews from "../components/CardNews";
 import CardRecents from "../components/CardRecents";
 import CardFavorites from "../components/CardFavorites";
 import getAllSpots from "../services/getAllSpots";
@@ -19,22 +14,21 @@ import { ActivityIndicator } from "react-native-paper";
 const Home = () => {
   const [error, setError] = useState([]);
   const [recentSpot, setRecentSpot] = useState([]); // État pour stocker les composants "cards"
-  const [favSpot, setfavSpot] = useState([]); // État pour stocker les composants "cards"
-
-  const [spots, setSpots] = useState([]); // État pour stocker les données des spots
+  const [favSpot, setFavSpot] = useState([]); // État pour stocker les composants "cards"
 
   useEffect(() => {
     const fetchDataSurfSpots = async () => {
       try {
         const allSpots = await getAllSpots();
 
+        const generatedRecentCard = []; // Initialiser un tableau pour stocker les composants "cards"
         const generatedFavCard = []; // Initialiser un tableau pour stocker les composants "cards"
 
-        for (let i = 0; i < allSpots.length; i++) {
+        for (let i = 0; i < 3; i++) {
           const element = allSpots[i];
 
           // Créer un composant "card" pour chaque élément et l'ajouter au tableau
-          generatedFavCard.push(
+          generatedRecentCard.push(
             <CardRecents
               key={i}
               id={element.id}
@@ -45,8 +39,26 @@ const Home = () => {
             />
           );
         }
+
+        for (let i = 1; i < 7; i = i + 2) {
+          const element = allSpots[i];
+
+          // Créer un composant "card" pour chaque élément et l'ajouter au tableau
+          generatedFavCard.push(
+            <CardFavorites
+              key={i}
+              id={element.id}
+              imageUrl={element.fields.Photos[0].thumbnails.large.url}
+              place={element.fields.Destination}
+              name={element["fields"]["Destination State/Country"]}
+              technicity={element["fields"]["Difficulty Level"]}
+            />
+          );
+        }
         // Mettre à jour l'état spotCards avec les composants "cards"
-        setRecentSpot(generatedFavCard);
+        setRecentSpot(generatedRecentCard);
+        setFavSpot(generatedFavCard);
+
       } catch (error) {
         setError("could not fetch data");
       }
@@ -100,66 +112,15 @@ const Home = () => {
         </View>
         <View style={styles.favorites}>
           <MainTitle titleText={"My Favorites ! 💙"} />
-          {/* <CardFavorites
-            name={
-              getSpotByIndex(spots, 9).Destination || (
-                <ActivityIndicator
-                  animating={true}
-                  size={"small"}
-                  color={"#C5EFF7"}
-                />
-              )
-            }
-            place={
-              getSpotByIndex(spots, 9)["Destination State/Country"] || (
-                <ActivityIndicator
-                  animating={true}
-                  size={"small"}
-                  color={"#C5EFF7"}
-                />
-              )
-            }
-          />
-          <CardFavorites
-            name={
-              getSpotByIndex(spots, 0).Destination || (
-                <ActivityIndicator
-                  animating={true}
-                  size={"small"}
-                  color={"#C5EFF7"}
-                />
-              )
-            }
-            place={
-              getSpotByIndex(spots, 0)["Destination State/Country"] || (
-                <ActivityIndicator
-                  animating={true}
-                  size={"small"}
-                  color={"#C5EFF7"}
-                />
-              )
-            }
-          />
-          <CardFavorites
-            name={
-              getSpotByIndex(spots, 7).Destination || (
-                <ActivityIndicator
-                  animating={true}
-                  size={"small"}
-                  color={"#C5EFF7"}
-                />
-              )
-            }
-            place={
-              getSpotByIndex(spots, 7)["Destination State/Country"] || (
-                <ActivityIndicator
-                  animating={true}
-                  size={"small"}
-                  color={"#C5EFF7"}
-                />
-              )
-            }
-          /> */}
+          {favSpot.length > 0 ? (
+            favSpot
+          ) : (
+            <ActivityIndicator
+              animating={true}
+              size={"large"}
+              color={"#C5EFF7"}
+            />
+          )}
         </View>
       </ScrollView>
     </View>
