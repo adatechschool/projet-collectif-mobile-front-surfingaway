@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ScrollView } from 'react-native';
 import ArticleRender from '../components/ArticleRender';
 
 const Article = () => {
-    // Contenu HTML de votre article
-    const htmlContent = `
+    const htmlFile = require('../../assets/article1.html');
+    const htmlContent2 = `
     <!DOCTYPE html>
 <html lang="fr">
 
@@ -48,7 +48,7 @@ const Article = () => {
 
     return (
         <ScrollView>
-            <ArticleRender htmlContent={htmlContent} />
+            <ArticleRender htmlContent={htmlContent2} />
         </ScrollView>
     );
 };
