@@ -33,8 +33,8 @@ const Home = () => {
               key={i}
               id={element.id}
               imageUrl={element.fields.Photos[0].thumbnails.large.url}
-              place={element.fields.Destination}
-              name={element["fields"]["Destination State/Country"]}
+              place={element.fields.City}
+              name={element.fields.Address}
               technicity={element["fields"]["Difficulty Level"]}
             />
           );

@@ -1,38 +1,51 @@
 import React from "react";
-import { Card, Title } from "react-native-paper";
 import DrawHeart from "./DrawHeart";
 import {
   View,
-  Linking,
   StyleSheet,
   Text,
   TouchableOpacity,
   Image,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const CardFavorites = (props) => {
-  const { name, place, link, imageUrl } = props;
+  const { name, place, link, imageUrl, id } = props;
+  const navigation = useNavigation();
 
   return (
-    <View style={styles.boxContainer}>
-      <Image
-        source={{
-          uri: imageUrl,
-        }}
-        style={styles.image}
-      />
-      <View style={styles.infoCard}>
-        <Text style={styles.name}>{name}</Text>
-        <Text style={styles.place}>{place}</Text>
+    <TouchableOpacity onPress={() => navigation.navigate("Details", { id })} /* style={styles.cardContainer} */>
+      <View style={styles.boxContainer}>
+        <Image
+          source={{
+            uri: imageUrl,
+          }}
+          style={styles.image}
+        />
+        <View style={styles.infoCard}>
+          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.place}>{place}</Text>
+        </View>
+        <View>
+          <DrawHeart />
+        </View>
       </View>
-      <View>
-        <DrawHeart />
-      </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
+  cardContainer: {
+    backgroundColor: "#fff",
+    borderRadius: 8,
+    elevation: 5,
+    shadowColor: "#333",
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
+    marginHorizontal: 10,
+    marginVertical: 6,
+  },
   boxContainer: {
     display: "flex",
     flexDirection: "row",
