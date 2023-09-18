@@ -10,7 +10,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 
 const CardFavorites = (props) => {
-  const { name, place, link, imageUrl, id } = props;
+  const { name, place, imageUrl, id } = props;
   const navigation = useNavigation();
 
   return (
