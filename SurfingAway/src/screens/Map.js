@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, Callout } from 'react-native-maps';
 import getAllSpots from "../services/getAllSpots";
 import * as Location from "expo-location";
+import { useNavigation } from "@react-navigation/native";
 
 const Map = () => {
   const [mapLat, setMapLat] = useState(0);
   const [mapLong, setMapLong] = useState(0);
   const [spotsCoords, setSpotsCoords] = useState([]);
   const [error, setError] = useState(null);
+
+  const navigation = useNavigation();
 
   const getAllCoords = async () => {
     try {
@@ -19,9 +22,11 @@ const Map = () => {
         coordsArray.push({
           latitude: spot.fields.Latitude,
           longitude: spot.fields.Longitude,
-          name: spot.fields.Address
+          name: spot.fields.Address,
+          id: spot.id
         })
       });
+      console.log(coordsArray);
       setSpotsCoords(coordsArray);
 
     } catch (error) {
@@ -57,12 +62,15 @@ const Map = () => {
         {spotsCoords.map((data, index) => (
           <Marker
             key={index}
+            pinColor={"deeppink"}
             coordinate={{
               latitude: parseFloat(data.latitude),
               longitude: parseFloat(data.longitude),
             }}
             title={data.name}
-          />
+          >
+            <Callout onPress={() => navigation.navigate("Details", { id: data.id })} />
+          </Marker>
         ))}
       </MapView>
     </View>
