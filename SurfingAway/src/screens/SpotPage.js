@@ -59,26 +59,10 @@ const SpotPage = ({ route }) => {
         }
         <View>
           <SpotMainInfos
-            where={whereData ? whereData : <ActivityIndicator
-              animating={true}
-              size={"small"}
-              color='#C5EFF7'
-            />}
-            what={destinationData ? destinationData : <ActivityIndicator
-              animating={true}
-              size={"small"}
-              color='#C5EFF7'
-            />}
-            technicity={difficultyData ? difficultyData : <ActivityIndicator
-              animating={true}
-              size={"small"}
-              color='#C5EFF7'
-            />}
-            wave={surfBreakData ? surfBreakData : <ActivityIndicator
-              animating={true}
-              size={"small"}
-              color='#C5EFF7'
-            />} // Affiche les données ou un message de chargement
+            where={whereData}
+            what={destinationData}
+            technicity={difficultyData}
+            wave={surfBreakData} // Affiche les données ou un message de chargement
           />
           <MainTitle titleText={"Surf infos en temps réel"} />
           <View style={styles.weatherInfos}>

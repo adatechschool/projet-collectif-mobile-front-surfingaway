@@ -1,8 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { Avatar, Button, Card } from "react-native-paper";
-import SpotMainInfos from "./SpotMainInfos";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Button, Card } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import DrawBlueStar from "../components/DrawBlueStar";
 
