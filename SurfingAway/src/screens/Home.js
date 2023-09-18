@@ -32,9 +32,6 @@ const Home = () => {
       }
     };
 
-    setApiLink(
-      "https://www.surf-report.com/news/surf/securite-surf-mns-cross-706229583.html"
-    );
     fetchDataSurfSpots(); // Appel de la fonction lors du montage du composant
   }, [spotIndex]);
 
@@ -59,6 +56,7 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <ScrollView>
+        <MainTitle titleText={"Actus"} />
         {articles.map((article, index) => (
           <CardArticle
             key={index} // Utilisez une clé unique pour chaque carte
@@ -72,15 +70,6 @@ const Home = () => {
             }}
           />
         ))}
-
-        <View>
-          <CardNews
-            title={"LES 10 REGLES D'OR D'UNE PRATIQUE SEREINE DU SURF"}
-            undertitle={"Amoindrir le nombre d'accidents en tout genre"}
-            link={apiLink}
-            imageUrl={apiImageUrl}
-          />
-        </View>
         <View style={styles.recently}>
           <MainTitle titleText={"Recently consulted"} />
           <CardRecents
