@@ -1,26 +1,25 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Text } from "react-native";
 import { Button, Card, TextInput } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigation = useNavigation();
 
   const handleLogin = () => {
-    // Gérer la connexion ici
+    return console.log("Vous avez cliqué sur le bouton");
   };
 
   const handleForgotPassword = () => {
-    // Gérer la réinitialisation du mot de passe ici
-  };
-  const handleRegistration = () => {
-    // Gérer la réinitialisation du mot de passe ici
+    console.log("Vous avez oublié votre mdp");
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.titleWrapper}>
-        <Text style={styles.mainTitle}>Rejoins la commu 🤙 </Text>
+        <Text style={styles.mainTitle}>Connecte-toi aux vagues 🌊 </Text>
       </View>
       <Card style={styles.card}>
         <Card.Content>
@@ -46,10 +45,15 @@ const LoginPage = () => {
           >
             Se connecter
           </Button>
+
           <Text style={styles.actionsContent} onPress={handleForgotPassword}>
             Mot de passe oublié ?
           </Text>
-          <Text style={styles.actionsContent} onPress={handleRegistration}>
+
+          <Text
+            style={styles.actionsContent}
+            onPress={() => navigation.navigate("SignUp")}
+          >
             S'inscrire
           </Text>
         </Card.Actions>
