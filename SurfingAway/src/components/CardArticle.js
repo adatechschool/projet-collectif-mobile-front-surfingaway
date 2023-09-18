@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-const Card = ({ title, undertitle, onPress }) => {
+const CardArticle = ({ title, undertitle, onPress }) => {
     return (
         <TouchableOpacity onPress={onPress} style={styles.cardContainer}>
             <View style={styles.cardContent}>
@@ -40,4 +40,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Card;
+export default CardArticle;

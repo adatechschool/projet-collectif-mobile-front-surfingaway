@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Title } from "react-native-paper";
+import DrawHeart from "./DrawHeart";
 import {
   View,
   Linking,
@@ -14,21 +15,18 @@ const CardFavorites = (props) => {
 
   return (
     <View style={styles.boxContainer}>
-      <View>
-        <Image
-          source={require("../images/spots-de-surf1s.jpg")}
-          style={styles.image}
-        />
-      </View>
+      <Image
+        source={{
+          uri: imageUrl,
+        }}
+        style={styles.image}
+      />
       <View style={styles.infoCard}>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.place}>{place}</Text>
       </View>
       <View>
-        <Image
-          source={require("../images/blue_heart.png")}
-          style={styles.imageHeart}
-        />
+        <DrawHeart />
       </View>
     </View>
   );
