@@ -5,6 +5,7 @@ import SpotPage from "../screens/SpotPage";
 import Home from "../screens/Home";
 import HomeTopTabs from "./HomeTopTabs";
 import Map from "../screens/Map";
+import LoginPage from "../screens/LoginPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -13,6 +14,7 @@ const Routes = () => {
     <Stack.Navigator initialRouteName={Home}>
       <Stack.Screen name="Home" component={HomeTopTabs} />
       <Stack.Screen name="Spots" component={Spots} />
+      <Stack.Screen name="Login" component={LoginPage} />
       <Stack.Screen name="Details" component={SpotPage} />
       <Stack.Screen name="Map" component={Map} />
     </Stack.Navigator>

@@ -4,6 +4,7 @@ import Home from "../screens/Home";
 import Spots from "../screens/Spots";
 import Map from "../screens/Map";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import LoginPage from "../screens/LoginPage";
 
 const HomeTopTabs = () => {
   const Tab = createMaterialTopTabNavigator();
@@ -22,6 +23,7 @@ const HomeTopTabs = () => {
     >
       <Tab.Screen name={"Actu"} component={Home} />
       <Tab.Screen name={"Spots"} component={Spots} />
+      <Tab.Screen name={"login"} component={LoginPage} />
       <Tab.Screen name={"+"} component={AddSpot} />
       <Tab.Screen name={"Carte"} component={Map} />
     </Tab.Navigator>
