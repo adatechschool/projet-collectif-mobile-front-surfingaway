@@ -8,6 +8,7 @@ import {
   Image,
 } from "react-native";
 import MainTitle from "../components/MainTitle";
+import CardArticle from "../components/CardArticle";
 import CardNews from "../components/CardNews";
 import CardRecents from "../components/CardRecents";
 import CardFavorites from "../components/CardFavorites";
@@ -41,18 +42,37 @@ const Home = () => {
     return spotsData[index]?.fields || {};
   };
 
+  const articles = [
+    {
+      title: "Titre de l'article 1",
+      undertitle: "Sous-titre de l'article 1",
+      // Autres métadonnées de l'article 1
+    },
+    {
+      title: "Titre de l'article 2",
+      undertitle: "Sous-titre de l'article 2",
+      // Autres métadonnées de l'article 2
+    },
+    // ... Ajoutez autant d'articles que nécessaire
+  ];
+
   return (
     <View style={styles.container}>
       <ScrollView>
-        <View>
-          <MainTitle titleText={"News"} />
-          <CardNews
-            title={"LES 10 REGLES D'OR D'UNE PRATIQUE SEREINE DU SURF"}
-            undertitle={"Amoindrir le nombre d'accidents en tout genre"}
-            link={apiLink}
-            imageUrl={apiImageUrl}
+        {articles.map((article, index) => (
+          <CardArticle
+            key={index} // Utilisez une clé unique pour chaque carte
+            title={article.title}
+            undertitle={article.undertitle}
+            onPress={() => {
+              // Gérez le clic sur l'article ici
+              // Vous pouvez utiliser l'index ou un identifiant unique pour identifier l'article
+              // et afficher son contenu complet
+              // Par exemple, vous pouvez stocker l'article sélectionné dans l'état et afficher son contenu dans une modale
+            }}
           />
-        </View>
+        ))}
+
         <View>
           <CardNews
             title={"LES 10 REGLES D'OR D'UNE PRATIQUE SEREINE DU SURF"}

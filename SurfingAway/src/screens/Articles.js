@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+import React from 'react';
+import { ScrollView } from 'react-native';
+import ArticleRender from '../components/ArticleRender';
+
+const Article = () => {
+    // Contenu HTML de votre article
+    const htmlContent = `
+    <!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -37,3 +44,13 @@
 </body>
 
 </html>
+  `;
+
+    return (
+        <ScrollView>
+            <ArticleRender htmlContent={htmlContent} />
+        </ScrollView>
+    );
+};
+
+export default Article;
