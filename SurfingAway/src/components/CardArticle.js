@@ -1,12 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import getArticlesInfos from "../services/getArtilclesInfos";
+import { useNavigation } from "@react-navigation/native";
 
-const CardArticle = ({ title, undertitle, onPress }) => {
+const CardArticle = () => {
+    const id = "65099cc04c83086727b2d2a6"
+    const [articlesData, setArticlesData] = useState([])
+    const [error, setError] = useState([])
+    const navigation = useNavigation();
+
+    useEffect(() => {
+        const fetchDataInfosArticles = async () => {
+            try {
+                const data = await getArticlesInfos(id);
+                setArticlesData(data)
+            } catch (error) {
+                setError('could not fetch data articles');
+            }
+        };
+        fetchDataInfosArticles()
+    }, []);
+
     return (
-        <TouchableOpacity onPress={onPress} style={styles.cardContainer}>
+        <TouchableOpacity onPress={() => navigation.navigate("Post")} style={styles.cardContainer}>
             <View style={styles.cardContent}>
-                <Text style={styles.title}>{title}</Text>
-                <Text style={styles.undertitle}>{undertitle}</Text>
+                <Text style={styles.title}>{articlesData.title}</Text>
+                <Text style={styles.undertitle}>{articlesData.description}</Text>
+                <Text style={styles.author}>{articlesData.author}</Text>
+
             </View>
         </TouchableOpacity>
     );
@@ -38,6 +59,9 @@ const styles = StyleSheet.create({
         color: "#777",
         marginTop: 5,
     },
+    author: {
+        textAlign: "right"
+    }
 });
 
 export default CardArticle;

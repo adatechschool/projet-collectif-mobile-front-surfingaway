@@ -87,9 +87,6 @@ const Home = () => {
         <MainTitle titleText={"Actus"} />
         {articles.map((article, index) => (
           <CardArticle
-            key={index} // Utilisez une clé unique pour chaque carte
-            title={article.title}
-            undertitle={article.undertitle}
             onPress={() => navigation.navigate("Post")}
           />
         ))}
