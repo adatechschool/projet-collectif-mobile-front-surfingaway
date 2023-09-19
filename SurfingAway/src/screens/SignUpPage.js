@@ -6,18 +6,36 @@ import { useState } from "react";
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [firstName, setFirstName] = useState("");
 
-  const handleLogin = () => {
-    return console.log("Vous avez créé un profil");
+  const handleSignUp = () => {
+    // Ajouter la logique ici
+    console.log("Vous avez créé un profil avec les informations suivantes:");
+    console.log("Nom complet:", lastName, firstName);
+    console.log("Email:", email);
+    console.log("Mot de passe:", password);
   };
 
   return (
     <View>
       <View style={styles.titleWrapper}>
-        <Text style={styles.mainTitle}>Rejoins la commu 🤙 </Text>
+        <Text style={styles.mainTitle}>Rejoins la commu 🤙</Text>
       </View>
       <Card style={styles.card}>
         <Card.Content>
+          <TextInput
+            label="Nom"
+            mode="outlined"
+            value={lastName}
+            onChangeText={(text) => setLastName(text)}
+          />
+          <TextInput
+            label="Prénom"
+            mode="outlined"
+            value={firstName}
+            onChangeText={(text) => setFirstName(text)}
+          />
           <TextInput
             label="Email"
             mode="outlined"
@@ -35,7 +53,7 @@ const SignUpPage = () => {
         <Card.Actions style={styles.actions}>
           <Button
             mode="outlined"
-            onPress={handleLogin}
+            onPress={handleSignUp}
             style={styles.actionsContent}
           >
             Créer un compte
@@ -47,6 +65,13 @@ const SignUpPage = () => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  card: {
+    margin: 20,
+    padding: 5,
+  },
   titleWrapper: {
     backgroundColor: "deeppink",
     alignItems: "center",
@@ -57,6 +82,14 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: "white",
     paddingVertical: 10,
+  },
+  actions: {
+    flexDirection: "column",
+    padding: 15,
+  },
+  actionsContent: {
+    margin: 5,
+    fontSize: 15,
   },
 });
 
