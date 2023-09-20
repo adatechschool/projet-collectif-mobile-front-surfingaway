@@ -1,20 +1,39 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
-import { Button, Card, TextInput } from "react-native-paper";
+import { ActivityIndicator, Button, Card, TextInput } from "react-native-paper";
 import { useState } from "react";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
 
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [firstName, setFirstName] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  // const [lastName, setLastName] = useState("");
+  // const [firstName, setFirstName] = useState("");
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(null);
 
-  const handleSignUp = () => {
-    // Ajouter la logique ici
-    console.log("Vous avez créé un profil avec les informations suivantes:");
-    console.log("Nom complet:", lastName, firstName);
-    console.log("Email:", email);
-    console.log("Mot de passe:", password);
+  const handleSignUp = async () => {
+    setLoading(true);
+    try {
+      if (password === confirmPassword) {
+        const response = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        console.log("SIGNUPPAGE response : ", response);
+        alert("Check your emails !");
+      } else {
+        setError("Passwords don't match");
+      }
+    } catch (error) {
+      setError("There was a problem creating your account");
+      alert("Registration failed : ", error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -24,7 +43,7 @@ const SignUpPage = () => {
       </View>
       <Card style={styles.card}>
         <Card.Content>
-          <TextInput
+          {/* <TextInput
             label="Nom"
             mode="outlined"
             value={lastName}
@@ -35,7 +54,7 @@ const SignUpPage = () => {
             mode="outlined"
             value={firstName}
             onChangeText={(text) => setFirstName(text)}
-          />
+          /> */}
           <TextInput
             label="Email"
             mode="outlined"
@@ -43,22 +62,35 @@ const SignUpPage = () => {
             onChangeText={(text) => setEmail(text)}
           />
           <TextInput
-            label="Mot de passe"
+            label="Entrez un mot de passe"
             mode="outlined"
             value={password}
             onChangeText={(text) => setPassword(text)}
             secureTextEntry
           />
+          <TextInput
+            label="Confirmez le mot de passe"
+            mode="outlined"
+            value={confirmPassword}
+            onChangeText={(text) => setConfirmPassword(text)}
+            secureTextEntry
+          />
         </Card.Content>
         <Card.Actions style={styles.actions}>
-          <Button
-            mode="outlined"
-            onPress={handleSignUp}
-            style={styles.actionsContent}
-          >
-            Créer un compte
-          </Button>
+          {loading ? (
+            <ActivityIndicator animating={true} color={darkblue} />
+          ) : (
+            <Button
+              mode="outlined"
+              onPress={handleSignUp}
+              style={styles.actionsContent}
+              disabled={!email || !password || !confirmPassword}
+            >
+              Créer un compte
+            </Button>
+          )}
         </Card.Actions>
+        {error && <Text>{error}</Text>}
       </Card>
     </View>
   );

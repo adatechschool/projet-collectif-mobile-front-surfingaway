@@ -1,15 +1,27 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, KeyboardAvoidingView } from "react-native";
 import { Button, Card, TextInput } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(null);
 
-  const handleLogin = () => {
-    return console.log("Vous avez cliqué sur le bouton");
+  const handleLogin = async () => {
+    setLoading(true);
+    try {
+      const response = await signInWithEmailAndPassword(auth, email, password);
+      alert("Welcome home !");
+    } catch (error) {
+      alert("Failed : " + error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleForgotPassword = () => {
@@ -18,46 +30,48 @@ const LoginPage = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.titleWrapper}>
-        <Text style={styles.mainTitle}>Connecte-toi aux vagues 🌊 </Text>
-      </View>
-      <Card style={styles.card}>
-        <Card.Content>
-          <TextInput
-            label="Email"
-            mode="outlined"
-            value={email}
-            onChangeText={(text) => setEmail(text)}
-          />
-          <TextInput
-            label="Mot de passe"
-            mode="outlined"
-            value={password}
-            onChangeText={(text) => setPassword(text)}
-            secureTextEntry
-          />
-        </Card.Content>
-        <Card.Actions style={styles.actions}>
-          <Button
-            mode="outlined"
-            onPress={handleLogin}
-            style={styles.actionsContent}
-          >
-            Se connecter
-          </Button>
+      <KeyboardAvoidingView behavior="padding">
+        <View style={styles.titleWrapper}>
+          <Text style={styles.mainTitle}>Connecte-toi aux vagues 🌊 </Text>
+        </View>
+        <Card style={styles.card}>
+          <Card.Content>
+            <TextInput
+              label="Email"
+              mode="outlined"
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+            />
+            <TextInput
+              label="Mot de passe"
+              mode="outlined"
+              value={password}
+              onChangeText={(text) => setPassword(text)}
+              secureTextEntry
+            />
+          </Card.Content>
+          <Card.Actions style={styles.actions}>
+            <Button
+              mode="outlined"
+              onPress={handleLogin}
+              style={styles.actionsContent}
+            >
+              Se connecter
+            </Button>
 
-          <Text style={styles.actionsContent} onPress={handleForgotPassword}>
-            Mot de passe oublié ?
-          </Text>
+            <Text style={styles.actionsContent} onPress={handleForgotPassword}>
+              Mot de passe oublié ?
+            </Text>
 
-          <Text
-            style={styles.actionsContent}
-            onPress={() => navigation.navigate("SignUp")}
-          >
-            S'inscrire
-          </Text>
-        </Card.Actions>
-      </Card>
+            <Text
+              style={styles.actionsContent}
+              onPress={() => navigation.navigate("SignUp")}
+            >
+              S'inscrire
+            </Text>
+          </Card.Actions>
+        </Card>
+      </KeyboardAvoidingView>
     </View>
   );
 };
