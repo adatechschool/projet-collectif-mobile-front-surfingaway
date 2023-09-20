@@ -16,6 +16,7 @@ const SignUpPage = () => {
 
   const handleSignUp = async () => {
     setLoading(true);
+    setError(null);
     try {
       if (password === confirmPassword) {
         const response = await createUserWithEmailAndPassword(
@@ -78,7 +79,7 @@ const SignUpPage = () => {
         </Card.Content>
         <Card.Actions style={styles.actions}>
           {loading ? (
-            <ActivityIndicator animating={true} color={darkblue} />
+            <ActivityIndicator animating={true} color={"#C5EFF7"} />
           ) : (
             <Button
               mode="outlined"

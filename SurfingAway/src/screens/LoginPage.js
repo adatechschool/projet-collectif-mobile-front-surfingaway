@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Text, KeyboardAvoidingView } from "react-native";
-import { Button, Card, TextInput } from "react-native-paper";
+import { ActivityIndicator, Button, Card, TextInput } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
@@ -14,6 +14,7 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     setLoading(true);
+    setError(null);
     try {
       const response = await signInWithEmailAndPassword(auth, email, password);
       alert("Welcome home !");
@@ -51,14 +52,17 @@ const LoginPage = () => {
             />
           </Card.Content>
           <Card.Actions style={styles.actions}>
-            <Button
-              mode="outlined"
-              onPress={handleLogin}
-              style={styles.actionsContent}
-            >
-              Se connecter
-            </Button>
-
+            {loading ? (
+              <ActivityIndicator animating={true} color={"#C5EFF7"} />
+            ) : (
+              <Button
+                mode="outlined"
+                onPress={handleLogin}
+                style={styles.actionsContent}
+              >
+                Se connecter
+              </Button>
+            )}
             <Text style={styles.actionsContent} onPress={handleForgotPassword}>
               Mot de passe oublié ?
             </Text>

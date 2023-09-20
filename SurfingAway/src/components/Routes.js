@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Spots from "../screens/Spots";
 import SpotPage from "../screens/SpotPage";
@@ -7,34 +7,44 @@ import HomeTopTabs from "./HomeTopTabs";
 import Map from "../screens/Map";
 import LoginPage from "../screens/LoginPage";
 import SignUpPage from "../screens/SignUpPage";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../firebase";
 
 const Stack = createNativeStackNavigator();
+const InsideStack = createNativeStackNavigator();
+
+const InsideLayout = () => {
+  return (
+    <InsideStack.Navigator initialRouteName={Home}>
+      <InsideStack.Screen
+        name="Home"
+        component={HomeTopTabs}
+        // options={{ headerShown: false }}
+      />
+      <InsideStack.Screen name="Spots" component={Spots} />
+      <InsideStack.Screen name="Details" component={SpotPage} />
+      <InsideStack.Screen name="Map" component={Map} />
+    </InsideStack.Navigator>
+  );
+};
 
 const Routes = () => {
-  //  // Définition de l'état d'authentification initial à false
-  //  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [user, setUser] = useState(null);
 
-  //  useEffect(() => {
-  //    // Ici, vous pouvez placer la logique de vérification de l'authentification
-  //    // Par exemple, vous pouvez vérifier si l'utilisateur est connecté
-  //    // en utilisant une méthode d'authentification (Firebase, API, etc.).
-  //    // Si l'utilisateur est connecté, définissez isSignedIn à true, sinon à false.
-
-  //    // Exemple simplifié :
-  //    const userIsAuthenticated =
-  //    /* logique d'authentification */;
-
-  //    setIsSignedIn(userIsAuthenticated);
-  //  }, []); // Le tableau vide [] signifie que cette fonction useEffect s'exécute une seule fois après le rendu initial.
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      console.log("user : " + user);
+      setUser(user);
+    });
+  }, []);
 
   return (
-    <Stack.Navigator initialRouteName={Home}>
-      <Stack.Screen name="Home" component={HomeTopTabs} />
-      <Stack.Screen name="Spots" component={Spots} />
-      <Stack.Screen name="Login" component={LoginPage} />
-      <Stack.Screen name="SignUp" component={SignUpPage} />
-      <Stack.Screen name="Details" component={SpotPage} />
-      <Stack.Screen name="Map" component={Map} />
+    <Stack.Navigator initialRouteName={LoginPage}>
+      {user ? (
+        <Stack.Screen name="Welcome onboard !" component={InsideLayout} />
+      ) : (
+        <Stack.Screen name="Login" component={LoginPage} />
+      )}
     </Stack.Navigator>
   );
 };
