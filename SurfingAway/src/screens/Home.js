@@ -9,19 +9,20 @@ import CardArticle from "../components/CardArticle";
 import CardRecents from "../components/CardRecents";
 import CardFavorites from "../components/CardFavorites";
 import getAllSpots from "../services/getAllSpots";
+import getArticlesInfos from "../services/getArticlesInfos";
 import { ActivityIndicator } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 
 const Home = () => {
   const [error, setError] = useState([]);
   const [recentSpot, setRecentSpot] = useState([]); // État pour stocker les composants "cards"
-  const [favSpot, setFavSpot] = useState([]); // État pour stocker les composants "cards"
+  const [favSpot, setFavSpot] = useState([]);
+  const [article, setArticle] = useState([]);
 
   useEffect(() => {
     const fetchDataSurfSpots = async () => {
       try {
         const allSpots = await getAllSpots();
-
         const generatedRecentCard = []; // Initialiser un tableau pour stocker les composants "cards"
         const generatedFavCard = []; // Initialiser un tableau pour stocker les composants "cards"
 
@@ -67,32 +68,47 @@ const Home = () => {
     fetchDataSurfSpots(); // Appel de la fonction lors du montage du composant
   }, []);
   const navigation = useNavigation();
-  const articles = [
-    {
-      title: "Titre de l'article 1",
-      undertitle: "Sous-titre de l'article 1",
-      url: '../../assets/posts/article2.html'
-    },
-    {
-      title: "Titre de l'article 2",
-      undertitle: "Sous-titre de l'article 2",
-      url: '../../assets/posts/article1.html'
-    },
-    // ... Ajoutez autant d'articles que nécessaire
-  ];
+
+  useEffect(() => {
+    const fetchDataArticles = async () => {
+      try {
+        const arrayArticles = await getArticlesInfos();
+        const generatedArticleCard = [];
+        for (let i = 0; i < 3; i++) {
+          const element = arrayArticles[i];  //[title, description, author, keywords]
+
+          // Créer un composant "card" pour chaque élément et l'ajouter au tableau
+          generatedArticleCard.push(
+            <CardArticle
+              title={arrayArticles[0]}
+              description={arrayArticles[1]}
+              author={arrayArticles[2]}
+            /* onPress={() => navigation.navigate("Post")} */
+            /* id={element.id} */
+            />
+          );
+        }
+        setArticle(generatedArticleCard);
+      } catch (error) {
+        setError("could not fetch data");
+      }
+    };
+    fetchDataArticles();
+  }, []);
 
   return (
     <View style={styles.container}>
       <ScrollView>
         <MainTitle titleText={"Actus"} />
-        {articles.map((article, index) => (
-          <CardArticle
-            key={index} // Utilisez une clé unique pour chaque carte
-            title={article.title}
-            undertitle={article.undertitle}
-            onPress={() => navigation.navigate("Post")}
+        {article.length > 0 ? (
+          article
+        ) : (
+          <ActivityIndicator
+            animating={true}
+            size={"large"}
+            color={"#C5EFF7"}
           />
-        ))}
+        )}
         <View style={styles.recently}>
           <MainTitle titleText={"Recently consulted"} />
           {recentSpot.length > 0 ? (
