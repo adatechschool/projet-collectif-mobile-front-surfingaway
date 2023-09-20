@@ -73,15 +73,17 @@ const Home = () => {
         const arrayArticles = await getArticlesInfos();
         const generatedArticleCard = [];
         for (let i = 0; i < 3; i++) {
-          const element = arrayArticles[i];  //[id, title, description, author, keywords]
-          console.log(element);
+          const element = arrayArticles[i];
+          console.log("1.", element._id);
           generatedArticleCard.push(
             <CardArticle
               key={i}
-              id={element[0]}
-              title={element[1]}
-              description={element[2]}
-              author={element[3]}
+              article={element}
+              content={element.content}
+              id={element._id}
+              title={element.title}
+              description={element.description}
+              author={element.author}
             />
           );
         }
