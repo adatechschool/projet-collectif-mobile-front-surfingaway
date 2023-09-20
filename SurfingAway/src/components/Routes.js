@@ -41,7 +41,11 @@ const Routes = () => {
   return (
     <Stack.Navigator initialRouteName={LoginPage}>
       {user ? (
-        <Stack.Screen name="Welcome onboard !" component={InsideLayout} />
+        <Stack.Screen
+          name="Welcome onboard !"
+          component={InsideLayout}
+          options={{ headerShown: false }}
+        />
       ) : (
         <Stack.Screen name="Login" component={LoginPage} />
       )}
