@@ -7,9 +7,15 @@ const getArticle = async (id) => {
       }
     );
     const data = await response.json();
+    const arrayData = []
+    arrayData.push(data.title)
+    arrayData.push(data.author)
+    arrayData.push(data.date)
+    arrayData.push(data.content)
 
     console.log("articles infos datas fetch successfully");
-    return data.content;
+    //[title, author, date, content]
+    return arrayData
   } catch (error) {
     console.error(error + "impossible to fetch articles");
     throw error;
