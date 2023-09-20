@@ -9,7 +9,7 @@ const getArticle = async (id) => {
     const data = await response.json();
 
     console.log("articles infos datas fetch successfully");
-    return data;
+    return data.content;
   } catch (error) {
     console.error(error + "impossible to fetch articles");
     throw error;

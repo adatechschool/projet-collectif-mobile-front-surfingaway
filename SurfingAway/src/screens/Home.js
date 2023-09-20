@@ -11,7 +11,6 @@ import CardFavorites from "../components/CardFavorites";
 import getAllSpots from "../services/getAllSpots";
 import getArticlesInfos from "../services/getArticlesInfos";
 import { ActivityIndicator } from "react-native-paper";
-import { useNavigation } from "@react-navigation/native";
 
 const Home = () => {
   const [error, setError] = useState([]);
@@ -67,7 +66,6 @@ const Home = () => {
     };
     fetchDataSurfSpots(); // Appel de la fonction lors du montage du composant
   }, []);
-  const navigation = useNavigation();
 
   useEffect(() => {
     const fetchDataArticles = async () => {
@@ -77,7 +75,6 @@ const Home = () => {
         for (let i = 0; i < 3; i++) {
           const element = arrayArticles[i];  //[id, title, description, author, keywords]
           console.log(element);
-          // Créer un composant "card" pour chaque élément et l'ajouter au tableau
           generatedArticleCard.push(
             <CardArticle
               key={i}
@@ -85,8 +82,6 @@ const Home = () => {
               title={element[1]}
               description={element[2]}
               author={element[3]}
-            /* onPress={() => navigation.navigate("Post")} */
-
             />
           );
         }
