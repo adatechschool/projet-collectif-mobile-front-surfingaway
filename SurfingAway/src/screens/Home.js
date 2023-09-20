@@ -75,16 +75,18 @@ const Home = () => {
         const arrayArticles = await getArticlesInfos();
         const generatedArticleCard = [];
         for (let i = 0; i < 3; i++) {
-          const element = arrayArticles[i];  //[title, description, author, keywords]
-
+          const element = arrayArticles[i];  //[id, title, description, author, keywords]
+          console.log(element);
           // Créer un composant "card" pour chaque élément et l'ajouter au tableau
           generatedArticleCard.push(
             <CardArticle
-              title={arrayArticles[0]}
-              description={arrayArticles[1]}
-              author={arrayArticles[2]}
+              key={i}
+              id={element[0]}
+              title={element[1]}
+              description={element[2]}
+              author={element[3]}
             /* onPress={() => navigation.navigate("Post")} */
-            /* id={element.id} */
+
             />
           );
         }

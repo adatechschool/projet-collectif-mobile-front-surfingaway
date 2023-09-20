@@ -4,11 +4,11 @@ import getArticle from "../services/getArticle"
 import { useNavigation } from "@react-navigation/native";
 
 const CardArticle = (props) => {
-    const id = "65099cc04c83086727b2d2a6"
+    /* const id = "65099cc04c83086727b2d2a6" */
     /*     const [articlesData, setArticlesData] = useState([]) */
     const [error, setError] = useState([])
     const navigation = useNavigation();
-    const { title, description, author, keywords } = props
+    const { id, title, description, author, keywords } = props
 
     /* useEffect(() => {
         const fetchDataInfosArticles = async () => {
