@@ -7,8 +7,10 @@ import { Picker } from "@react-native-picker/picker";
 import SectionedMultiSelect from "react-native-sectioned-multi-select";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { Button, Card } from "react-native-paper";
+import { API_KEY } from "@env";
 
 const AddSpot = () => {
+  const cle = API_KEY;
   const { control, handleSubmit, setValue } = useForm();
   const defaultValues = {
     destination: "",
@@ -33,7 +35,27 @@ const AddSpot = () => {
     { name: "Outer Banks", id: "Outer Banks" },
   ];
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      await fetch("https://api.airtable.com/v0/appqndsWaTAmFBUIM/Surf%20Destinations",
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json; charset=UTF-8",
+            authorization: `Bearer ${cle}`
+          }
+        }).then((response) => {
+          response.json()
+            .then((json) => {
+              console.log(json);
+            });
+        })
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -117,13 +139,13 @@ const AddSpot = () => {
               )}
             />
 
-            <CustomTextInput
+            {/* <CustomTextInput
               label={"Photos"}
               control={control}
               name={"Photos"}
               placeholder={"Ajouter le lien de la photo"}
               defaultValue={defaultValues.photo}
-            />
+            /> */}
 
             <CustomDateInput
               control={control}
