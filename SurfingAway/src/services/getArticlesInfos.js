@@ -1,7 +1,7 @@
 const getArticlesInfos = async () => {
   try {
     const response = await fetch(
-      `http://10.0.0.223:3000/articles`,
+      `http://192.168.8.82:3000/articles`,
       {
         method: "GET",
       }
