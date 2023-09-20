@@ -34,11 +34,8 @@ const AddSpot = () => {
     { name: "Outer Banks", id: "Outer Banks" },
   ];
 
-  //const onSubmit = (data) => console.log(data);
-
   const onSubmit = async (data) => {
     try {
-      //http://192.168.8.80:3000/spots ou https://jsonplaceholder.typicode.com/posts
       await fetch("http://192.168.8.80:3000/spots",
         {
           method: "POST",
