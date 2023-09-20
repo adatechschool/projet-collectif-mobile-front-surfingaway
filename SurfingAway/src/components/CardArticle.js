@@ -1,29 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import getArticle from "../services/getArticle"
 import { useNavigation } from "@react-navigation/native";
 
 const CardArticle = (props) => {
-    const id = "65099cc04c83086727b2d2a6"
-    /*     const [articlesData, setArticlesData] = useState([]) */
-    const [error, setError] = useState([])
     const navigation = useNavigation();
-    const { title, description, author, keywords } = props
-
-    /* useEffect(() => {
-        const fetchDataInfosArticles = async () => {
-            try {
-                const data = await getArticle(id);
-                setArticlesData(data)
-            } catch (error) {
-                setError('could not fetch data articles');
-            }
-        };
-        fetchDataInfosArticles()
-    }, []); */
-
+    const { title, description, author, article } = props
     return (
-        <TouchableOpacity onPress={() => navigation.navigate("Post", { id })} style={styles.cardContainer}>
+        <TouchableOpacity onPress={() => navigation.navigate("Post", { article })} style={styles.cardContainer}>
             <View style={styles.cardContent}>
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.undertitle}>{description}</Text>

@@ -10,14 +10,14 @@ const getSpotInfos = async (id) => {
       {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${cle}`,
+          Authorization: `Bearer ${API_KEY}`,
         },
       }
     );
     console.log("surf spot data fetch successfully");
     const json = await response.json();
     return json.fields;
-  } catch (e) {}
+  } catch (e) { }
 };
 
 export default getSpotInfos;

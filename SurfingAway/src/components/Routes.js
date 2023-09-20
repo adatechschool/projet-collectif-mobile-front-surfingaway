@@ -5,7 +5,7 @@ import SpotPage from "../screens/SpotPage";
 import Home from "../screens/Home";
 import HomeTopTabs from "./HomeTopTabs";
 import Map from "../screens/Map";
-import Article from "../screens/Articles";
+import Article from "../screens/Article";
 
 const Stack = createNativeStackNavigator();
 
