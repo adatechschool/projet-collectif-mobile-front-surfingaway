@@ -1,4 +1,4 @@
-const getArticlesInfos = async (id) => {
+const getArticle = async (id) => {
   try {
     const response = await fetch(
       `http://192.168.8.82:3000/articles/${id}`,
@@ -16,4 +16,4 @@ const getArticlesInfos = async (id) => {
   }
 };
 
-export default getArticlesInfos;
+export default getArticle;
