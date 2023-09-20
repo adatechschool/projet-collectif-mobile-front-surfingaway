@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
   View,
-  StyleSheet,
   ScrollView,
 } from "react-native";
 import MainTitle from "../components/MainTitle";
@@ -9,7 +8,7 @@ import CardArticle from "../components/CardArticle";
 import CardRecents from "../components/CardRecents";
 import CardFavorites from "../components/CardFavorites";
 import getAllSpots from "../services/getAllSpots";
-import getArticlesInfos from "../services/getArticlesInfos";
+import getArticles from "../services/getArticles";
 import { ActivityIndicator } from "react-native-paper";
 
 const Home = () => {
@@ -32,6 +31,7 @@ const Home = () => {
           generatedRecentCard.push(
             <CardRecents
               key={i}
+              spot={element}
               id={element.id}
               imageUrl={element.fields.Photos[0].thumbnails.large.url}
               place={element.fields.City}
@@ -70,7 +70,7 @@ const Home = () => {
   useEffect(() => {
     const fetchDataArticles = async () => {
       try {
-        const arrayArticles = await getArticlesInfos();
+        const arrayArticles = await getArticles();
         const generatedArticleCard = [];
         for (let i = 0; i < 3; i++) {
           const element = arrayArticles[i];
@@ -137,9 +137,4 @@ const Home = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {},
-});
-
 export default Home;

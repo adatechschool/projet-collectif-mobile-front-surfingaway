@@ -9,7 +9,7 @@ import MainTitle from "../components/MainTitle";
 
 
 const SpotPage = ({ route }) => {
-  const { id } = route.params;
+  const { article } = route.params;
   const [surfBreakData, setSurfBreakData] = useState(null); // État pour stocker les données du surf break
   const [difficultyData, setdifficultyData] = useState(null);
   const [destinationData, setDestinationData] = useState(null);
