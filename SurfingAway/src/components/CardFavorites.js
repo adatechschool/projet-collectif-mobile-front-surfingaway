@@ -10,11 +10,11 @@ import {
 import { useNavigation } from "@react-navigation/native";
 
 const CardFavorites = (props) => {
-  const { name, place, imageUrl, id } = props;
+  const { spot, name, place, imageUrl } = props;
   const navigation = useNavigation();
 
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("Details", { id })} /* style={styles.cardContainer} */>
+    <TouchableOpacity onPress={() => navigation.navigate("Details", { spot })} /* style={styles.cardContainer} */>
       <View style={styles.boxContainer}>
         <Image
           source={{

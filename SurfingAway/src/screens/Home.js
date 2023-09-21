@@ -48,7 +48,7 @@ const Home = () => {
           generatedFavCard.push(
             <CardFavorites
               key={i}
-              id={element.id}
+              spot={element}
               imageUrl={element.photos}
               place={element.address}
               name={element.spotName}
