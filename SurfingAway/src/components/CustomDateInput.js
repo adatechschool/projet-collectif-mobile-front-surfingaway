@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from "react-native";
 import { Controller } from "react-hook-form";
 import { DatePickerInput } from "react-native-paper-dates";
 
-const CustomTextInput = ({ control, name, defaultValue, label, dbName }) => {
+const CustomTextInput = ({ control, name, defaultValue, label }) => {
   return (
     <Controller
       control={control}

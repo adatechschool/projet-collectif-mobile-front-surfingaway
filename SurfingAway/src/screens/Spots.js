@@ -12,7 +12,6 @@ const Spots = () => {
     const fetchDataSurfSpots = async () => {
       try {
         const allSpots = await getAllSpots();
-
         const generatedSpotCards = []; // Initialiser un tableau pour stocker les composants "cards"
 
         for (let i = 0; i < allSpots.length; i++) {

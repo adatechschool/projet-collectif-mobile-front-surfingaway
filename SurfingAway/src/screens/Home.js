@@ -27,8 +27,6 @@ const Home = () => {
 
         for (let i = 0; i < 3; i++) {
           const element = allSpots[i];
-
-          // Créer un composant "card" pour chaque élément et l'ajouter au tableau
           generatedRecentCard.push(
             <CardRecents
               key={i}
@@ -43,8 +41,6 @@ const Home = () => {
 
         for (let i = 1; i < 7; i = i + 2) {
           const element = allSpots[i];
-
-          // Créer un composant "card" pour chaque élément et l'ajouter au tableau
           generatedFavCard.push(
             <CardFavorites
               key={i}

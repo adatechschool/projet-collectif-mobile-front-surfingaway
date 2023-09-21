@@ -5,10 +5,9 @@ import { useNavigation } from "@react-navigation/native";
 
 const CardRecents = (props) => {
   const { name, place, technicity, imageUrl, spot } = props;
-
   const navigation = useNavigation();
-
   const stars = [];
+
   for (let i = 0; i < technicity; i++) {
     stars.push(<DrawBlueStar key={i} />);
   }
@@ -67,7 +66,6 @@ const styles = StyleSheet.create({
   buttonDetail: {
     fontSize: 20,
   },
-
   starWrapper: {
     marginRight: 5,
     display: "flex",

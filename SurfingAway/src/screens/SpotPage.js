@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { View, StyleSheet, Image, ScrollView } from "react-native";
-import { Card, Title, ActivityIndicator } from 'react-native-paper';
+import { Card } from 'react-native-paper';
 import CardWeather from "../components/CardWeather";
-import getSpotInfos from "../services/getSpotInfos";
 import UserSimpleCard from "../components/UserSimpleCard";
 import SpotMainInfos from "../components/SpotMainInfos";
 import MainTitle from "../components/MainTitle";
-
 
 const SpotPage = ({ route }) => {
   const { spot } = route.params;

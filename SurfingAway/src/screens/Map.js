@@ -10,7 +10,6 @@ const Map = () => {
   const [mapLong, setMapLong] = useState(0);
   const [spotsCoords, setSpotsCoords] = useState([]);
   const [error, setError] = useState(null);
-
   const navigation = useNavigation();
 
   const getAllCoords = async () => {

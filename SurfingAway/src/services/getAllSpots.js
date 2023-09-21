@@ -1,7 +1,3 @@
-
-let apiData = null;
-let apiDataPromise = null;
-
 const getAllSpots = async () => {
   try {
     const response = await fetch(
@@ -20,23 +16,4 @@ const getAllSpots = async () => {
   }
 };
 
-const fetchDataSurfSpots = async () => {
-  if (!apiData) {
-    if (!apiDataPromise) {
-      apiDataPromise = getAllSpots()
-        .then((data) => {
-          apiData = data;
-          return apiData;
-        })
-        .catch((error) => {
-          console.error(error);
-          throw error;
-        });
-    }
-    await apiDataPromise;
-  }
-
-  return apiData;
-};
-
-export default fetchDataSurfSpots;
+export default getAllSpots;
