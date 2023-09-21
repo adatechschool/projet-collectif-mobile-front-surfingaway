@@ -8,6 +8,9 @@ import MainTitle from "../components/MainTitle";
 
 const SpotPage = ({ route }) => {
   const { spot } = route.params;
+  console.log(spot.
+    seasonBegins);
+  console.log(spot.city);
 
   return (
     <View>
@@ -23,8 +26,8 @@ const SpotPage = ({ route }) => {
             where={spot.address}
             what={spot.name}
             technicity={spot.diffculty}
-            seasonStart={spot["seasonBegins "]}
-            seasonEnd={spot["seasonEnds"]}
+            seasonStart={spot.seasonBegins}
+            seasonEnd={spot.seasonEnds}
           />
           <MainTitle titleText={"Surf infos en temps réel"} />
           <View style={styles.weatherInfos}>

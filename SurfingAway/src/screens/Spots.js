@@ -23,8 +23,8 @@ const Spots = () => {
               key={i}
               spot={element}
               imageUrl={element.photos}
-              destination={element.address}
-              country={element.country}
+              destination={element.spotName}
+              country={element.address}
               difficultyLevel={element.diffculty}
             />
           );
