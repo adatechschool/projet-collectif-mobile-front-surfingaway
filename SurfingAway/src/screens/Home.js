@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   View,
   ScrollView,
+  StyleSheet
 } from "react-native";
 import MainTitle from "../components/MainTitle";
 import CardArticle from "../components/CardArticle";
@@ -137,4 +138,9 @@ const Home = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {},
+});
+
 export default Home;
