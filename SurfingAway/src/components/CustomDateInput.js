@@ -3,13 +3,13 @@ import { StyleSheet, View, Text } from "react-native";
 import { Controller } from "react-hook-form";
 import { DatePickerInput } from "react-native-paper-dates";
 
-const CustomTextInput = ({ control, name, defaultValue, label, dbName }) => {
+const CustomDateInput = ({ control, name, defaultValue, label }) => {
   return (
     <Controller
       control={control}
       name={name}
       defaultValue={defaultValue}
-      render={({ field: { value } }) => (
+      render={({ field: { value, onChange } }) => (
         <View>
           <Text style={styles.title}>{label}</Text>
           <DatePickerInput
@@ -17,7 +17,7 @@ const CustomTextInput = ({ control, name, defaultValue, label, dbName }) => {
             locale="fr"
             label={label}
             value={value}
-            onChange={(itemValue) => setValue({ name }, itemValue)}
+            onChange={onChange}
             inputMode="start"
           />
         </View>
@@ -41,4 +41,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CustomTextInput;
+export default CustomDateInput;
