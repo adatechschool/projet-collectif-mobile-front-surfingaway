@@ -4,13 +4,13 @@ let apiDataPromise = null;
 
 const getAllSpots = async () => {
   try {
-    const data = await fetch(
-      "http://192.168.8.82:3000/articles",
+    const response = await fetch(
+      "http://192.168.8.82:3000/spots",
       {
         method: "GET",
       }
     );
-    const json = await data.json();
+    const data = await response.json();
     console.log(data);
     console.log("all surf spots datas fetch successfully");
     return data

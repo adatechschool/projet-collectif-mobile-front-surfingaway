@@ -22,19 +22,16 @@ const Home = () => {
     const fetchDataSurfSpots = async () => {
       try {
         const allSpots = await getAllSpots();
-        console.log(allSpots);
         const generatedRecentCard = []; // Initialiser un tableau pour stocker les composants "cards"
         const generatedFavCard = []; // Initialiser un tableau pour stocker les composants "cards"
 
         for (let i = 0; i < 3; i++) {
           const element = allSpots[i];
-
           // Créer un composant "card" pour chaque élément et l'ajouter au tableau
           generatedRecentCard.push(
             <CardRecents
               key={i}
               spot={element}
-              id={element.id}
               imageUrl={element.photos}
               place={element.address}
               name={element.spotName}
@@ -51,10 +48,10 @@ const Home = () => {
             <CardFavorites
               key={i}
               id={element.id}
-              imageUrl={element.fields.Photos[0].thumbnails.large.url}
-              place={element.fields.Destination}
-              name={element["fields"]["Destination State/Country"]}
-              technicity={element["fields"]["Difficulty Level"]}
+              imageUrl={element.photos}
+              place={element.address}
+              name={element.spotName}
+              technicity={element.diffculty}
             />
           );
         }
