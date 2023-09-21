@@ -7,7 +7,6 @@ const getAllSpots = async () => {
       }
     );
     const data = await response.json();
-    console.log(data);
     console.log("all surf spots datas fetch successfully");
     return data
   } catch (error) {
