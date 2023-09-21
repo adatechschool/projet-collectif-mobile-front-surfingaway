@@ -7,7 +7,6 @@ import { Picker } from "@react-native-picker/picker";
 import SectionedMultiSelect from "react-native-sectioned-multi-select";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { Button, Card } from "react-native-paper";
-import { API_KEY } from "@env";
 
 const AddSpot = () => {
   const { control, handleSubmit, setValue } = useForm();
@@ -17,7 +16,7 @@ const AddSpot = () => {
     photos: "",
     surflineLink: "",
     difficulty: 1,
-    surfBreak: ["Beach Break", "Point Break"],
+    surfBreak: [],
     seasonBegins: "",
     seasonEnds: "",
     latitude: "",
@@ -41,8 +40,7 @@ const AddSpot = () => {
           method: "POST",
           body: JSON.stringify(data),
           headers: {
-            "Content-Type": "application/json; charset=UTF-8",
-            //authorization: `Bearer ${API_KEY}`
+            "Content-Type": "application/json; charset=UTF-8"
           }
         }).then((response) => {
           response.json()
@@ -93,7 +91,7 @@ const AddSpot = () => {
             />
 
             <CustomTextInput
-              label={"Photos"}
+              label={"Photo"}
               control={control}
               name={"photos"}
               placeholder={"Ajouter le lien de la photo"}
