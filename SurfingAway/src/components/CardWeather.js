@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Card, Button, Title, Paragraph, Avatar } from 'react-native-paper';
+import { Card, Button, Title } from 'react-native-paper';
 import getWeatherSpot from "../services/getWeatherSpot";
 
 const CardWeather = (props) => {

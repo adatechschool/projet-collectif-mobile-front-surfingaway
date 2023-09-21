@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const CardArticle = (props) => {
     const navigation = useNavigation();
-    const { title, description, author, article } = props
+    const { title, author, article, description } = props
     return (
         <TouchableOpacity onPress={() => navigation.navigate("Post", { article })} style={styles.cardContainer}>
             <View style={styles.cardContent}>

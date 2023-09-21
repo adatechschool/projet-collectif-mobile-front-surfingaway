@@ -2,8 +2,7 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { FontAwesome } from '@expo/vector-icons';
 
-const DrawBlueStar = (/* props */) => {
-    /* const [color] = props */
+const DrawBlueStar = () => {
     return (
         <FontAwesome styler={styles.ratingSquare} name="star" size={24} color="darkturquoise" />
     )
@@ -17,4 +16,3 @@ const styles = StyleSheet.create({
 })
 
 export default DrawBlueStar
-

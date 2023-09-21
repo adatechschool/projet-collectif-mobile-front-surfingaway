@@ -2,8 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { EvilIcons } from '@expo/vector-icons';
 
-const DrawHeart = (/* props */) => {
-    /* const [color] = props */
+const DrawHeart = () => {
     return (
         <View style={styles.heartShape}>
             <EvilIcons name="heart" size={25} color="darkturquoise" />
@@ -19,4 +18,3 @@ const styles = StyleSheet.create({
 })
 
 export default DrawHeart;
-

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import {
   View,
-  StyleSheet,
   ScrollView,
+  StyleSheet
 } from "react-native";
 import MainTitle from "../components/MainTitle";
 import CardArticle from "../components/CardArticle";
 import CardRecents from "../components/CardRecents";
 import CardFavorites from "../components/CardFavorites";
 import getAllSpots from "../services/getAllSpots";
-import getArticlesInfos from "../services/getArticlesInfos";
+import getArticles from "../services/getArticles";
 import { ActivityIndicator } from "react-native-paper";
 
 const Home = () => {
@@ -27,32 +27,28 @@ const Home = () => {
 
         for (let i = 0; i < 3; i++) {
           const element = allSpots[i];
-
-          // Créer un composant "card" pour chaque élément et l'ajouter au tableau
           generatedRecentCard.push(
             <CardRecents
               key={i}
-              id={element.id}
-              imageUrl={element.fields.Photos[0].thumbnails.large.url}
-              place={element.fields.City}
-              name={element.fields.Address}
-              technicity={element["fields"]["Difficulty Level"]}
+              spot={element}
+              imageUrl={element.photos}
+              place={element.address}
+              name={element.spotName}
+              technicity={element.diffculty}
             />
           );
         }
 
         for (let i = 1; i < 7; i = i + 2) {
           const element = allSpots[i];
-
-          // Créer un composant "card" pour chaque élément et l'ajouter au tableau
           generatedFavCard.push(
             <CardFavorites
               key={i}
-              id={element.id}
-              imageUrl={element.fields.Photos[0].thumbnails.large.url}
-              place={element.fields.Destination}
-              name={element["fields"]["Destination State/Country"]}
-              technicity={element["fields"]["Difficulty Level"]}
+              spot={element}
+              imageUrl={element.photos}
+              place={element.address}
+              name={element.spotName}
+              technicity={element.diffculty}
             />
           );
         }
@@ -70,17 +66,14 @@ const Home = () => {
   useEffect(() => {
     const fetchDataArticles = async () => {
       try {
-        const arrayArticles = await getArticlesInfos();
+        const arrayArticles = await getArticles();
         const generatedArticleCard = [];
         for (let i = 0; i < 3; i++) {
           const element = arrayArticles[i];
-          console.log("1.", element._id);
           generatedArticleCard.push(
             <CardArticle
               key={i}
               article={element}
-              content={element.content}
-              id={element._id}
               title={element.title}
               description={element.description}
               author={element.author}
