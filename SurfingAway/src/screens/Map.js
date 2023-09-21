@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ActivityIndicator } from "react-native";
 import MapView, { Marker, Callout } from 'react-native-maps';
 import getAllSpots from "../services/getAllSpots";
 import * as Location from "expo-location";
@@ -9,6 +9,7 @@ const Map = () => {
   const [mapLat, setMapLat] = useState(0);
   const [mapLong, setMapLong] = useState(0);
   const [spotsCoords, setSpotsCoords] = useState([]);
+  const [loading, setLoading] = useState(true); // Ajout d'un état de chargement
   const [error, setError] = useState(null);
 
   const navigation = useNavigation();
@@ -26,15 +27,17 @@ const Map = () => {
           spot: spot
         })
       });
-      console.log(coordsArray);
+
       setSpotsCoords(coordsArray);
+      setLoading(false); // Mettre à jour l'état de chargement une fois les données récupérées
 
     } catch (error) {
       setError('Could not fetch weather');
+      setLoading(false); // Mettre à jour l'état de chargement en cas d'erreur
     }
   }
 
-  // Localisation de l'user
+  // Localisation de l'utilisateur
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -51,29 +54,35 @@ const Map = () => {
 
   return (
     <View style={styles.container} >
-      <MapView
-        style={styles.map}
-        region={{
-          latitude: mapLat,
-          longitude: mapLong,
-          latitudeDelta: 0.1,
-          longitudeDelta: 0.1,
-        }}
-      >
-        {spotsCoords.map((data, index) => (
-          <Marker
-            key={index}
-            pinColor={"deeppink"}
-            coordinate={{
-              latitude: parseFloat(data.latitude),
-              longitude: parseFloat(data.longitude),
-            }}
-            title={data.name}
-          >
-            <Callout onPress={() => navigation.navigate("Details", { spot: data.spot })} />
-          </Marker>
-        ))}
-      </MapView>
+      {loading ? (
+        // Afficher un indicateur de chargement en attendant que les données soient récupérées
+        <ActivityIndicator size="large" color="deeppink" style={styles.loadingIndicator} />
+      ) : (
+        // Une fois les données récupérées, afficher la carte avec les marqueurs
+        <MapView
+          style={styles.map}
+          region={{
+            latitude: mapLat,
+            longitude: mapLong,
+            latitudeDelta: 0.1,
+            longitudeDelta: 0.1,
+          }}
+        >
+          {spotsCoords.map((data, index) => (
+            <Marker
+              key={index}
+              pinColor={"deeppink"}
+              coordinate={{
+                latitude: parseFloat(data.latitude),
+                longitude: parseFloat(data.longitude),
+              }}
+              title={data.name}
+            >
+              <Callout onPress={() => navigation.navigate("Details", { spot: data.spot })} />
+            </Marker>
+          ))}
+        </MapView>
+      )}
     </View>
   )
 }
@@ -85,6 +94,11 @@ const styles = StyleSheet.create({
   map: {
     width: '100%',
     height: '100%',
+  },
+  loadingIndicator: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 })
 
