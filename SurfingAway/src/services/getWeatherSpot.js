@@ -1,4 +1,3 @@
-import React from "react";
 import { WEATHER_API_KEY } from "@env"
 import moment from "moment"
 

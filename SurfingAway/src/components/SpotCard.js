@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import DrawBlueStar from "../components/DrawBlueStar";
 
 const SpotCard = (props) => {
-  const { imageUrl, destination, country, difficultyLevel, id } = props;
+  const { spot, imageUrl, destination, country, difficultyLevel } = props;
   const navigation = useNavigation();
 
   const stars = [];
@@ -34,7 +34,7 @@ const SpotCard = (props) => {
         <View style={styles.starWrapper}>{stars}</View>
       </Card.Content>
       <Card.Actions>
-        <Button onPress={() => navigation.navigate("Details", { id })}>
+        <Button onPress={() => navigation.navigate("Details", { spot })}>
           En savoir plus
         </Button>
       </Card.Actions>

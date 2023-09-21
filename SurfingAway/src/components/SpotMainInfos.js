@@ -4,7 +4,7 @@ import { Text } from 'react-native-paper';
 import DrawBlueStar from "../components/DrawBlueStar";
 
 const SpotMainInfos = (props) => {
-    const { where, what, technicity, wave } = props
+    const { where, what, technicity, seasonBegins, seasonEnds } = props
     const stars = [];
     for (let i = 0; i < technicity; i++) {
         stars.push(<DrawBlueStar key={i} />);
@@ -20,7 +20,8 @@ const SpotMainInfos = (props) => {
                     {stars}
                 </View>
             </View>
-            <Text style={styles.category}>{wave}</Text>
+            {/*             <Text style={styles.category}>Saison start : {seasonBegins}</Text>
+            <Text style={styles.category}>Saison end : {seasonEnds}</Text> */}
         </View>
     )
 }

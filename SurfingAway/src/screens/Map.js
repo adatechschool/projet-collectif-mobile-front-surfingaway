@@ -15,15 +15,15 @@ const Map = () => {
 
   const getAllCoords = async () => {
     try {
-      const records = await getAllSpots();
+      const dataSpots = await getAllSpots();
       let coordsArray = [];
 
-      records.forEach(spot => {
+      dataSpots.forEach(spot => {
         coordsArray.push({
-          latitude: spot.fields.Latitude,
-          longitude: spot.fields.Longitude,
-          name: spot.fields.Address,
-          id: spot.id
+          latitude: spot.latitude,
+          longitude: spot.longitude,
+          name: spot.address,
+          spot: spot
         })
       });
       console.log(coordsArray);
@@ -34,6 +34,7 @@ const Map = () => {
     }
   }
 
+  // Localisation de l'user
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -69,7 +70,7 @@ const Map = () => {
             }}
             title={data.name}
           >
-            <Callout onPress={() => navigation.navigate("Details", { id: data.id })} />
+            <Callout onPress={() => navigation.navigate("Details", { spot: data.spot })} />
           </Marker>
         ))}
       </MapView>

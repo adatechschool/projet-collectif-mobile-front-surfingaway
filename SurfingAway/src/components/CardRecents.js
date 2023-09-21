@@ -4,16 +4,15 @@ import DrawBlueStar from "./DrawBlueStar";
 import { useNavigation } from "@react-navigation/native";
 
 const CardRecents = (props) => {
-  const { name, place, technicity, imageUrl, id, article } = props;
-
+  const { name, place, technicity, imageUrl, spot } = props;
   const navigation = useNavigation();
-
   const stars = [];
+
   for (let i = 0; i < technicity; i++) {
     stars.push(<DrawBlueStar key={i} />);
   }
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("Details", { article })} /* style={styles.cardContainer} */>
+    <TouchableOpacity onPress={() => navigation.navigate("Details", { spot })}>
       <View style={styles.boxContainer}>
         <ImageBackground source={{ uri: imageUrl }} resizeMode="cover" style={styles.image}>
           <View style={styles.infoCard}>
@@ -67,7 +66,6 @@ const styles = StyleSheet.create({
   buttonDetail: {
     fontSize: 20,
   },
-
   starWrapper: {
     marginRight: 5,
     display: "flex",
