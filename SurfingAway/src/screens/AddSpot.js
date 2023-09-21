@@ -1,5 +1,5 @@
 import { React } from "react";
-import { View, Text, StyleSheet, StatusBar, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import CustomTextInput from "../components/CustomTextInput";
 import CustomDateInput from "../components/CustomDateInput";
@@ -7,18 +7,19 @@ import { Picker } from "@react-native-picker/picker";
 import SectionedMultiSelect from "react-native-sectioned-multi-select";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { Button, Card } from "react-native-paper";
+import { API_KEY } from "@env";
 
 const AddSpot = () => {
   const { control, handleSubmit, setValue } = useForm();
   const defaultValues = {
-    destination: "",
-    localisation: "",
-    difficulty: 1,
-    surfBreak: [""],
+    spotName: "",
+    country: "",
+    photos: "",
     surflineLink: "",
-    photo: "",
-    seasonStart: "",
-    seasonEnd: "",
+    difficulty: 1,
+    surfBreak: ["Beach Break", "Point Break"],
+    seasonBegins: "",
+    seasonEnds: "",
     latitude: "",
     longitude: "",
   };
@@ -33,7 +34,26 @@ const AddSpot = () => {
     { name: "Outer Banks", id: "Outer Banks" },
   ];
 
-  const onSubmit = (data) => console.log("ADDSPOT data" + data);
+  const onSubmit = async (data) => {
+    try {
+      await fetch("http://192.168.8.80:3000/spots",
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json; charset=UTF-8",
+            //authorization: `Bearer ${API_KEY}`
+          }
+        }).then((response) => {
+          response.json()
+            .then((json) => {
+              console.log(json);
+            });
+        })
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -59,22 +79,38 @@ const AddSpot = () => {
             <CustomTextInput
               label={"Nom du spot"}
               control={control}
-              name={"Destination"}
+              name={"spotName"}
               placeholder={"Entrez le nom du spot"}
-              defaultValue={defaultValues.destination}
+              defaultValue={defaultValues.spotName}
             />
 
             <CustomTextInput
               label={"Localisation"}
               control={control}
-              name={"Destination State/Country"}
-              placeholder={"Ville, Pays"}
-              defaultValue={defaultValues.localisation}
+              name={"country"}
+              placeholder={"Pays"}
+              defaultValue={defaultValues.country}
+            />
+
+            <CustomTextInput
+              label={"Photos"}
+              control={control}
+              name={"photos"}
+              placeholder={"Ajouter le lien de la photo"}
+              defaultValue={defaultValues.photos}
+            />
+
+            <CustomTextInput
+              label={"Lien Surfline"}
+              control={control}
+              name={"surflineLink"}
+              placeholder={"Copier le lien ici"}
+              defaultValue={defaultValues.surflineLink}
             />
 
             <Controller
               control={control}
-              name="Difficulty Level"
+              name="difficulty"
               defaultValue={defaultValues.difficulty}
               render={({ field: { value } }) => (
                 <View>
@@ -82,7 +118,7 @@ const AddSpot = () => {
                   <Picker
                     selectedValue={value}
                     onValueChange={(itemValue) =>
-                      setValue("Difficulty Level", itemValue)
+                      setValue("difficulty", itemValue)
                     }
                   >
                     <Picker.Item label="★" value={1} />
@@ -97,7 +133,7 @@ const AddSpot = () => {
 
             <Controller
               control={control}
-              name="Surf Break"
+              name="surfBreak"
               defaultValue={defaultValues.surfBreak}
               render={({ field: { value } }) => (
                 <View>
@@ -109,7 +145,7 @@ const AddSpot = () => {
                     selectText="Choisir au moins un surf break"
                     showDropDowns={true}
                     onSelectedItemsChange={(itemValue) =>
-                      setValue("Surf Break", itemValue)
+                      setValue("surfBreak", itemValue)
                     }
                     selectedItems={value}
                   />
@@ -117,40 +153,24 @@ const AddSpot = () => {
               )}
             />
 
-            <CustomTextInput
-              label={"Photos"}
-              control={control}
-              name={"Photos"}
-              placeholder={"Ajouter le lien de la photo"}
-              defaultValue={defaultValues.photo}
-            />
-
             <CustomDateInput
               control={control}
-              name={"Peak Surf Season Begins"}
-              defaultValue={defaultValues.seasonStart}
+              name={"seasonBegins"}
+              defaultValue={defaultValues.seasonBegins}
               label={"Début de la saison de surf"}
             />
 
             <CustomDateInput
               control={control}
-              name={"Peak Surf Season Ends"}
-              defaultValue={defaultValues.seasonStart}
+              name={"seasonEnds"}
+              defaultValue={defaultValues.seasonEnds}
               label={"Fin de la saison de surf"}
-            />
-
-            <CustomTextInput
-              label={"Lien Surfline"}
-              control={control}
-              name={"Surfline Link"}
-              placeholder={"Copier le lien ici"}
-              defaultValue={defaultValues.surflineLink}
             />
 
             <CustomTextInput
               label={"Latitude"}
               control={control}
-              name={"Latitude"}
+              name={"latitude"}
               placeholder={"Entrer la latitude"}
               defaultValue={defaultValues.latitude}
             />
@@ -158,8 +178,8 @@ const AddSpot = () => {
             <CustomTextInput
               label={"Longitude"}
               control={control}
-              name={"Longitude"}
-              placeholder={"Longitude"}
+              name={"longitude"}
+              placeholder={"Entrer la longitude"}
               defaultValue={defaultValues.longitude}
             />
           </Card.Content>

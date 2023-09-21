@@ -20,8 +20,6 @@ const getWeatherSpot = async (lat, lon) => {
         arrayDataWeather.push(dataMain.main['humidity'])
         arrayDataWeather.push(moment(data.city.sunrise).format("HH:mm:ss"))
         arrayDataWeather.push(moment(data.city.sunset).format("HH:mm:ss"))
-
-        console.log(arrayDataWeather);
         return arrayDataWeather
     } catch (e) {
         console.log('errorAPI weather, did not fetch the infos !');

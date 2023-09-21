@@ -9,6 +9,7 @@ import LoginPage from "../screens/LoginPage";
 import SignUpPage from "../screens/SignUpPage";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../firebase";
+import Article from "../screens/Article";
 
 const Stack = createNativeStackNavigator();
 const InsideStack = createNativeStackNavigator();
@@ -24,6 +25,7 @@ const InsideLayout = () => {
       <InsideStack.Screen name="Spots" component={Spots} />
       <InsideStack.Screen name="Details" component={SpotPage} />
       <InsideStack.Screen name="Map" component={Map} />
+      <InsideStack.Screen name="Post" component={Article} />
     </InsideStack.Navigator>
   );
 };
