@@ -1,22 +1,19 @@
-import { API_KEY } from "@env";
+
 let apiData = null;
 let apiDataPromise = null;
 
 const getAllSpots = async () => {
-  const cle = API_KEY;
   try {
-    const response = await fetch(
-      "https://api.airtable.com/v0/appqndsWaTAmFBUIM/Surf%20Destinations?maxRecords=10&view=By%20Surf%20Break",
+    const data = await fetch(
+      "http://192.168.8.82:3000/articles",
       {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${cle}`,
-        },
       }
     );
-    const json = await response.json();
+    const json = await data.json();
+    console.log(data);
     console.log("all surf spots datas fetch successfully");
-    return json.records;
+    return data
   } catch (error) {
     console.error(error);
     throw error;

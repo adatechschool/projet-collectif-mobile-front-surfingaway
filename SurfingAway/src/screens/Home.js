@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   View,
   ScrollView,
+  StyleSheet
 } from "react-native";
 import MainTitle from "../components/MainTitle";
 import CardArticle from "../components/CardArticle";
@@ -21,6 +22,7 @@ const Home = () => {
     const fetchDataSurfSpots = async () => {
       try {
         const allSpots = await getAllSpots();
+        console.log(allSpots);
         const generatedRecentCard = []; // Initialiser un tableau pour stocker les composants "cards"
         const generatedFavCard = []; // Initialiser un tableau pour stocker les composants "cards"
 
@@ -33,10 +35,10 @@ const Home = () => {
               key={i}
               spot={element}
               id={element.id}
-              imageUrl={element.fields.Photos[0].thumbnails.large.url}
-              place={element.fields.City}
-              name={element.fields.Address}
-              technicity={element["fields"]["Difficulty Level"]}
+              imageUrl={element.photos}
+              place={element.address}
+              name={element.spotName}
+              technicity={element.diffculty}
             />
           );
         }
@@ -74,13 +76,10 @@ const Home = () => {
         const generatedArticleCard = [];
         for (let i = 0; i < 3; i++) {
           const element = arrayArticles[i];
-          console.log("1.", element._id);
           generatedArticleCard.push(
             <CardArticle
               key={i}
               article={element}
-              content={element.content}
-              id={element._id}
               title={element.title}
               description={element.description}
               author={element.author}
@@ -137,4 +136,9 @@ const Home = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {},
+});
+
 export default Home;
