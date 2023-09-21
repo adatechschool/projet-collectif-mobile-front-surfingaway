@@ -22,7 +22,7 @@ const Map = () => {
         coordsArray.push({
           latitude: spot.latitude,
           longitude: spot.longitude,
-          name: spot.address,
+          name: spot.spotName,
           spot: spot
         })
       });
