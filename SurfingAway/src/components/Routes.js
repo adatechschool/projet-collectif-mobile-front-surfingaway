@@ -20,7 +20,7 @@ const InsideLayout = () => {
       <InsideStack.Screen
         name="Home"
         component={HomeTopTabs}
-        // options={{ headerShown: false }}
+      // options={{ headerShown: false }}
       />
       <InsideStack.Screen name="Spots" component={Spots} />
       <InsideStack.Screen name="Details" component={SpotPage} />
@@ -35,7 +35,6 @@ const Routes = () => {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      console.log("user : " + user);
       setUser(user);
     });
   }, []);
