@@ -22,11 +22,11 @@ const Spots = () => {
           generatedSpotCards.push(
             <SpotCard
               key={i}
-              id={element.id}
-              imageUrl={element.fields.Photos[0].thumbnails.large.url}
-              destination={element.fields.Destination}
-              country={element["fields"]["Destination State/Country"]}
-              difficultyLevel={element["fields"]["Difficulty Level"]}
+              spot={element}
+              imageUrl={element.photos}
+              destination={element.address}
+              country={element.country}
+              difficultyLevel={element.diffculty}
             />
           );
         }
