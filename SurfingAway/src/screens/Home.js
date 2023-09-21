@@ -27,6 +27,7 @@ const Home = () => {
 
         for (let i = 0; i < 3; i++) {
           const element = allSpots[i];
+
           // Créer un composant "card" pour chaque élément et l'ajouter au tableau
           generatedRecentCard.push(
             <CardRecents

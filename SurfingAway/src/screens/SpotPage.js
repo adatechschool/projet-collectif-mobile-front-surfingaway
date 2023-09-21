@@ -9,73 +9,33 @@ import MainTitle from "../components/MainTitle";
 
 
 const SpotPage = ({ route }) => {
-  const { article } = route.params;
-  const [surfBreakData, setSurfBreakData] = useState(null); // État pour stocker les données du surf break
-  const [difficultyData, setdifficultyData] = useState(null);
-  const [destinationData, setDestinationData] = useState(null);
-  const [whereData, setwhereData] = useState(null);
-  const [cardWeather, setCardWeather] = useState(null); // État pour stocker les composants "cards"
-  const [imageApi, setImageApi] = useState(null)
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchDataSurfBreak = async () => {
-      try {
-        const fields = await getSpotInfos(id);
-
-        // Mettre à jour l'état avec les données
-        setSurfBreakData(fields["Surf Break"][0]);
-        setdifficultyData(fields["Difficulty Level"]);
-        setDestinationData(fields["Destination"]);
-        setwhereData(fields["Destination State/Country"]);
-        setCardWeather(
-          <CardWeather
-            lat={fields.Latitude}
-            lon={fields.Longitude}
-          />
-        )
-        setImageApi(<Image
-          source={{
-            uri: fields.Photos[0].thumbnails.large.url,
-          }}
-          style={styles.ImageStyle}
-        />);
-      } catch (error) {
-        setError("could not fetch spot data");
-      }
-    };
-    fetchDataSurfBreak(); // Appel de la fonction fetchDataSurfBreak lors du montage du composant
-  }, []); // Le tableau vide [] garantit que cela ne s'exécute qu'une seule fois lors du montage initial
+  const { spot } = route.params;
 
   return (
     <View>
       <ScrollView>
-        {imageApi ? imageApi :
-          <ActivityIndicator
-            animating={true}
-            size={"large"}
-            color='#C5EFF7'
-          />
-        }
+        <Image
+          source={{
+            uri: spot.photos,
+          }}
+          style={styles.ImageStyle}
+        />
         <View>
           <SpotMainInfos
-            where={whereData}
-            what={destinationData}
-            technicity={difficultyData}
-            wave={surfBreakData} // Affiche les données ou un message de chargement
+            where={spot.address}
+            what={spot.name}
+            technicity={spot.diffculty}
+            seasonStart={spot["seasonBegins "]}
+            seasonEnd={spot["seasonEnds"]}
           />
           <MainTitle titleText={"Surf infos en temps réel"} />
           <View style={styles.weatherInfos}>
-            {cardWeather ? cardWeather : <Card>
-              <Card.Content>
-                <Title>Météo du jour</Title>
-                <ActivityIndicator
-                  animating={true}
-                  size={"large"}
-                  color='#C5EFF7'
-                />
-              </Card.Content>
-            </Card>}
+            <Card.Content>
+              <CardWeather
+                lat={spot.latitude}
+                lon={spot.longitude}
+              />
+            </Card.Content>
           </View>
           <MainTitle titleText={"La note des pros"} />
           <View>
